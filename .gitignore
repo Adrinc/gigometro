@@ -1,0 +1,24 @@
+.DS_Store
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build artifacts and other generated files
+dist/
+build/
+*.log
+
+# Ignore environment variables
+.env
+
+# Ignore macOS specific files
+.DS_Store
+
+# IDE or editor specific files
+.vscode/
+.idea/
+.history/
+.session/
+*.iml
+
+# Ignore test coverage files
+coverage/

@@ -1,0 +1,362 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/plusjakartasans/v3/LDIkYRESXAYIAYA9DyJMIZhPGe8_tlJ_FaeQB0Y.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+html {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+ 
+.Credits {
+color: rgb(125 119 119);
+text-align: center;
+font-size:14px;
+font-family: "Plus Jakarta Sans", sans-serif;
+font-weight: 500;
+} 
+.Credits a {
+  text-decoration: none;
+  color: rgb(113, 113, 113);
+}
+.Credits a:hover {
+color: #ba0e35;
+}
+
+.ConnectError {
+  display: none;
+
+}
+
+.openSpeedtestApp {
+ 
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  overflow: hidden;
+}
+.main-Gaugebg {
+  fill: none;
+  stroke: rgb(231, 231, 232);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 22px;
+  stroke-dasharray: 681;
+}
+.main-GaugeBlue {
+  fill: none;
+  stroke: #ba0e35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 22px;
+  stroke-dasharray: 681;
+  stroke-opacity: 0;
+}
+.main-GaugeWhite {
+  fill: none;
+  stroke: rgb(255, 255, 255);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 15px;
+  stroke-dasharray: 0, 681;
+  stroke-dashoffset: 1;
+  stroke-opacity: 0;
+}
+.oDo-Meter {
+  font-size: 16.633283615112305px;
+  fill: gray;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+}
+.oDoLive-Speed {
+  font-size: 28px;
+  fill: #201e1e;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: middle;
+}
+
+.oDoLive-Status {
+  font-size: 10px;
+  fill: #d2d1d2;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: middle;
+}
+.uiBg {
+  fill: #d2d1d2;
+}
+.progressbg {
+  stroke: rgb(231, 231, 232);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 0;
+}
+.Cards {
+  fill: #f2f2f2;
+}
+.Symbol {
+  fill: #ba0e35;
+}
+.rtext {
+  font-size: 10px;
+  fill: #333;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+}
+.rtextnum {
+  font-size: 23px;
+  fill: #201e1e;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: middle;
+}
+.rtextmbms {
+  font-size: 12px;
+  fill: #5f5f5f;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: middle;
+}
+.jitter-Mob {
+  font-size: 9px;
+  fill: #5f5f5f;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: middle;
+}
+.startButton {
+  fill: #ba0e35;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  pointer-events: visible;
+}
+.buttonTxt {
+  font-size: 40px;
+  fill: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: middle;
+}
+
+.intro-Progress {
+  stroke: #ba0e35;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 0;
+}
+.progressElmstart {
+  stroke: #ba0e35;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 0;
+  display: block;
+}
+.Startsettings {
+  fill: #ba0e35;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  pointer-events: visible;
+  opacity: 0.1;
+  transition: opacity 1s ease-in-out;
+}
+.Startsettings:hover {
+  opacity: 1;
+}
+
+.progressbg {
+  stroke: rgb(231, 231, 232);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 0;
+}
+.deskStart {
+  fill: none;
+  stroke: rgb(231, 231, 232);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 22px;
+  stroke-dasharray: 681;
+  stroke: #ba0e35;
+}
+#downloadRc1{
+  fill: #14ff20;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  pointer-events: visible;
+
+  transition: opacity 1s ease-in-out;
+  font-size: small;
+}
+#UI-Desk {
+  display: none;
+}
+#UI-Mob {
+  display: none;
+}
+.oDoTop-Speed {
+  font-size: 16.96px;
+  fill: gray;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: end;
+}
+#upSymbolDesk {
+  fill: #ba0e35;
+  display: none;
+}
+#downSymbolDesk {
+  fill: #ba0e35;
+  display: none;
+}
+#upSymbolMob {
+  fill: #ba0e35;
+  display: none;
+}
+#downSymbolMob {
+  fill: #ba0e35;
+  display: none;
+}
+
+#ipMob {
+  font-size: 15px;
+  fill: #201e1e;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: middle;
+  display: none;
+}
+#ipDesk {
+  font-size: 15px;
+  fill: #201e1e;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-anchor: middle;
+  display: none;
+}
+
+.spinner {
+  position: absolute;
+  z-index: 999;
+  top: 50vh;
+  left: 50vw;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 20px;
+  height: 20px;
+  background-color: #ba0e35;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.darkmode {
+  margin-bottom: -15px;
+  fill: #75757a99;
+  padding-top: 16px;
+  display: none;
+  cursor: pointer;
+  margin-right: 30px;
+}
+#daymode {
+  margin-right: 40px;
+}
+.darkmode:hover {
+  fill: #000000;
+}
+
+.Mobile,
+.Desktop {
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media only screen and (orientation: landscape) {
+  .Mobile {
+    visibility: hidden;
+  }
+  .Desktop {
+    visibility: visible;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  .spinner {
+    top: 42vh;
+    left: 42vw;
+  }
+  .Mobile {
+    visibility: visible;
+  }
+  .Desktop {
+    visibility: hidden;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .Credits{
+    display: none;
+  }
+}

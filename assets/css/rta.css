@@ -1,0 +1,23 @@
+.h {
+    stroke: #1e569b;
+    stroke-width: 1.5px;
+}
+
+.h,
+.i {
+    fill: none;
+    stroke-miterlimit: 10;
+}
+
+.j {
+    fill: #1e569b;
+}
+
+.k {
+    fill: #2e5596;
+}
+
+.i {
+    stroke: #bf2135;
+    stroke-width: 24px;
+}
