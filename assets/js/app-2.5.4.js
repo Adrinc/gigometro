@@ -398,8 +398,8 @@ window.onload = function() {
         ShowData = 0;
       }
       this.oDoLiveSpeed.el.textContent = ShowData;
-      this.oDoTopSpeed.el.textContent = "1000+";
-      this.oDoTopSpeed.el.style.fontSize = "16.9px";
+      this.oDoTopSpeed.el.textContent = "10G+";
+      this.oDoTopSpeed.el.style.fontSize = "15px";
       this.oDoTopSpeed.el.style.fill = "gray";
       return;
     }
@@ -426,8 +426,8 @@ window.onload = function() {
         this.oDoLiveSpeed.el.textContent = speed;
       }
       if (ShowData <= 1000) {
-        this.oDoTopSpeed.el.textContent = "1000+";
-        this.oDoTopSpeed.el.style.fontSize = "16.9px";
+        this.oDoTopSpeed.el.textContent = "10G+";
+        this.oDoTopSpeed.el.style.fontSize = "15px";
         this.oDoTopSpeed.el.style.fill = "gray";
       }
       if (ShowData >= 1010) {
