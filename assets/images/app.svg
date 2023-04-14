@@ -3,9 +3,19 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
     class="openSpeedtestApp">
 	<!-- Relleno interior circulo speedometer (Donde aparecen las letras y numeros del speedTest) -->
-	<symbol id="mainGaugebg" viewBox="0 0 295.93 270.18">
-		<path fill="none" d="M64.32,256.41a137,137,0,1,1,192.09-24.8l-.07.09a134.45,134.45,0,0,1-24.71,24.71" />
-	</symbol>
+
+  
+    <symbol id="mainGaugebg" viewBox="0 0 295.93 270.18">
+      <path d="M64.32,256.41a137,137,0,1,1,192.09-24.8l-.07.09a134.45,134.45,0,0,1-24.71,24.71" />
+  <image class="circular-image" xlink:href="https://img.freepik.com/foto-gratis/textura-pared-estuco-azul-marino-relieve-decorativo-abstracto-grunge-fondo-color-rugoso-gran-angular_1258-28311.jpg" x="80.42" y="67.545" width="135.09" height="135.09" clip-path="url(#circle-clip)" preserveAspectRatio="xMidYMid slice" />
+    </symbol>
+    <clipPath id="circle-clip">
+      <circle cx="147.965" cy="135.09" r="67.545" />
+    </clipPath>
+  
+  
+
+
 		<!-- Relleno interior circulo speedometer (Donde aparecen las letras y numeros del speedTest) ES IGUAL QUE EL ANTERIOR PERO ESTO SE VISUALIZA UNA VEZ SE PRESIONE EL BOTON DE INICIAR -->
 	<symbol id="mainGaugeBlue" viewBox="0 0 295.93 270.18">
 		<path fill="none" d="M64.32,256.41a137,137,0,1,1,192.09-24.8l-.07.09a134.45,134.45,0,0,1-24.71,24.71" />
