@@ -2,16 +2,19 @@
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
     class="openSpeedtestApp">
-
+	<!-- Relleno interior circulo speedometer (Donde aparecen las letras y numeros del speedTest) -->
 	<symbol id="mainGaugebg" viewBox="0 0 295.93 270.18">
 		<path fill="none" d="M64.32,256.41a137,137,0,1,1,192.09-24.8l-.07.09a134.45,134.45,0,0,1-24.71,24.71" />
 	</symbol>
+		<!-- Relleno interior circulo speedometer (Donde aparecen las letras y numeros del speedTest) ES IGUAL QUE EL ANTERIOR PERO ESTO SE VISUALIZA UNA VEZ SE PRESIONE EL BOTON DE INICIAR -->
 	<symbol id="mainGaugeBlue" viewBox="0 0 295.93 270.18">
 		<path fill="none" d="M64.32,256.41a137,137,0,1,1,192.09-24.8l-.07.09a134.45,134.45,0,0,1-24.71,24.71" />
 	</symbol>
+			<!-- ES IGUAL QUE EL ANTERIOR PERO ESTO SE VISUALIZA UNA VEZ SE PRESIONE EL BOTON DE INICIAR pero este tiene un radio mayor que incluso puede tocar la mitad de la barra de progreso-->
 	<symbol id="mainGaugeWhite" viewBox="0 0 295.93 270.18">
 		<path fill="none" d="M64.32,256.41a137,137,0,1,1,192.09-24.8l-.07.09a134.45,134.45,0,0,1-24.71,24.71" />
 	</symbol>
+	<!-- LOS NUMEROS DE LOS VALORES EN LA BARRA DE PROGRESO -->
 	<symbol id="oDoMeter" viewBox="0 0 295.93 270.18">
 		<text transform="translate(76.34 264.28) scale(0.9 1)">20MB</text>
 		<text transform="translate(23.81 164.6) scale(0.9 1)">80MB</text>
@@ -23,15 +26,19 @@
 		<text id="oDoLiveSpeed" class="oDoLive-Speed" transform="translate(150 150) scale(1 1)">...</text>
 		<text id="oDoLiveStatus" class="oDoLive-Status" transform="translate(151 170) scale(1 1)"></text>
 	</symbol>
+	<!-- ES UN CONTENEDOR PARECIDO A UN DIV QUE ENGLOBA LOS ICONOS Y LA BARRA DE PROGRESO INFERIOR -->
 	<symbol id="progressBar" viewBox="0 0 293.53 18.38">
 		<defs>
+			<!-- ICONO DE LA PERSONA -->
 			<symbol id="personLeft" class="uiBg" viewBox="0 0 33.46 30.9">
 				<path
             d="M32.7,4.8a7.81,7.81,0,0,1-4.1,2.8,61.42,61.42,0,0,0-5.7,2.3s-.1.3-.4,1.3-.9.6-.9.6v1.8a6.15,6.15,0,0,1,1.2,1.8,14.72,14.72,0,0,0,.8,1.7h.5c.5,0,.7,1.9.8,3.2s-1.1.8-1.1.8v3.2c0,1.9-.5,2.8-2.3,4.8s-4.7,1.8-4.7,1.8-3.1.1-4.7-1.8-2.3-3-2.3-4.8V21.1s-1.2.5-1.1-.8.3-3.2.8-3.2H10s.3-.6.8-1.7A9.62,9.62,0,0,1,12,13.6V11.8s-.8.4-.9-.6a2.26,2.26,0,0,0-.4-1.3A61.42,61.42,0,0,0,5,7.6,7.41,7.41,0,0,1,.9,4.8C.2,3.6,0,0,0,0H33.4A11.7,11.7,0,0,1,32.7,4.8Z" />
 			</symbol>
+			<!-- FONDO DE LA BARRA DE PROGRESO INFERIOR -->
 			<symbol id="progressElement" class="uiBg" viewBox="0 0 409.31 10.48">
 				<line id="progressbg" class="progressbg" x1="5" y1="5" x2="405" y2="5"></line>
 			</symbol>
+			<!-- ICONO DE LA BASE DE DATOS -->
 			<symbol id="doc" class="uiBg" viewBox="0 0 36.8 31.6">
 				<path d="M0,31.6V21.9H36.8v9.7Zm15.1-6H5.2V28h9.9Zm16.5.3a.9.9,0,1,0,.9.9A.9.9,0,0,0,31.6,25.9Z" />
 				<path d="M0,20.6V11.1H36.8v9.5Zm15.1-6H5.2v2.2h9.9Zm16.5.2a.9.9,0,1,0,.9.9A.9.9,0,0,0,31.6,14.8Z" />
@@ -163,10 +170,10 @@
 			<title>Network Error</title>
 		</a>
 	</symbol>
-	<symbol class="Your-IP" viewBox="0 0 300 299.12">
+<!-- 	<symbol class="Your-IP" viewBox="0 0 300 299.12">
 		<text id="YourIP" transform="translate(140 228) scale(.8 .8)">COMPLET</text>
-	</symbol>
-	<symbol id="light" viewBox="0 0 512 512">
+	</symbol> -->
+<!-- 	<symbol id="light" viewBox="0 0 512 512">
 		<g>
 			<path
           d="M256,108.936c-81.091,0-147.064,65.973-147.064,147.064S174.909,403.064,256,403.064S403.064,337.091,403.064,256
@@ -207,7 +214,7 @@
         />
 		</g>
 		<rect  fill="none" width="512" cursor="pointer" pointer-events="visible" height="512"></rect>
-		</symbol>
+		</symbol> -->
 		<symbol id="dark" viewBox="0 0 1024 1024">
 			<path
         d="M524.8 938.666667h-4.266667a439.893333 439.893333 0 0 1-313.173333-134.4 446.293333 446.293333 0 0 1-11.093333-597.333334 432.213333 432.213333 0 0 1 170.666666-116.906666 42.666667 42.666667 0 0 1 45.226667 9.386666 42.666667 42.666667 0 0 1 10.24 42.666667 358.4 358.4 0 0 0 82.773333 375.893333 361.386667 361.386667 0 0 0 376.746667 82.773334 42.666667 42.666667 0 0 1 54.186667 55.04A433.493333 433.493333 0 0 1 836.266667 810.666667a438.613333 438.613333 0 0 1-311.466667 128z"

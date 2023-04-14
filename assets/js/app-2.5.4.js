@@ -928,7 +928,7 @@ window.onload = function() {
           }
           downloadTimeing = (window.performance.now() - downloadTime) / 1000;
           reportCurrentSpeed("dl");
-          Show.showStatus("Mbps download");
+          Show.showStatus("Gbps download");
           Show.mainGaugeProgress(currentSpeed);
           Show.LiveSpeed(currentSpeed);
           Show.Graph(currentSpeed, 0);

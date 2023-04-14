@@ -348,3 +348,6 @@ color: #ba0e35;
   stroke-width: 0.5;
   stroke-miterlimit: 10;
 }
+#mainGaugebg {
+  fill: url(#RadialGradient1);
+}
