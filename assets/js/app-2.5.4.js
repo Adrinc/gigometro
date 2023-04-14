@@ -133,29 +133,31 @@ window.onload = function() {
       Self.ipMob.el.style.display = "block";
     }
   };
+  //FADE IN AND OUT EN LOS OBJETOS anteriormente declarados con valor de 10000, los reduje a 1 para que no se viera el efecto de carga
   openSpeedtestShow.prototype.prePing = function() {
     this.loader.fade("out", 500);
-    this.OpenSpeedtest.fade("in", 1000);
+    this.OpenSpeedtest.fade("in", 1);
   };
   openSpeedtestShow.prototype.app = function() {
     this.loader.fade("out", 500, this.ShowAppIntro());
   };
   openSpeedtestShow.prototype.ShowAppIntro = function() {
-    this.OpenSpeedtest.fade("in", 1000);
+    this.OpenSpeedtest.fade("in", 1);
   };
   openSpeedtestShow.prototype.userInterface = function() {
     var Self = this;
-    this.intro_Desk.fade("out", 1000);
-    this.intro_Mob.fade("out", 1000, this.ShowUI());
+    this.intro_Desk.fade("out", 1);
+    this.intro_Mob.fade("out", 1, this.ShowUI());
   };
   openSpeedtestShow.prototype.ShowUI = function() {
-    this.UI_Desk.fade("in", 1000);
-    this.UI_Mob.fade("in", 1000, uiLoaded);
+    this.UI_Desk.fade("in", 1);
+    this.UI_Mob.fade("in", 1, uiLoaded);
     function uiLoaded(argument) {
       Status = "Loaded";
       console.log("Developed by Vishnu. Email --\x3e me@vishnu.pro");
     }
   };
+  //-----------------------------------------------------------------------------------------
   openSpeedtestShow.prototype.Symbol = function(dir) {
     if (dir == 0) {
       this.downSymbolMob.el.style.display = "block";
@@ -294,10 +296,10 @@ window.onload = function() {
       this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
     }
     if (mainGaugeOffset == 0 && speed > 1000) {
-      this.mainGaugeBlue_Mob.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 681 : mainGaugeOffset;
+      this.mainGaugeBlue_Mob.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 680 : mainGaugeOffset;
       this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
       this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-      this.mainGaugeBlue_Desk.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 681 : mainGaugeOffset;
+      this.mainGaugeBlue_Desk.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 680 : mainGaugeOffset;
     } else if (mainGaugeOffset == 0 && speed <= 0) {
       this.mainGaugeBlue_Mob.el.style.strokeDashoffset = 681.1;
       this.mainGaugeWhite_Mob.el.style.strokeDashoffset = 0.1;
@@ -431,8 +433,8 @@ window.onload = function() {
         this.oDoTopSpeed.el.style.fill = "gray";
       }
       if (ShowData >= 1010) {
-        this.oDoTopSpeed.el.textContent = Math.floor(ShowData / 1010) * 1000 + "+";
-        this.oDoTopSpeed.el.style.fill = "gray";
+        this.oDoTopSpeed.el.textContent = (Math.floor(ShowData / 1010) * 1000)/100 + "Gb+";
+        this.oDoTopSpeed.el.style.fill = "#1e569b";
         this.oDoTopSpeed.el.style.fontSize = "17.2px";
       }
     }
@@ -858,10 +860,11 @@ window.onload = function() {
         }
       }
     }
-    var osttm = "\u2122";
-    var myname = "OpenSpeedTest";
+    //-------MENSAJE FINAL AL TERMINAR LA PRUEBA DE VELOCIDAD u2122 representa el simbolo de TM
+/*     var osttm = "\u2122"; */
+    var myname = "RTA";
     var com = ".com";
-    var ost = myname + osttm;
+    var ost = myname;
     function hiEnter(e) {
       if (e.key === "Enter") {
         runTasks();
@@ -929,19 +932,19 @@ window.onload = function() {
           downloadTimeing = (window.performance.now() - downloadTime) / 1000;
           reportCurrentSpeed("dl");
           Show.showStatus("Gbps download");
-          Show.mainGaugeProgress(currentSpeed);
-          Show.LiveSpeed(currentSpeed);
-          Show.Graph(currentSpeed, 0);
+          Show.mainGaugeProgress(currentSpeed/1000); //Valores de descarga convertidos a Gbps (/1000 para lograrlo)
+          Show.LiveSpeed(currentSpeed/1000);
+          Show.Graph(currentSpeed/1000, 0);
           downloadSpeed = Get.AvgSpeed(currentSpeed, dlFinal, dlDuration);
           if (downloadTimeing >= dlDuration && ProG == "done") {
             if (SelectTest) {
-              Show.GaugeProgresstoZero(currentSpeed, "SendR");
+              Show.GaugeProgresstoZero(currentSpeed/1000, "SendR");
               Show.showStatus("All done");
               Show.Symbol(2);
             } else {
-              Show.GaugeProgresstoZero(currentSpeed, "Upload");
+              Show.GaugeProgresstoZero(currentSpeed/1000, "Upload");
             }
-            Show.downloadResult(downloadSpeed);
+            Show.downloadResult(downloadSpeed/1000); // <-- aqui se muestra el resultado de la prueba de velocidad reducido de Mb/s a Gb/s
             dataUsedfordl = dLoaded;
             stop = 1;
             Status = "busy";
@@ -973,17 +976,17 @@ window.onload = function() {
             Show.progress(false, ulDuration + 2.5);
             ulDuration += extraUTime;
           }
-          Show.showStatus("Mbps upload");
+          Show.showStatus("Gbps upload");
           uploadTimeing = (window.performance.now() - uploadTime) / 1000;
           reportCurrentSpeed("up");
-          Show.mainGaugeProgress(currentSpeed);
-          Show.LiveSpeed(currentSpeed);
+          Show.mainGaugeProgress(currentSpeed/1000);
+          Show.LiveSpeed(currentSpeed/1000);
           Show.Graph(currentSpeed, 1);
           uploadSpeed = Get.AvgSpeed(currentSpeed, ulFinal, ulDuration);
           if (uploadTimeing >= ulDuration && stop == 1) {
             dataUsedforul = uLoaded;
-            Show.uploadResult(uploadSpeed);
-            Show.GaugeProgresstoZero(currentSpeed, "SendR");
+            Show.uploadResult(uploadSpeed/1000); //Convertir Mbps a Gbps
+            Show.GaugeProgresstoZero(currentSpeed/1000, "SendR");
             SendData = undefined;
             Show.showStatus("All done");
             Show.Symbol(2);
