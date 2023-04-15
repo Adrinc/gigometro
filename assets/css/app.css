@@ -99,6 +99,7 @@ color: #ba0e35;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 500;
   text-anchor: middle;
+
 }
 
 .oDoLive-Status {
@@ -345,15 +346,14 @@ color: #ba0e35;
     display: none;
   }
 }
-#gradient {
-  fill: url(#RadialGradient1);
+#mainGaugebg{
+fill:none;
 }
-#RadialGradient1 {
-  fill: #ba0e35;
-  stroke: #0baeff;
-  stroke-width: 0.5;
-  stroke-miterlimit: 10;
+/* .circular-image {
+  clip-path: circle(50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg");
 }
-#mainGaugebg {
-  fill: url(#RadialGradient1);
-}
+ */
