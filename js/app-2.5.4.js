@@ -1,11 +1,4 @@
-/*
-     Official Website : https://OpenSpeedTest.COM | Email: support@openspeedtest.com
-     Developed by : Vishnu | https://Vishnu.Pro | Email : me@vishnu.pro 
-     Like this Project? Please Donate NOW & Keep us Alive -> https://go.openspeedtest.com/Donate
-    Speed Test by OpenSpeedTest™️ is Free and Open-Source Software (FOSS) with MIT License.
-    Read full license terms @ http://go.openspeedtest.com/License
-    If you have any Questions, ideas or Comments Please Send it via -> https://go.openspeedtest.com/SendMessage
-*/ 
+
 window.onload = function() {
   var appSVG = document.getElementById("OpenSpeedTest-UI");
   appSVG.parentNode.replaceChild(appSVG.contentDocument.documentElement, appSVG);
@@ -27,23 +20,33 @@ window.onload = function() {
     this.el = document.getElementById(el);
   }
   _.prototype.fade = function fade(type, ms, callback00) {
-    var isIn = type === "in", opacity = isIn ? 0 : 1, interval = 14, duration = ms, gap = interval / duration, self = this;
-    if (isIn) {
-      self.el.style.display = "block";
-      self.el.style.opacity = opacity;
-    }
-    function func() {
-      opacity = isIn ? opacity + gap : opacity - gap;
-      self.el.style.opacity = opacity;
-      if (opacity <= 0) {
-        self.el.style.display = "none";
+    var isIn = type === "in",
+        opacity = isIn ? 0 : 1,
+        interval = 14,
+        duration = ms,
+        gap = interval / duration,
+        self = this;
+    if (self.el) {
+      if (isIn) {
+        self.el.style.display = "block";
+        self.el.style.opacity = opacity;
       }
-      if (opacity <= 0 || opacity >= 1) {
-        window.clearInterval(fading, Callback(callback00));
+      function func() {
+        opacity = isIn ? opacity + gap : opacity - gap;
+        self.el.style.opacity = opacity;
+        if (opacity <= 0) {
+          self.el.style.display = "none";
+        }
+        if (opacity <= 0 || opacity >= 1) {
+          window.clearInterval(fading, Callback(callback00));
+        }
       }
+      var fading = window.setInterval(func, interval);
+    } else {
+      console.error("Elemento no encontrado en el documento.");
     }
-    var fading = window.setInterval(func, interval);
   };
+  
   var easeOutQuint = function(t, b, c, d) {
     t /= d;
     t--;
