@@ -7,19 +7,22 @@
   
 <symbol id="mainGaugebg" viewBox="0 0 295.93 270.18">
   <path d="M64.32,256.41a137,137,0,1,1,192.09-24.8l-.07.09a134.45,134.45,0,0,1-24.71,24.71" />
-<!--   <image class="circular-image" 
-  xlink:href="https://www.fayerwayer.com/resizer/deMevoVfxvns46LQuy85P8l3dWw=/1440x1080/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/VFFTCHBAGRGXNFYCW22SEESFFA.jpg" 
-  x="22" 
-  y="22" 
+</symbol>
+<symbol id="backgroundGauge" viewBox="0 0 295.93 270.18">
+  <image class="circular-image" 
+  xlink:href="https://img2.freepng.es/20180329/aje/kisspng-computer-icons-gauge-agile-software-development-speedometer-5abc8043d2adc3.8469427415223030438629.jpg" 
+  x="25" 
+  y="25" 
   width="250" 
   height="250" 
+  style="z-index: -1" 
   clip-path="url(#circle-clip)" 
-  preserveAspectRatio="xMidYMid slice" /> -->
+  preserveAspectRatio="xMidYMid slice" />
 </symbol>
-<!-- <clipPath id="circle-clip">
-  <circle cx="150" cy="150" r="122" />
+<clipPath id="circle-clip">
+  <circle cx="150" cy="150" r="120" />
 </clipPath>
- -->
+
   
 
 
@@ -192,6 +195,9 @@
 			<svg class="Desktop" viewBox="0 0 586 346">
 				<title id="title1">HTML5 Network Performance Estimation Tool. by OpenSpeedTest™</title>
 				<g id="UI-Desk">
+					<use id="mainGaugebg-Desk" class="main-Gaugebg" xlink:href="#backgroundGauge" x="10.28" y="36.11" width="273.94" height="245.39"></use>
+
+					
 					<use id="mainGaugebg-Desk" class="main-Gaugebg" xlink:href="#mainGaugebg" x="10.28" y="36.11" width="273.94" height="245.39"></use>
 					<use id="mainGaugeBlue-Desk" class="main-GaugeBlue" xlink:href="#mainGaugeBlue" x="10.28" y="36.11" width="273.94" height="245.39"></use>
 					<use id="mainGaugeWhite-Desk" class="main-GaugeWhite" xlink:href="#mainGaugeWhite" x="10.28" y="36.11" width="273.94" height="245.39"></use>
@@ -245,7 +251,9 @@
 						<title id="title1">Your jitter!</title>
 					</use>
 				</g>
+				<!-- ESTO REPRESENTA LO QUE ES VISIBLE ANTES DE PRESIONAR EL BOTON DE INICIAR -->
 				<g id="intro-Desk">
+					<use id="mainGaugebg-Desk" class="main-Gaugebg" xlink:href="#backgroundGauge" x="10.28" y="36.11" width="273.94" height="245.39"></use>
 					<use id="logo-Desk" xlink:href="#logo" x="35" y="140" width="222.8" height="50.22"></use>
 					<use id="deskStart" class="deskStart" xlink:href="#mainGaugebg" x="10.28" y="36.11" width="273.94" height="245.39"></use>
 					<use xlink:href="#resultCard" class="Cards" x="307.4" y="31" width="278.1" height="85.5"></use>
