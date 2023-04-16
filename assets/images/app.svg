@@ -165,7 +165,7 @@
 	<symbol id="playButton" style="fill: #eaeaea" viewBox="0 0 191.255 191.255">
 		<rect width="180" height="90" rx="10" ry="10" class="startButton" />
 		<text class="buttonTxt" x="90" y="60">Start</text>
-	</symbol>
+		</symbol>
 	<symbol id="introProgress" viewBox="0 0 409.31 10.48">
 		<line x1="5" y1="5" x2="405" y2="5"></line>
 	</symbol>

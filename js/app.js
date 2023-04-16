@@ -445,117 +445,145 @@ openSpeedtestShow.prototype.uploadResult = function(upload) {
     this.upRestxt.el.style.fontSize = "18px"; // Disminuir el tamaño de fuente a 18px
   }
 };
-  openSpeedtestShow.prototype.pingResults = function(data, Display) {
-    var ShowData = data;
-    if (Display === "Ping") {
-      if (ShowData >= 1 && ShowData < 10000) {
-        this.pingResult.el.textContent = Math.floor(ShowData);
-        this.pingMobres.el.textContent = Math.floor(ShowData);
-      } else if (ShowData >= 0 && ShowData < 1) {
-        if (ShowData == 0) {
-          ShowData = 0;
-        }
-        this.pingResult.el.textContent = ShowData;
-        this.pingMobres.el.textContent = ShowData;
-      }
-    }
-    if (Display === "Error") {
-      this.oDoLiveSpeed.el.textContent = ShowData;
-    }
-  };
-  openSpeedtestShow.prototype.downloadResult = function(download) {
-    if (download < 1) {
-      this.downResult.el.textContent = download.toFixed(3);
-    }
-    if (download >= 1 && download < 9999) {
-      this.downResult.el.textContent = download.toFixed(1);
-    }
-    if (download >= 10000 && download < 99999) {
-      this.downResult.el.textContent = download.toFixed(1);
-      this.downResult.el.style.fontSize = "20px";
-    }
-    if (download >= 100000) {
-      this.downResult.el.textContent = download.toFixed(1);
-      this.downResult.el.style.fontSize = "18px";
-    }
-  };
-  openSpeedtestShow.prototype.jitterResult = function(data, Display) {
-    var ShowData = data;
-    if (Display === "Jitter") {
-      if (ShowData >= 1 && ShowData < 10000) {
-        this.jitterDesk.el.textContent = Math.floor(ShowData);
-        if (ShowData >= 1 && ShowData < 100) {
-          this.JitterResultMon.el.textContent = Math.floor(ShowData);
-        }
-        if (ShowData >= 100) {
-          var kData = (ShowData / 1000).toFixed(1);
-          this.JitterResultMon.el.textContent = kData + "k";
-        }
-      } else if (ShowData >= 0 && ShowData < 1) {
-        if (ShowData == 0) {
-          ShowData = 0;
-        }
-        this.jitterDesk.el.textContent = ShowData;
-        this.JitterResultMon.el.textContent = ShowData;
-      }
-    }
-  };
-  openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
-    var ShowData = data;
-    if (Display === "countDown") {
-      var speed = ShowData.toFixed(0);
-      this.oDoLiveSpeed.el.textContent = speed;
-      return;
-    }
-    if (Display === "speedToZero") {
-      if (typeof ShowData == "number") {
-        ShowData = ShowData.toFixed(1);
-      }
-      if (ShowData <= 0) {
+// Actualiza la visualización de los resultados del ping en la interfaz gráfica
+openSpeedtestShow.prototype.pingResults = function(data, Display) {
+  var ShowData = data;
+  // Si Display es "Ping"
+  if (Display === "Ping") {
+    // Si el valor del ping está entre 1 y 9999, muestra el valor redondeado
+    if (ShowData >= 1 && ShowData < 10000) {
+      this.pingResult.el.textContent = Math.floor(ShowData);
+      this.pingMobres.el.textContent = Math.floor(ShowData);
+    } 
+    // Si el valor del ping está entre 0 y 1, muestra el valor directamente
+    else if (ShowData >= 0 && ShowData < 1) {
+      if (ShowData == 0) {
         ShowData = 0;
       }
-      /* DATOS QUE SE VISUALIZAN CUANDO el test de descarga finaliza y comienza a reducirse la barra de velocidad hacia el cero */
+      this.pingResult.el.textContent = ShowData;
+      this.pingMobres.el.textContent = ShowData;
+    }
+  }
+  // Si Display es "Error", actualiza el texto de la velocidad en vivo
+  if (Display === "Error") {
+    this.oDoLiveSpeed.el.textContent = ShowData;
+  }
+};
+
+// Actualiza la visualización de los resultados de la descarga en la interfaz gráfica
+openSpeedtestShow.prototype.downloadResult = function(download) {
+  // Si el valor de la descarga es menor que 1, muestra el valor redondeado a 3 decimales
+  if (download < 1) {
+    this.downResult.el.textContent = download.toFixed(3);
+  } 
+  // Si el valor de la descarga está entre 1 y 9999, muestra el valor redondeado a 1 decimal
+  if (download >= 1 && download < 9999) {
+    this.downResult.el.textContent = download.toFixed(1);
+  }
+  // Si el valor de la descarga está entre 10000 y 99999, muestra el valor redondeado a 1 decimal y aumenta el tamaño de la fuente
+  if (download >= 10000 && download < 99999) {
+    this.downResult.el.textContent = download.toFixed(1);
+    this.downResult.el.style.fontSize = "20px";
+  }
+  // Si el valor de la descarga es mayor o igual a 100000, muestra el valor redondeado a 1 decimal y reduce el tamaño de la fuente
+  if (download >= 100000) {
+    this.downResult.el.textContent = download.toFixed(1);
+    this.downResult.el.style.fontSize = "18px";
+  }
+};
+
+/**
+
+Función que muestra el resultado del jitter obtenido durante el test de velocidad.
+@param {number} data - El valor del jitter obtenido.
+@param {string} Display - El tipo de resultado a mostrar.
+*/
+openSpeedtestShow.prototype.jitterResult = function(data, Display) {
+  var ShowData = data;
+  if (Display === "Jitter") {
+  if (ShowData >= 1 && ShowData < 10000) {
+  // Muestra el resultado del jitter en el panel de escritorio y en el panel móvil.
+  this.jitterDesk.el.textContent = Math.floor(ShowData);
+  if (ShowData >= 1 && ShowData < 100) {
+  this.JitterResultMon.el.textContent = Math.floor(ShowData);
+  }
+  if (ShowData >= 100) {
+  // Si el valor del jitter es mayor o igual a 100, se muestra en formato k (kilos).
+  var kData = (ShowData / 1000).toFixed(1);
+  this.JitterResultMon.el.textContent = kData + "k";
+  }
+  } else if (ShowData >= 0 && ShowData < 1) {
+  if (ShowData == 0) {
+  ShowData = 0;
+  }
+  // Muestra el resultado del jitter en el panel de escritorio y en el panel móvil.
+  this.jitterDesk.el.textContent = ShowData;
+  this.JitterResultMon.el.textContent = ShowData;
+  }
+  }
+  };
+// Esta función muestra el resultado de la velocidad en tiempo real
+openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
+  var ShowData = data;
+  // Si el parámetro "Display" es "countDown", se muestra la velocidad en tiempo real
+  if (Display === "countDown") {
+    var speed = ShowData.toFixed(0);
+    this.oDoLiveSpeed.el.textContent = speed;
+    return;
+  }
+  // Si el parámetro "Display" es "speedToZero", se muestra la velocidad como cero
+  if (Display === "speedToZero") {
+    if (typeof ShowData == "number") {
+      ShowData = ShowData.toFixed(1);
+    }
+    if (ShowData <= 0) {
+      ShowData = 0;
+    }
+    this.oDoLiveSpeed.el.textContent = ShowData;
+    this.oDoTopSpeed.el.textContent = "10G+";
+    this.oDoTopSpeed.el.style.fontSize = "15px";
+    this.oDoTopSpeed.el.style.fill = "gray";
+    return;
+  }
+  // Si el parámetro "Display" es "Ping", se muestra el resultado de ping
+  if (Display === "Ping") {
+    if (ShowData >= 1 && ShowData < 10000) {
+      this.oDoLiveSpeed.el.textContent = Math.floor(ShowData);
+    } else if (ShowData >= 0 && ShowData < 1) {
+      if (ShowData == 0) {
+        ShowData = 0;
+      }
       this.oDoLiveSpeed.el.textContent = ShowData;
-      this.oDoTopSpeed.el.textContent = "10G+";
+    }
+  } else {
+    // En cualquier otro caso, se muestra la velocidad con una precisión específica
+    if (ShowData == 0) {
+      var speed = ShowData.toFixed(0);
+      this.oDoLiveSpeed.el.textContent = speed;
+    }
+    if (ShowData <= 1 && ShowData > 0) {
+      var speed = ShowData.toFixed(3);
+      this.oDoLiveSpeed.el.textContent = speed;
+    }
+    if (ShowData > 1) {
+      var speed = ShowData.toFixed(1);
+      this.oDoLiveSpeed.el.textContent = speed;
+    }
+    // Si la velocidad es menor o igual a 1000, se muestra "10Gb+" como la velocidad máxima
+    if (ShowData <= 1000) {
+      this.oDoTopSpeed.el.textContent = "10Gb+";
       this.oDoTopSpeed.el.style.fontSize = "15px";
       this.oDoTopSpeed.el.style.fill = "gray";
-      return;
     }
-    if (Display === "Ping") {
-      if (ShowData >= 1 && ShowData < 10000) {
-        this.oDoLiveSpeed.el.textContent = Math.floor(ShowData);
-      } else if (ShowData >= 0 && ShowData < 1) {
-        if (ShowData == 0) {
-          ShowData = 0;
-        }
-        this.oDoLiveSpeed.el.textContent = ShowData;
-      }
-    } else {
-      //Aqui se visualiza la velocidad de descarga, la variable ShowData es la velocidad en bytes
-      if (ShowData == 0) {
-        var speed = ShowData.toFixed(0);
-        this.oDoLiveSpeed.el.textContent = speed;
-      }
-      if (ShowData <= 1 && ShowData > 0) {
-        var speed = ShowData.toFixed(3);
-        this.oDoLiveSpeed.el.textContent = speed;
-      }
-      if (ShowData > 1) {
-        var speed = ShowData.toFixed(1);
-        this.oDoLiveSpeed.el.textContent = speed;
-      }
-      if (ShowData <= 1000) {
-        this.oDoTopSpeed.el.textContent = "10G+";
-        this.oDoTopSpeed.el.style.fontSize = "15px";
-        this.oDoTopSpeed.el.style.fill = "gray";
-      }
-      if (ShowData >= 1010) {
-        this.oDoTopSpeed.el.textContent = (Math.floor(ShowData / 1010) * 1000)/100 + "Gb+";
-        this.oDoTopSpeed.el.style.fill = "#1e569b";
-        this.oDoTopSpeed.el.style.fontSize = "17.2px";
-      }
+    // Si la velocidad es mayor que 1010, se muestra el resultado como Gbps
+    if (ShowData >= 1010) {
+      this.oDoTopSpeed.el.textContent = (Math.floor(ShowData / 1010) * 1000)/100 + "Gb+";
+      this.oDoTopSpeed.el.style.fill = "#1e569b";
+      this.oDoTopSpeed.el.style.fontSize = "17.2px";
     }
-  };
+  }
+};
+
 // Animar el indicador principal de la prueba de velocidad hasta cero
 openSpeedtestShow.prototype.GaugeProgresstoZero = function(currentSpeed, status) {
   var speed = currentSpeed; // Velocidad actual
@@ -595,63 +623,83 @@ openSpeedtestShow.prototype.getNonlinearDegree = function(mega_bps) {
   return this.scale[this.scale.length - 1].degree; // Si la velocidad es mayor que el último valor de la escala de velocidad, devolver el último grado de offset
 };
 
-  var openSpeedtestGet = function() {
-    this.OverAllTimeAvg = window.performance.now();
-    this.SpeedSamples = [];
-    this.FinalSpeed;
-  };
-  openSpeedtestGet.prototype.reset = function() {
-    this.OverAllTimeAvg = window.performance.now();
-    this.SpeedSamples = [];
-    this.FinalSpeed = 0;
-  };
-  openSpeedtestGet.prototype.ArraySum = function(Arr) {
-    var array = Arr;
-    if (array) {
-      var sum = array.reduce(function(A, B) {
-        if (typeof A === "number" && typeof B === "number") {
-          return A + B;
-        }
-      }, 0);
-      return sum;
-    } else {
-      return 0;
-    }
-  };
-  openSpeedtestGet.prototype.AvgSpeed = function(Livespeed, Start, duration) {
-    var Self = this;
-    this.timeNow = (window.performance.now() - this.OverAllTimeAvg) / 1000;
-    this.FinalSpeed;
-    var StartRecoding = Start;
-    StartRecoding = duration - StartRecoding;
-    if (this.timeNow >= StartRecoding) {
-      if (Livespeed > 0) {
-        this.SpeedSamples.push(Livespeed);
+// Definición de una clase openSpeedtestGet que se utiliza para manejar datos y cálculos de velocidad
+var openSpeedtestGet = function() {
+  // Variable que almacena el tiempo total promedio para el cálculo de velocidad
+  this.OverAllTimeAvg = window.performance.now();
+  // Arreglo que almacena las muestras de velocidad obtenidas
+  this.SpeedSamples = [];
+  // Velocidad final obtenida
+  this.FinalSpeed;
+};
+
+// Función que se utiliza para reiniciar los valores de las variables del objeto openSpeedtestGet
+openSpeedtestGet.prototype.reset = function() {
+  // Reinicio del valor de OverAllTimeAvg
+  this.OverAllTimeAvg = window.performance.now();
+  // Reinicio del arreglo de muestras de velocidad
+  this.SpeedSamples = [];
+  // Reinicio de la velocidad final
+  this.FinalSpeed = 0;
+};
+
+// Función que se utiliza para calcular la suma de los elementos de un arreglo de números
+openSpeedtestGet.prototype.ArraySum = function(Arr) {
+  // Se asigna el arreglo a la variable array
+  var array = Arr;
+  // Si el arreglo existe
+  if (array) {
+    // Se utiliza la función reduce para calcular la suma de los elementos del arreglo
+    var sum = array.reduce(function(A, B) {
+      // Se comprueba que ambos elementos son números
+      if (typeof A === "number" && typeof B === "number") {
+        return A + B;
       }
-      Self.FinalSpeed = Self.ArraySum(Self.SpeedSamples) / Self.SpeedSamples.length;
+    }, 0);
+    return sum;
+  } else {
+    // Si el arreglo no existe, se retorna 0
+    return 0;
+  }
+};
+// Función para calcular la velocidad media
+openSpeedtestGet.prototype.AvgSpeed = function(Livespeed, Start, duration) {
+  var Self = this; // Referencia a this para usarla dentro de la función
+  this.timeNow = (window.performance.now() - this.OverAllTimeAvg) / 1000; // Calcula el tiempo actual
+  this.FinalSpeed; // Variable para guardar la velocidad final
+  var StartRecoding = Start; // Momento en que comienza la grabación
+  StartRecoding = duration - StartRecoding; // Resta el momento en que comienza la grabación a la duración
+  if (this.timeNow >= StartRecoding) { // Si el tiempo actual es mayor o igual al momento en que comienza la grabación
+    if (Livespeed > 0) { // Si la velocidad es mayor que cero
+      this.SpeedSamples.push(Livespeed); // Agrega la velocidad a la lista de velocidades
     }
-    return Self.FinalSpeed;
-  };
-  openSpeedtestGet.prototype.uRandom = function(size, callback) {
-    var size = size;
-    var randomValue = new Uint32Array(262144);
-    function getRandom() {
-      var n = randomValue.length;
-      for (var i = 0; i < n; i++) {
-        randomValue[i] = Math.random() * 4294967296;
-      }
-      return randomValue;
+    Self.FinalSpeed = Self.ArraySum(Self.SpeedSamples) / Self.SpeedSamples.length; // Calcula la velocidad final como el promedio de las velocidades en la lista
+  }
+  return Self.FinalSpeed; // Retorna la velocidad final
+};
+
+// Función para generar datos aleatorios
+openSpeedtestGet.prototype.uRandom = function(size, callback) {
+  var size = size; // Tamaño de los datos aleatorios
+  var randomValue = new Uint32Array(262144); // Crea un array de números enteros sin signo de 32 bits de largo 262144
+  function getRandom() {
+    var n = randomValue.length;
+    for (var i = 0; i < n; i++) { // Recorre el array
+      randomValue[i] = Math.random() * 4294967296; // Genera un número aleatorio entre 0 y 4294967296 y lo guarda en el array
     }
-    var randomData = [];
-    var genData = function(dataSize) {
-      var dataSize = dataSize;
-      for (var i = 0; i < dataSize; i++) {
-        randomData[i] = getRandom();
-      }
-      return randomData;
-    };
-    return new Blob(genData(size), {type:"application/octet-stream"}, Callback(callback));
+    return randomValue;
+  }
+  var randomData = [];
+  var genData = function(dataSize) { // Función para generar los datos aleatorios
+    var dataSize = dataSize; // Tamaño de los datos
+    for (var i = 0; i < dataSize; i++) {
+      randomData[i] = getRandom(); // Agrega los datos generados a la lista
+    }
+    return randomData;
   };
+  return new Blob(genData(size), {type:"application/octet-stream"}, Callback(callback)); // Retorna los datos aleatorios como un objeto Blob
+};
+
   openSpeedtestGet.prototype.addEvt = function(o, e, f) {
     o.addEventListener(e, f);
   };
@@ -981,8 +1029,7 @@ openSpeedtestShow.prototype.getNonlinearDegree = function(mega_bps) {
         }
       }
     }
-    //-------MENSAJE FINAL AL TERMINAR LA PRUEBA DE VELOCIDAD u2122 representa el simbolo de TM
-/*     var osttm = "\u2122"; */
+    //-------MENSAJE FINAL AL TERMINAR LA PRUEBA DE VELOCIDAD u2122 representa el simbolo de TM var osttm = "\u2122"; 
     var myname = "RTA";
     var com = ".com";
     var ost = myname;
@@ -1548,4 +1595,5 @@ openSpeedtestShow.prototype.getNonlinearDegree = function(mega_bps) {
   OpenSpeedTest.Start = function() {
     new openSpeedtestEngine();
   };
-})(window.OpenSpeedTest = window.OpenSpeedTest || {});
+}
+)(window.OpenSpeedTest = window.OpenSpeedTest || {});
