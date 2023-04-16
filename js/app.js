@@ -1,63 +1,94 @@
 
 window.onload = function() {
+  //Obtiene la referencia al elemento appSVG por su ID y lo reemplaza por su contenido
   var appSVG = document.getElementById("OpenSpeedTest-UI");
   appSVG.parentNode.replaceChild(appSVG.contentDocument.documentElement, appSVG);
+  //Llama a la función ostOnload que se encarga de inicializar la interfaz de usuario
   ostOnload();
+  //Inicia la prueba de velocidad en el objeto OpenSpeedTest
   OpenSpeedTest.Start();
 };
+
 (function(OpenSpeedTest) {
-  var Status;
-  var ProG;
-  var Callback = function(callback) {
-    if (callback && typeof callback === "function") {
-      callback();
+ // Variable para almacenar el estado del test de velocidad
+var Status;
+// Variable para almacenar el progreso del test de velocidad
+var ProG;
+// Función para ejecutar un callback, si se proporciona y es una función válida
+var Callback = function(callback) {
+if (callback && typeof callback === "function") {
+callback();
+}
+};
+// Clase para seleccionar elementos del DOM por ID y envolverlos en un objeto
+function _(el) {
+if (!(this instanceof _)) {
+return new _(el);
+}
+this.el = document.getElementById(el);
+}
+// Método de la clase para animar la opacidad de un elemento
+_.prototype.fade = function fade(type, ms, callback00) {
+  // Definir si el tipo de animación es "in" o "out"
+  var isIn = type === "in",
+  // Establecer la opacidad inicial según el tipo de animación
+  opacity = isIn ? 0 : 1,
+  // Establecer el intervalo en milisegundos
+  interval = 14,
+  // Establecer la duración total de la animación en milisegundos
+  duration = ms,
+  // Calcular la cantidad de opacidad que cambia por intervalo de tiempo
+  gap = interval / duration,
+  // Guardar una referencia al objeto actual
+  self = this;
+  // Comprobar que el elemento existe
+  if (self.el) {
+    // Si la animación es de entrada, mostrar el elemento y establecer la opacidad inicial
+    if (isIn) {
+      self.el.style.display = "block";
+      self.el.style.opacity = opacity;
     }
-  };
-  function _(el) {
-    if (!(this instanceof _)) {
-      return new _(el);
+    // Función que se ejecutará en cada intervalo de tiempo
+    function func() {
+      // Incrementar o decrementar la opacidad según el tipo de animación
+      opacity = isIn ? opacity + gap : opacity - gap;
+      // Establecer la nueva opacidad del elemento
+      self.el.style.opacity = opacity;
+      // Si la opacidad es menor o igual a 0, ocultar el elemento
+      if (opacity <= 0) {
+        self.el.style.display = "none";
+      }
+      // Si la opacidad es menor o igual a 0 o mayor o igual a 1, detener la animación y llamar al callback
+      if (opacity <= 0 || opacity >= 1) {
+        window.clearInterval(fading, Callback(callback00));
+      }
     }
-    this.el = document.getElementById(el);
+    // Establecer el intervalo de tiempo que ejecutará la función "func"
+    var fading = window.setInterval(func, interval);
+  } else {
+    // Si el elemento no existe, mostrar un error en la consola
+    console.error("Elemento no encontrado en el documento.");
   }
-  _.prototype.fade = function fade(type, ms, callback00) {
-    var isIn = type === "in",
-        opacity = isIn ? 0 : 1,
-        interval = 14,
-        duration = ms,
-        gap = interval / duration,
-        self = this;
-    if (self.el) {
-      if (isIn) {
-        self.el.style.display = "block";
-        self.el.style.opacity = opacity;
-      }
-      function func() {
-        opacity = isIn ? opacity + gap : opacity - gap;
-        self.el.style.opacity = opacity;
-        if (opacity <= 0) {
-          self.el.style.display = "none";
-        }
-        if (opacity <= 0 || opacity >= 1) {
-          window.clearInterval(fading, Callback(callback00));
-        }
-      }
-      var fading = window.setInterval(func, interval);
-    } else {
-      console.error("Elemento no encontrado en el documento.");
-    }
+};
+
+  
+// La función "easeOutQuint" implementa una curva de animación con un cambio gradual y suave en la velocidad.
+// La curva comienza lentamente, se acelera y luego se desacelera gradualmente.
+  var easeOutQuint = function(t, b, c, d) {
+  t /= d;
+  t--;
+  return c * (t * t * t * t * t + 1) + b;
   };
   
-  var easeOutQuint = function(t, b, c, d) {
-    t /= d;
-    t--;
-    return c * (t * t * t * t * t + 1) + b;
-  };
+  // La función "easeOutCubic" implementa una curva de animación con un cambio gradual y suave en la velocidad.
+  // La curva comienza lentamente, se acelera y luego se desacelera gradualmente.
   var easeOutCubic = function(t, b, c, d) {
-    t /= d;
-    t--;
-    return c * (t * t * t + 1) + b;
+  t /= d;
+  t--;
+  return c * (t * t * t + 1) + b;
   };
   var openSpeedtestShow = function() {
+    // Elementos SVG
     this.YourIP = _("YourIP");
     this.ipDesk = _("ipDesk");
     this.ipMob = _("ipMob");
@@ -100,6 +131,8 @@ window.onload = function() {
     this.graphMob2 = _("graphMob2");
     this.graphMob1 = _("graphMob1");
     this.text = _("text");
+    
+    // Configuraciones para la gráfica
     this.scale = [{degree:680, value:0}, {degree:570, value:0.5}, {degree:460, value:1}, {degree:337, value:10}, {degree:220, value:100}, {degree:115, value:500}, {degree:0, value:1000},];
     this.element = "";
     this.chart = "";
@@ -113,6 +146,7 @@ window.onload = function() {
     this.measurements = [];
     this.points = [];
   };
+  //Resetea las configuraciones de la gráfica
   openSpeedtestShow.prototype.reset = function() {
     this.element = "";
     this.chart = "";
@@ -126,109 +160,133 @@ window.onload = function() {
     this.measurements = [];
     this.points = [];
   };
-  openSpeedtestShow.prototype.ip = function() {
-    var Self = this;
-    if (Self.ipDesk.el.style.display === "block") {
+// Esta función alterna la visibilidad de dos elementos que muestran la dirección IP del usuario.
+openSpeedtestShow.prototype.ip = function() {
+  var Self = this;
+  if (Self.ipDesk.el.style.display === "block") {
       Self.ipDesk.el.style.display = "none";
       Self.ipMob.el.style.display = "none";
-    } else {
+  } else {
       Self.ipDesk.el.style.display = "block";
       Self.ipMob.el.style.display = "block";
-    }
-  };
-  //FADE IN AND OUT EN LOS OBJETOS anteriormente declarados con valor de 10000, los reduje a 1 para que no se viera el efecto de carga
-  openSpeedtestShow.prototype.prePing = function() {
-    this.loader.fade("out", 500);
-    this.OpenSpeedtest.fade("in", 1);
-  };
-  openSpeedtestShow.prototype.app = function() {
-    this.loader.fade("out", 500, this.ShowAppIntro());
-  };
-  openSpeedtestShow.prototype.ShowAppIntro = function() {
-    this.OpenSpeedtest.fade("in", 1);
-  };
-  openSpeedtestShow.prototype.userInterface = function() {
-    var Self = this;
-    this.intro_Desk.fade("out", 1);
-    this.intro_Mob.fade("out", 1, this.ShowUI());
-  };
-  openSpeedtestShow.prototype.ShowUI = function() {
-    this.UI_Desk.fade("in", 1);
-    this.UI_Mob.fade("in", 1, uiLoaded);
-    function uiLoaded(argument) {
-      Status = "Loaded";
-      console.log("Developed by Vishnu. Email --\x3e me@vishnu.pro");
-    }
-  };
+  }
+};
+// Esta función inicia una animación de carga antes de la prueba de ping.
+openSpeedtestShow.prototype.prePing = function() {
+  this.loader.fade("out", 500);
+  this.OpenSpeedtest.fade("in", 1);
+};
+// Esta función inicia una animación de carga antes de la prueba de carga.
+openSpeedtestShow.prototype.app = function() {
+  this.loader.fade("out", 500, this.ShowAppIntro());
+};
+// Esta función muestra la introducción a la prueba de carga.
+openSpeedtestShow.prototype.ShowAppIntro = function() {
+  this.OpenSpeedtest.fade("in", 500);
+};
+// Esta función muestra la interfaz de usuario de la prueba de velocidad.
+openSpeedtestShow.prototype.userInterface = function() {
+  var Self = this;
+  this.intro_Desk.fade("out", 500);
+  this.intro_Mob.fade("out", 500, this.ShowUI());
+};
+// Esta función muestra la interfaz de usuario de la prueba de velocidad una vez que se ha cargado.
+openSpeedtestShow.prototype.ShowUI = function() {
+  this.UI_Desk.fade("in", 500);
+  this.UI_Mob.fade("in", 500, uiLoaded);
+  
+  // Esta función anónima se llama cuando se ha cargado la interfaz de usuario.
+  function uiLoaded(argument) {
+      Status = "Loaded"; // Establece el estado de la prueba en "Loaded"
+      console.log("Developed by Vishnu. Email --\x3e me@vishnu.pro"); // Muestra un mensaje en la consola
+  }
+};
+
   //-----------------------------------------------------------------------------------------
-  openSpeedtestShow.prototype.Symbol = function(dir) {
-    if (dir == 0) {
-      this.downSymbolMob.el.style.display = "block";
-      this.downSymbolDesk.el.style.display = "block";
-      this.upSymbolMob.el.style.display = "none";
-      this.upSymbolDesk.el.style.display = "none";
-    }
-    if (dir == 1) {
-      this.downSymbolMob.el.style.display = "none";
-      this.downSymbolDesk.el.style.display = "none";
-      this.upSymbolMob.el.style.display = "block";
-      this.upSymbolDesk.el.style.display = "block";
-    }
-    if (dir == 2) {
-      this.downSymbolMob.el.style.display = "none";
-      this.downSymbolDesk.el.style.display = "none";
-      this.upSymbolMob.el.style.display = "none";
-      this.upSymbolDesk.el.style.display = "none";
-    }
-  };
-  openSpeedtestShow.prototype.Graph = function(speed, select) {
-    if (!("remove" in Element.prototype)) {
-      Element.prototype.remove = function() {
-        if (this.parentNode) {
-          this.parentNode.removeChild(this);
-        }
-      };
-    }
-    var Self = this;
-    var Remove;
-    if (select === 0) {
-      var Graphelement = this.graphc1.el;
-      Remove = "line";
-      this.graphMob2.el.style.display = "none";
-      this.graphMob1.el.style.display = "block";
-    } else {
-      Graphelement = this.graphc2.el;
-      Remove = "line2";
-      this.graphMob1.el.style.display = "none";
-      this.graphMob2.el.style.display = "block";
-    }
-    if (!isNaN(speed)) {
-      this.values.push(speed);
-    } else {
-      this.values.push("");
-    }
-    function calcMeasure() {
-      for (x = 0; x < Self.vSteps; x++) {
-        var measurement = Math.ceil(Self.maxValue / Self.vSteps * (x + 1));
-        Self.measurements.push(measurement);
+// Función para mostrar u ocultar los símbolos de subida y bajada
+openSpeedtestShow.prototype.Symbol = function(dir) {
+  if (dir == 0) {
+    // Mostrar símbolos de bajada y ocultar símbolos de subida
+    this.downSymbolMob.el.style.display = "block";
+    this.downSymbolDesk.el.style.display = "block";
+    this.upSymbolMob.el.style.display = "none";
+    this.upSymbolDesk.el.style.display = "none";
+  }
+  if (dir == 1) {
+    // Mostrar símbolos de subida y ocultar símbolos de bajada
+    this.downSymbolMob.el.style.display = "none";
+    this.downSymbolDesk.el.style.display = "none";
+    this.upSymbolMob.el.style.display = "block";
+    this.upSymbolDesk.el.style.display = "block";
+  }
+  if (dir == 2) {
+    // Ocultar todos los símbolos
+    this.downSymbolMob.el.style.display = "none";
+    this.downSymbolDesk.el.style.display = "none";
+    this.upSymbolMob.el.style.display = "none";
+    this.upSymbolDesk.el.style.display = "none";
+  }
+};
+
+// Función para crear el gráfico de velocidad
+openSpeedtestShow.prototype.Graph = function(speed, select) {
+  // Polyfill para el método remove de Element
+  if (!("remove" in Element.prototype)) {
+    Element.prototype.remove = function() {
+      if (this.parentNode) {
+        this.parentNode.removeChild(this);
       }
-      Self.measurements.reverse();
+    };
+  }
+  var Self = this;
+  var Remove;
+  if (select === 0) {
+    // Gráfico para la velocidad de bajada
+    var Graphelement = this.graphc1.el;
+    Remove = "line";
+    this.graphMob2.el.style.display = "none";
+    this.graphMob1.el.style.display = "block";
+  } else {
+    // Gráfico para la velocidad de subida
+    Graphelement = this.graphc2.el;
+    Remove = "line2";
+    this.graphMob1.el.style.display = "none";
+    this.graphMob2.el.style.display = "block";
+  }
+  if (!isNaN(speed)) {
+    // Agregar la velocidad al arreglo de valores
+    this.values.push(speed);
+  } else {
+    // Agregar un valor vacío si no se puede obtener la velocidad
+    this.values.push("");
+  }
+
+  // Función para calcular las medidas del gráfico
+  function calcMeasure() {
+    for (x = 0; x < Self.vSteps; x++) {
+      var measurement = Math.ceil(Self.maxValue / Self.vSteps * (x + 1));
+      Self.measurements.push(measurement);
     }
-    function createChart(element, values) {
-      calcMaxValue();
-      calcPoints();
-      calcMeasure();
-      var removeLine = document.getElementsByClassName(Remove);
-      while (removeLine.length > 0) {
-        removeLine[0].remove();
-      }
-      Self.polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-      Self.polygon.setAttribute("points", Self.points);
-      Self.polygon.setAttribute("class", Remove);
-      if (Self.values.length > 1) {
-        Graphelement.appendChild(Self.polygon);
-      }
+    Self.measurements.reverse();
+  }
+
+  // Función para crear el gráfico
+  function createChart(element, values) {
+    calcMaxValue();
+    calcPoints();
+    calcMeasure();
+    var removeLine = document.getElementsByClassName(Remove);
+    while (removeLine.length > 0) {
+      removeLine[0].remove();
     }
+    Self.polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    Self.polygon.setAttribute("points", Self.points);
+    Self.polygon.setAttribute("class", Remove);
+    if (Self.values.length > 1) {
+      Graphelement.appendChild(Self.polygon);
+    }
+  }
+
     function calcPoints() {
       if (Self.values.length > 1) {
         var points = "0," + Self.height + " ";
@@ -402,6 +460,7 @@ window.onload = function() {
       if (ShowData <= 0) {
         ShowData = 0;
       }
+      /* DATOS QUE SE VISUALIZAN CUANDO el test de descarga finaliza y comienza a reducirse la barra de velocidad hacia el cero */
       this.oDoLiveSpeed.el.textContent = ShowData;
       this.oDoTopSpeed.el.textContent = "10G+";
       this.oDoTopSpeed.el.style.fontSize = "15px";
@@ -418,6 +477,7 @@ window.onload = function() {
         this.oDoLiveSpeed.el.textContent = ShowData;
       }
     } else {
+      //Aqui se visualiza la velocidad de descarga, la variable ShowData es la velocidad en bytes
       if (ShowData == 0) {
         var speed = ShowData.toFixed(0);
         this.oDoLiveSpeed.el.textContent = speed;
@@ -442,41 +502,45 @@ window.onload = function() {
       }
     }
   };
-  openSpeedtestShow.prototype.GaugeProgresstoZero = function(currentSpeed, status) {
-    var speed = currentSpeed;
-    var Self = this;
-    var duration = 3;
-    if (speed >= 0) {
-      var time = Date.now();
-      var SpeedtoZero = 0 - speed;
-      var interval = setInterval(function() {
-        var timeNow = (Date.now() - time) / 1000;
-        var speedToZero = easeOutQuint(timeNow, speed, SpeedtoZero, duration);
-        Self.LiveSpeed(speedToZero, "speedToZero");
-        Self.mainGaugeProgress(speedToZero);
-        if (timeNow >= duration || speedToZero <= 0) {
-          clearInterval(interval);
-          Self.LiveSpeed(0, "speedToZero");
-          Self.mainGaugeProgress(0);
-          Status = status;
-        }
-      }, 16);
-    }
-  };
-  openSpeedtestShow.prototype.getNonlinearDegree = function(mega_bps) {
-    var i = 0;
-    if (0 == mega_bps || mega_bps <= 0 || isNaN(mega_bps)) {
-      return 0;
-    }
-    while (i < this.scale.length) {
-      if (mega_bps > this.scale[i].value) {
-        i++;
-      } else {
-        return this.scale[i - 1].degree + (mega_bps - this.scale[i - 1].value) * (this.scale[i].degree - this.scale[i - 1].degree) / (this.scale[i].value - this.scale[i - 1].value);
+// Animar el indicador principal de la prueba de velocidad hasta cero
+openSpeedtestShow.prototype.GaugeProgresstoZero = function(currentSpeed, status) {
+  var speed = currentSpeed; // Velocidad actual
+  var Self = this; // Referencia a la instancia actual
+  var duration = 3; // Duración de la animación en segundos
+  if (speed >= 0) { // Solo si la velocidad es positiva o cero
+    var time = Date.now(); // Tiempo actual
+    var SpeedtoZero = 0 - speed; // Velocidad necesaria para llegar a cero
+    var interval = setInterval(function() { // Intervalo de tiempo para la animación
+      var timeNow = (Date.now() - time) / 1000; // Tiempo transcurrido desde el inicio de la animación
+      var speedToZero = easeOutQuint(timeNow, speed, SpeedtoZero, duration); // Velocidad actualizada con una animación suave
+      Self.LiveSpeed(speedToZero, "speedToZero"); // Actualizar el elemento de velocidad en vivo con la velocidad actualizada
+      Self.mainGaugeProgress(speedToZero); // Actualizar el indicador principal con la velocidad actualizada
+      if (timeNow >= duration || speedToZero <= 0) { // Si se ha completado la animación o la velocidad ha llegado a cero
+        clearInterval(interval); // Detener el intervalo de tiempo
+        Self.LiveSpeed(1, "speedToZero"); // Actualizar el elemento de velocidad en vivo con cero
+        Self.mainGaugeProgress(0.001); // Actualizar el indicador principal con 0.001 valor que evita que desaparezca el indicador si este es cero
+        Status = status; // Establecer el estado de la prueba en el valor especificado
       }
+    }, 16); // Actualizar cada 16 milisegundos
+  }
+};
+
+// Calcular el offset del indicador principal en función de la velocidad actual
+openSpeedtestShow.prototype.getNonlinearDegree = function(mega_bps) {
+  var i = 0; // Índice de la escala de velocidad
+  if (0 == mega_bps || mega_bps <= 0 || isNaN(mega_bps)) { // Si la velocidad es menor o igual a cero o no es un número
+    return 0; // Devolver cero como offset
+  }
+  while (i < this.scale.length) { // Recorrer la escala de velocidad
+    if (mega_bps > this.scale[i].value) { // Si la velocidad actual es mayor que el valor actual de la escala de velocidad
+      i++; // Moverse al siguiente valor de la escala de velocidad
+    } else { // Si la velocidad actual está dentro del rango del valor de la escala de velocidad
+      return this.scale[i - 1].degree + (mega_bps - this.scale[i - 1].value) * (this.scale[i].degree - this.scale[i - 1].degree) / (this.scale[i].value - this.scale[i - 1].value); // Calcular el offset utilizando una fórmula matemática
     }
-    return this.scale[this.scale.length - 1].degree;
-  };
+  }
+  return this.scale[this.scale.length - 1].degree; // Si la velocidad es mayor que el último valor de la escala de velocidad, devolver el último grado de offset
+};
+
   var openSpeedtestGet = function() {
     this.OverAllTimeAvg = window.performance.now();
     this.SpeedSamples = [];

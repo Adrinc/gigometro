@@ -10,7 +10,7 @@
 </symbol>
 <symbol id="backgroundGauge" viewBox="0 0 295.93 270.18">
   <image class="circular-image" 
-  xlink:href="https://img2.freepng.es/20180329/aje/kisspng-computer-icons-gauge-agile-software-development-speedometer-5abc8043d2adc3.8469427415223030438629.jpg" 
+  xlink:href="https://img.freepik.com/foto-gratis/texturas-muro-hormigon-azul-fondo_74190-7757.jpg" 
   x="25" 
   y="25" 
   width="250" 
@@ -43,7 +43,9 @@
 		<text transform="translate(220.43 79.11) scale(0.9 1)">1Gb</text>
 		<text transform="translate(240 164.6) scale(0.9 1)">5Gb</text>
 		<text id="oDoTopSpeed" class="oDoTop-Speed" transform="translate(220.71 265.99) scale(0.9 1)">8Gb</text>
+		<!-- Valor de velocidad que se visualiza en la parte central del valor del medidor, su valor es actualizado por la variable this.oDoLiveSpeed.el.textContent -->
 		<text id="oDoLiveSpeed" class="oDoLive-Speed" transform="translate(150 150) scale(1 1)">...</text>
+		<!-- Texto que se visualiza en la parde inferior del valor de velocidad, su valor es actualizado por la variable this.oDoLiveStatus.el.textContent -->
 		<text id="oDoLiveStatus" class="oDoLive-Status" transform="translate(151 170) scale(1 1)"></text>
 	</symbol>
 	<!-- ES UN CONTENEDOR PARECIDO A UN DIV QUE ENGLOBA LOS ICONOS Y LA BARRA DE PROGRESO INFERIOR -->
