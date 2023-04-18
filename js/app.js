@@ -372,47 +372,62 @@ openSpeedtestShow.prototype.progress = function(Switch, duration) {
 };
 
   // Función para actualizar el progreso del indicador principal
-openSpeedtestShow.prototype.mainGaugeProgress = function(currentSpeed) {
-  var Self = this;
-  var speed = currentSpeed;
-  
-  // Si la velocidad es menor que 0, se establece en 0
-  if (speed < 0) {
-    speed = 0;
-  }
-
-  // Se obtiene el valor del offset del indicador principal en función de la velocidad
-  var mainGaugeOffset = Self.getNonlinearDegree(speed);
-  
-  // Si la velocidad actual es mayor que 0 se establece la opacidad de los indicadores principal
-  if (currentSpeed > 0) {
-    this.mainGaugeBlue_Desk.el.style.strokeOpacity = 1;
-    this.mainGaugeWhite_Desk.el.style.strokeOpacity = 1;
-    this.mainGaugeBlue_Mob.el.style.strokeOpacity = 1;
-    this.mainGaugeWhite_Mob.el.style.strokeOpacity = 1;
+  openSpeedtestShow.prototype.mainGaugeProgress = function(currentSpeed) {
+    var Self = this;
+    var speed = currentSpeed;
     
-    // Se establece el offset de los indicadores principal en función del valor de mainGaugeOffset
-    this.mainGaugeBlue_Desk.el.style.strokeDashoffset = mainGaugeOffset;
-    this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-    this.mainGaugeBlue_Mob.el.style.strokeDashoffset = mainGaugeOffset;
-    this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-  }
+    if (speed < 0) {
+      speed = 0;
+    }
 
-  // Si el valor de mainGaugeOffset es 0 y la velocidad es mayor que 1000, se ajustan los indicadores principal
-  if (mainGaugeOffset == 0 && speed > 1000) {
-    this.mainGaugeBlue_Mob.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 680 : mainGaugeOffset;
-    this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-    this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-    this.mainGaugeBlue_Desk.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 680 : mainGaugeOffset;
-  }
-  // Si el valor de mainGaugeOffset es 0 y la velocidad es menor o igual que 0, se ajustan los indicadores principal
-  else if (mainGaugeOffset == 0 && speed <= 0) {
-    this.mainGaugeBlue_Mob.el.style.strokeDashoffset = 681.1;
-    this.mainGaugeWhite_Mob.el.style.strokeDashoffset = 0.1;
-    this.mainGaugeWhite_Desk.el.style.strokeDashoffset = 0.1;
-    this.mainGaugeBlue_Desk.el.style.strokeDashoffset = 681.1;
-  }
-};
+  var colorScale = d3.scaleLinear()
+    .domain([0, 2.5, 5, 7.5, 10])
+    .range(["#ff0000", "#ff8000", "#ffff00", "#00ff00", "#008000"])
+    .interpolate(d3.interpolateRgb);
+  var color = colorScale(speed);
+
+  // Calcular el porcentaje de llenado actual del indicador
+  var fillPercentage = speed;
+  
+  // Obtener el color para el porcentaje de llenado actual
+  var color = colorScale(fillPercentage);
+    // Se obtiene el valor del offset del indicador principal en función de la velocidad
+    var mainGaugeOffset = Self.getNonlinearDegree(speed);
+    
+    // Si la velocidad actual es mayor que 0 se establece la opacidad de los indicadores principal
+    if (currentSpeed > 0) {
+      this.mainGaugeBlue_Desk.el.style.strokeOpacity = 1;
+      this.mainGaugeWhite_Desk.el.style.strokeOpacity = 1;
+      this.mainGaugeBlue_Mob.el.style.strokeOpacity = 1;
+      this.mainGaugeWhite_Mob.el.style.strokeOpacity = 1;
+  
+      // Se establece el color del indicador principal en función de la velocidad
+      this.mainGaugeBlue_Desk.el.style.stroke = color;
+  
+      // Se establece el offset de los indicadores principal en función del valor de mainGaugeOffset
+      this.mainGaugeBlue_Desk.el.style.strokeDashoffset = mainGaugeOffset;
+      this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
+      this.mainGaugeBlue_Mob.el.style.strokeDashoffset = mainGaugeOffset;
+      this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
+    }
+  
+    // Si el valor de mainGaugeOffset es 0 y la velocidad es mayor que 1000, se ajustan los indicadores principal
+    if (mainGaugeOffset == 0 && speed > 1000) {
+      this.mainGaugeBlue_Mob.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 680 : mainGaugeOffset;
+      this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
+      this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
+      this.mainGaugeBlue_Desk.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 680 : mainGaugeOffset;
+    }
+    // Si el valor de mainGaugeOffset es 0 y la velocidad es menor o igual que 0, se ajustan los indicadores principal
+    else if (mainGaugeOffset == 0 && speed <= 0) {
+      this.mainGaugeBlue_Mob.el.style.strokeDashoffset = 681.1;
+      this.mainGaugeWhite_Mob.el.style.strokeDashoffset = 0.1;
+      this.mainGaugeWhite_Desk.el.style.strokeDashoffset = 0.1;
+      this.mainGaugeBlue_Desk.el.style.strokeDashoffset = 681.1;
+    }
+  };
+  
+  
 
   // Función para mostrar el estado de la conexión en la interfaz
 openSpeedtestShow.prototype.showStatus = function(e) {

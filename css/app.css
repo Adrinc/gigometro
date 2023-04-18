@@ -55,18 +55,20 @@ color: #ba0e35;
   stroke-linejoin: round;
   stroke-width: 22px;
   stroke-dasharray: 681;
+  transition: stroke 0.3s ease-in-out;
 }
 /*
 @Color del medidor de velocidad cuando ya está en progreso
 */
 .main-GaugeBlue {
   fill: none;
-  stroke: #ba0e35;
+
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 22px;
   stroke-dasharray: 681;
   stroke-opacity: 0;
+  transition: stroke 0.3s ease-in-out;
 }
 /*
 @Color del circulo que está dentro de la barra
@@ -354,4 +356,19 @@ fill:none;
 }
 #backgroundGauge{
 fill:none;
+}
+
+/* ARROW */
+
+#arrow  {
+  position: absolute;
+  fill:#ba0e35;
+  stroke: rgb(255, 17, 17);
+  transform: translate(15px, 16px);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+  z-index: 10;
+}
+#arrow:hover  {
+  transform: translate(18px, 16px);
 }

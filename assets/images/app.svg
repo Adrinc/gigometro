@@ -10,7 +10,7 @@
 </symbol>
 <symbol id="backgroundGauge" viewBox="0 0 295.93 270.18">
   <image class="circular-image" 
-  xlink:href="https://img.freepik.com/foto-gratis/texturas-muro-hormigon-azul-fondo_74190-7757.jpg" 
+  xlink:href="https://driversed.trubicars.ca/wp-content/uploads/2021/01/speedometer-1.png" 
   x="25" 
   y="25" 
   width="250" 
@@ -36,13 +36,13 @@
 	</symbol>
 	<!-- LOS NUMEROS DE LOS VALORES EN LA BARRA DE PROGRESO -->
 	<symbol id="oDoMeter" viewBox="0 0 295.93 270.18">
-		<text transform="translate(76.34 264.28) scale(0.9 1)">20MB</text>
-		<text transform="translate(23.81 164.6) scale(0.9 1)">80MB</text>
-		<text transform="translate(50.01 80.11) scale(0.9 1)">.1 Gb</text>
-		<text transform="translate(140.58 36.04) scale(0.9 1)">.5Gb</text>
-		<text transform="translate(220.43 79.11) scale(0.9 1)">1Gb</text>
-		<text transform="translate(240 164.6) scale(0.9 1)">5Gb</text>
-		<text id="oDoTopSpeed" class="oDoTop-Speed" transform="translate(220.71 265.99) scale(0.9 1)">8Gb</text>
+		<text transform="translate(76.34 264.28) scale(0.9 1)">0.2Gb</text>
+		<text transform="translate(23.81 164.6) scale(0.9 1)">0.8Gb</text>
+		<text transform="translate(50.01 80.11) scale(0.9 1)">1Gb</text>
+		<text transform="translate(140.58 36.04) scale(0.9 1)">5Gb</text>
+		<text transform="translate(220.43 79.11) scale(0.9 1)">7Gb</text>
+		<text transform="translate(240 164.6) scale(0.9 1)">8Gb</text>
+		<text id="oDoTopSpeed" class="oDoTop-Speed" transform="translate(220.71 265.99) scale(0.9 1)">10Gb</text>
 		<!-- Valor de velocidad que se visualiza en la parte central del valor del medidor, su valor es actualizado por la variable this.oDoLiveSpeed.el.textContent -->
 		<text id="oDoLiveSpeed" class="oDoLive-Speed" transform="translate(150 150) scale(1 1)">...</text>
 		<!-- Texto que se visualiza en la parde inferior del valor de velocidad, su valor es actualizado por la variable this.oDoLiveStatus.el.textContent -->
