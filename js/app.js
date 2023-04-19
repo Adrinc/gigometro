@@ -382,7 +382,7 @@ openSpeedtestShow.prototype.progress = function(Switch, duration) {
 
   var colorScale = d3.scaleLinear()
     .domain([0, 2.5, 5, 7.5, 10])
-    .range(["#ff0000", "#ff8000", "#ffff00", "#00ff00", "#008000"])
+    .range(["#B20000", "#ff8000", "#ffff00", "#00ff00", "#00ffff"])
     .interpolate(d3.interpolateRgb);
   var color = colorScale(speed);
 
