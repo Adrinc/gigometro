@@ -36,7 +36,7 @@
 	</symbol>
 	<!-- LOS NUMEROS DE LOS VALORES EN LA BARRA DE PROGRESO -->
 	<symbol id="oDoMeter" viewBox="0 0 295.93 270.18">
-		<text transform="translate(76.34 264.28) scale(0.9 1)">0.2Gb</text>
+		<text transform="translate(76.34 264.28) scale(0.9 1)">0Gb</text>
 		<text transform="translate(23.81 164.6) scale(0.9 1)">0.8Gb</text>
 		<text transform="translate(50.01 80.11) scale(0.9 1)">1Gb</text>
 		<text transform="translate(140.58 36.04) scale(0.9 1)">5Gb</text>
