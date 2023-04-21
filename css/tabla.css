@@ -1,0 +1,23 @@
+
+  table {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  th {
+    background-color: lightgray;
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
+  td {
+    border: 1px solid black;
+    padding: 10px;
+  }
+  

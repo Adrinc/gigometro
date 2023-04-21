@@ -1,6 +1,7 @@
-// La función "easeOutQuint" implementa una curva de animación con un cambio gradual y suave en la velocidad.
-// La curva comienza lentamente, se acelera y luego se desacelera gradualmente.
- // Variable para almacenar el estado del test de velocidad
+
+
+
+// Variable para almacenar el estado del test de velocidad
  var Status;
  // Variable para almacenar el progreso del test de velocidad
  var ProG;
@@ -16,6 +17,7 @@
  return new _(el);
  }
  this.el = document.getElementById(el);
+
  }
  // Método de la clase para animar la opacidad de un elemento
  _.prototype.fade = function fade(type, ms, callback00) {
@@ -60,7 +62,7 @@
      console.error("Elemento no encontrado en el documento.");
    }
  };
- 
+ // La función "easeOutQuint" implementa una curva de animación con un cambio gradual y suave en la velocidad.
  
 var easeOutQuint = function(t, b, c, d) {
     t /= d;
@@ -68,7 +70,7 @@ var easeOutQuint = function(t, b, c, d) {
     return c * (t * t * t * t * t + 1) + b;
     };
     
-    // La función "easeOutCubic" implementa una curva de animación con un cambio gradual y suave en la velocidad.
+
     // La curva comienza lentamente, se acelera y luego se desacelera gradualmente.
     var easeOutCubic = function(t, b, c, d) {
     t /= d;
@@ -122,6 +124,9 @@ var openSpeedtestShow = function() {
     this.graphMob2 = _("graphMob2");
     this.graphMob1 = _("graphMob1");
     this.text = _("text");
+
+
+    
     
     // Configuraciones para la gráfica
     this.scale = [{degree:680, value:0}, {degree:570, value:0.5}, {degree:460, value:1}, {degree:337, value:10}, {degree:220, value:100}, {degree:115, value:500}, {degree:0, value:1000},];
@@ -433,6 +438,7 @@ openSpeedtestShow.prototype.ConnectionError = function() {
 // Función para mostrar el resultado de la velocidad de subida en la interfaz
 openSpeedtestShow.prototype.uploadResult = function(upload) {
   // Si la velocidad de subida es menor a 1 Mbps
+  setSubida(upload);
   if (upload < 1) {
     this.upRestxt.el.textContent = upload.toFixed(3); // Mostrar con 3 decimales
   }
@@ -453,6 +459,7 @@ openSpeedtestShow.prototype.uploadResult = function(upload) {
 };
 // Actualiza la visualización de los resultados del ping en la interfaz gráfica
 openSpeedtestShow.prototype.pingResults = function(data, Display) {
+  setPing(data);
   var ShowData = data;
   // Si Display es "Ping"
   if (Display === "Ping") {
@@ -479,6 +486,8 @@ openSpeedtestShow.prototype.pingResults = function(data, Display) {
 // Actualiza la visualización de los resultados de la descarga en la interfaz gráfica
 openSpeedtestShow.prototype.downloadResult = function(download) {
   // Si el valor de la descarga es menor que 1, muestra el valor redondeado a 3 decimales
+
+  setDescarga(download);
   if (download < 1) {
     this.downResult.el.textContent = download.toFixed(3);
   } 
@@ -505,6 +514,7 @@ Función que muestra el resultado del jitter obtenido durante el test de velocid
 @param {string} Display - El tipo de resultado a mostrar.
 */
 openSpeedtestShow.prototype.jitterResult = function(data, Display) {
+
   var ShowData = data;
   if (Display === "Jitter") {
   if (ShowData >= 1 && ShowData < 10000) {
@@ -525,16 +535,23 @@ openSpeedtestShow.prototype.jitterResult = function(data, Display) {
   // Muestra el resultado del jitter en el panel de escritorio y en el panel móvil.
   this.jitterDesk.el.textContent = ShowData;
   this.JitterResultMon.el.textContent = ShowData;
+  setJitter(ShowData);
   }
   }
   };
 // Esta función muestra el resultado de la velocidad en tiempo real
 openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
+/*   if(data <= 0){
+    data=0;
+    setVelocidad(data);
+  }
+  setVelocidad(data); */
   var ShowData = data;
   // Si el parámetro "Display" es "countDown", se muestra la velocidad en tiempo real
   if (Display === "countDown") {
     var speed = ShowData.toFixed(0);
     this.oDoLiveSpeed.el.textContent = speed;
+    setVelocidad(speed);
     return;
   }
   // Si el parámetro "Display" es "speedToZero", se muestra la velocidad como cero
@@ -549,6 +566,8 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
     this.oDoTopSpeed.el.textContent = "10G+";
     this.oDoTopSpeed.el.style.fontSize = "15px";
     this.oDoTopSpeed.el.style.fill = "gray";
+ 
+    setVelocidad(ShowData);
     return;
   }
   // Si el parámetro "Display" es "Ping", se muestra el resultado de ping
@@ -565,27 +584,29 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
     // En cualquier otro caso, se muestra la velocidad con una precisión específica
     if (ShowData == 0) {
       var speed = ShowData.toFixed(0);
-      this.oDoLiveSpeed.el.textContent = speed;
+      this.oDoLiveSpeed.el.textContent = speed;  setVelocidad(speed);
     }
     if (ShowData <= 1 && ShowData > 0) {
       var speed = ShowData.toFixed(3);
-      this.oDoLiveSpeed.el.textContent = speed;
+      this.oDoLiveSpeed.el.textContent = speed;  setVelocidad(speed);
     }
     if (ShowData > 1) {
       var speed = ShowData.toFixed(1);
-      this.oDoLiveSpeed.el.textContent = speed;
+      this.oDoLiveSpeed.el.textContent = speed;  setVelocidad(speed);
     }
     // Si la velocidad es menor o igual a 1000, se muestra "10Gb+" como la velocidad máxima
     if (ShowData <= 1000) {
       this.oDoTopSpeed.el.textContent = "10Gb+";
       this.oDoTopSpeed.el.style.fontSize = "15px";
       this.oDoTopSpeed.el.style.fill = "gray";
+      setVelocidad(ShowData);
     }
     // Si la velocidad es mayor que 1010, se muestra el resultado como Gbps
     if (ShowData >= 1010) {
       this.oDoTopSpeed.el.textContent = (Math.floor(ShowData / 1010) * 1000)/100 + "Gb+";
       this.oDoTopSpeed.el.style.fill = "#1e569b";
       this.oDoTopSpeed.el.style.fontSize = "17.2px";
+      setVelocidad((Math.floor(ShowData / 1010) * 1000)/100 );
     }
   }
 };
