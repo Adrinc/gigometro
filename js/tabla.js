@@ -1,5 +1,8 @@
 function setVelocidad(speed) {
     document.getElementById("velocidad").innerHTML = speed;
+
+document.documentElement.style.setProperty('--rotation', speed*100 + 'deg');
+
   }
   
   function setDescarga(download) {
