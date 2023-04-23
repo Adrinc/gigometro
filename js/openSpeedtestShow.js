@@ -89,7 +89,7 @@ var openSpeedtestShow = function() {
     this.upSymbolDesk = _("upSymbolDesk");
     this.upSymbolMob = _("upSymbolMob");
     this.downSymbolMob = _("downSymbolMob");
-    this.settingsMob = _("settingsMob");
+
     this.settingsDesk = _("settingsDesk");
     this.oDoLiveStatus = _("oDoLiveStatus");
     this.ConnectErrorMob = _("ConnectErrorMob");
@@ -103,26 +103,22 @@ var openSpeedtestShow = function() {
     this.JitterResultms = _("JitterResultms");
     this.UI_Desk = _("UI-Desk");
     this.UI_Mob = _("UI-Mob");
-    this.oDoTopSpeed = _("oDoTopSpeed");
-    this.startButtonMob = _("startButtonMob");
+
+
     this.startButtonDesk = _("startButtonDesk");
     this.intro_Desk = _("intro-Desk");
-    this.intro_Mob = _("intro-Mob");
+
     this.loader = _("loading_app");
     this.OpenSpeedtest = _("OpenSpeedtest");
     this.mainGaugebg_Desk = _("mainGaugebg-Desk");
-    this.mainGaugeBlue_Desk = _("mainGaugeBlue-Desk");
+
     this.mainGaugeWhite_Desk = _("mainGaugeWhite-Desk");
     this.mainGaugebg_Mob = _("mainGaugebg-Mob");
-    this.mainGaugeBlue_Mob = _("mainGaugeBlue-Mob");
+
     this.mainGaugeWhite_Mob = _("mainGaugeWhite-Mob");
     this.oDoLiveSpeed = _("oDoLiveSpeed");
-    this.progressStatus_Mob = _("progressStatus-Mob");
-    this.progressStatus_Desk = _("progressStatus-Desk");
-    this.graphc1 = _("graphc1");
-    this.graphc2 = _("graphc2");
-    this.graphMob2 = _("graphMob2");
-    this.graphMob1 = _("graphMob1");
+
+
     this.text = _("text");
 
 
@@ -184,7 +180,8 @@ openSpeedtestShow.prototype.ShowAppIntro = function() {
 openSpeedtestShow.prototype.userInterface = function() {
   var Self = this;
   this.intro_Desk.fade("out", 500);
-  this.intro_Mob.fade("out", 500, this.ShowUI());
+
+  this.ShowUI();
 };
 // Esta función muestra la interfaz de usuario de la prueba de velocidad una vez que se ha cargado.
 openSpeedtestShow.prototype.ShowUI = function() {
@@ -224,105 +221,7 @@ openSpeedtestShow.prototype.Symbol = function(dir) {
   }
 };
 
-// Función para crear el gráfico de velocidad
-openSpeedtestShow.prototype.Graph = function(speed, select) {
-  // Polyfill para el método remove de Element
-  if (!("remove" in Element.prototype)) {
-    Element.prototype.remove = function() {
-      if (this.parentNode) {
-        this.parentNode.removeChild(this);
-      }
-    };
-  }
-  var Self = this;
-  var Remove;
-  if (select === 0) {
-    // Gráfico para la velocidad de bajada
-    var Graphelement = this.graphc1.el;
-    Remove = "line";
-    this.graphMob2.el.style.display = "none";
-    this.graphMob1.el.style.display = "block";
-  } else {
-    // Gráfico para la velocidad de subida
-    Graphelement = this.graphc2.el;
-    Remove = "line2";
-    this.graphMob1.el.style.display = "none";
-    this.graphMob2.el.style.display = "block";
-  }
-  if (!isNaN(speed)) {
-    // Agregar la velocidad al arreglo de valores
-    this.values.push(speed);
-  } else {
-    // Agregar un valor vacío si no se puede obtener la velocidad
-    this.values.push("");
-  }
 
-// Función para calcular el valor máximo del gráfico
-function calcMaxValue() {
-  Self.maxValue = 0;
-  // Recorre los valores y encuentra el valor máximo
-  for (x = 0; x < Self.values.length; x++) {
-  if (Self.values[x] > Self.maxValue) {
-  Self.maxValue = Self.values[x];
-  }
-  }
-  // Redondea el valor máximo hacia arriba
-  Self.maxValue = Math.ceil(Self.maxValue);
-  }
-  
-  // Función para calcular los puntos del gráfico
-  function calcPoints() {
-  if (Self.values.length > 1) {
-  // Crea la cadena de puntos con los valores y la altura
-  var points = "0," + Self.height + " ";
-  for (x = 0; x < Self.values.length; x++) {
-  var perc = Self.values[x] / Self.maxValue;
-  var steps = 130 / (Self.values.length - 1);
-  var point = (steps * x).toFixed(2) + "," + (Self.height - Self.height * perc).toFixed(2) + " ";
-  points += point;
-  }
-  points += "130," + Self.height;
-  Self.points = points;
-  }
-  }
-  
-  // Función para calcular las medidas del gráfico
-  function calcMeasure() {
-  // Recorre las medidas y las agrega al array
-  for (x = 0; x < Self.vSteps; x++) {
-  var measurement = Math.ceil(Self.maxValue / Self.vSteps * (x + 1));
-  Self.measurements.push(measurement);
-  }
-  // Invierte el array de medidas
-  Self.measurements.reverse();
-  }
-  
-  // Función para crear el gráfico
-  function createChart(element, values) {
-  // Calcula el valor máximo, los puntos y las medidas
-  calcMaxValue();
-  calcPoints();
-  calcMeasure();
-  // Elimina cualquier línea anterior en el gráfico
-  var removeLine = document.getElementsByClassName(Remove);
-  while (removeLine.length > 0) {
-  removeLine[0].remove();
-  }
-  // Crea un nuevo polígono con los puntos calculados
-  Self.polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-  Self.polygon.setAttribute("points", Self.points);
-  Self.polygon.setAttribute("class", Remove);
-  // Agrega el polígono al elemento SVG
-  if (Self.values.length > 1) {
-  Graphelement.appendChild(Self.polygon);
-  }
-  }
-  
-  // Comprueba si hay velocidad y crea el gráfico si la hay
-  if (speed > 0) {
-  createChart(Graphelement, speed);
-  }
-  };
   // Función para animar la barra de progreso
 openSpeedtestShow.prototype.progress = function(Switch, duration) {
   // Se definen variables y se inicializan
@@ -350,19 +249,19 @@ openSpeedtestShow.prototype.progress = function(Switch, duration) {
     con el valor "toLeft", de lo contrario se animan 
     desde la derecha hacia la izquierda con el valor "toRight". */
     if (Stage) {
-      Self.progressStatus_Desk.el.style.strokeDashoffset = toLeft;
-      Self.progressStatus_Mob.el.style.strokeDashoffset = toLeft;
+
+     
     } else {
-      Self.progressStatus_Desk.el.style.strokeDashoffset = toRight;
-      Self.progressStatus_Mob.el.style.strokeDashoffset = toRight;
+
+     
     }
     
     // Cuando se alcanza la duración se detiene el intervalo
     if (timeNow >= Stop) {
       clearInterval(interval);
       ProG = "done";
-      Self.progressStatus_Desk.el.style.strokeDashoffset = 800;
-      Self.progressStatus_Mob.el.style.strokeDashoffset = 800;
+
+
     }
   }, 14); //el 14 representa el tiempo en milisegundos que se actualiza el intervalo
 };
@@ -392,34 +291,34 @@ openSpeedtestShow.prototype.progress = function(Switch, duration) {
     
     // Si la velocidad actual es mayor que 0 se establece la opacidad de los indicadores principal
     if (currentSpeed > 0) {
-      this.mainGaugeBlue_Desk.el.style.strokeOpacity = 1;
+
       this.mainGaugeWhite_Desk.el.style.strokeOpacity = 1;
-      this.mainGaugeBlue_Mob.el.style.strokeOpacity = 1;
+
       this.mainGaugeWhite_Mob.el.style.strokeOpacity = 1;
   
       // Se establece el color del indicador principal en función de la velocidad
-      this.mainGaugeBlue_Desk.el.style.stroke = color;
+
   
       // Se establece el offset de los indicadores principal en función del valor de mainGaugeOffset
-      this.mainGaugeBlue_Desk.el.style.strokeDashoffset = mainGaugeOffset;
+
       this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-      this.mainGaugeBlue_Mob.el.style.strokeDashoffset = mainGaugeOffset;
+  
       this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
     }
   
     // Si el valor de mainGaugeOffset es 0 y la velocidad es mayor que 1000, se ajustan los indicadores principal
     if (mainGaugeOffset == 0 && speed > 1000) {
-      this.mainGaugeBlue_Mob.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 680 : mainGaugeOffset;
+
       this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
       this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-      this.mainGaugeBlue_Desk.el.style.strokeDashoffset = mainGaugeOffset >= 681 ? 680 : mainGaugeOffset;
+
     }
     // Si el valor de mainGaugeOffset es 0 y la velocidad es menor o igual que 0, se ajustan los indicadores principal
     else if (mainGaugeOffset == 0 && speed <= 0) {
-      this.mainGaugeBlue_Mob.el.style.strokeDashoffset = 681.1;
+
       this.mainGaugeWhite_Mob.el.style.strokeDashoffset = 0.1;
       this.mainGaugeWhite_Desk.el.style.strokeDashoffset = 0.1;
-      this.mainGaugeBlue_Desk.el.style.strokeDashoffset = 681.1;
+
     }
   };
   
@@ -562,10 +461,7 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
     if (ShowData <= 0) {
       ShowData = 0;
     }
-    this.oDoLiveSpeed.el.textContent = ShowData;
-    this.oDoTopSpeed.el.textContent = "10G+";
-    this.oDoTopSpeed.el.style.fontSize = "15px";
-    this.oDoTopSpeed.el.style.fill = "gray";
+
  
     setVelocidad(ShowData);
     return;
@@ -596,16 +492,12 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
     }
     // Si la velocidad es menor o igual a 1000, se muestra "10Gb+" como la velocidad máxima
     if (ShowData <= 1000) {
-      this.oDoTopSpeed.el.textContent = "10Gb+";
-      this.oDoTopSpeed.el.style.fontSize = "15px";
-      this.oDoTopSpeed.el.style.fill = "gray";
+
       setVelocidad(ShowData);
     }
     // Si la velocidad es mayor que 1010, se muestra el resultado como Gbps
     if (ShowData >= 1010) {
-      this.oDoTopSpeed.el.textContent = (Math.floor(ShowData / 1010) * 1000)/100 + "Gb+";
-      this.oDoTopSpeed.el.style.fill = "#1e569b";
-      this.oDoTopSpeed.el.style.fontSize = "17.2px";
+
       setVelocidad((Math.floor(ShowData / 1010) * 1000)/100 );
     }
   }

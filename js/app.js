@@ -9,6 +9,12 @@ window.onload = function() {
   OpenSpeedTest.Start();
 };
 
+function mostrarMensaje() {
+  console.log("Hola mundo");
+
+  OpenSpeedTest.openSpeedtestGet();
+}
+
 (function(OpenSpeedTest) {
 
 
@@ -66,10 +72,10 @@ window.onload = function() {
     setFinal();
     var launch = true;
     var init = true;
-    Get.addEvt(Show.settingsMob.el, "click", ShowIP);
+
     Get.addEvt(Show.settingsDesk.el, "click", ShowIP);
     Get.addEvt(Show.startButtonDesk.el, "click", runTasks);
-    Get.addEvt(Show.startButtonMob.el, "click", runTasks);
+
     Get.addEvt(document, "keypress", hiEnter);
     var addEvent = true;
     var getParams = function(url) {
@@ -277,10 +283,9 @@ window.onload = function() {
     }
     var Startit = 0;
     function removeEvts() {
-      Get.remEvt(Show.settingsMob.el, "click", ShowIP);
+
       Get.remEvt(Show.settingsDesk.el, "click", ShowIP);
       Get.remEvt(Show.startButtonDesk.el, "click", runTasks);
-      Get.remEvt(Show.startButtonMob.el, "click", runTasks);
       Get.remEvt(document, "keypress", hiEnter);
     }
     var requestIP = false;
@@ -408,7 +413,7 @@ window.onload = function() {
           Show.showStatus("Gbps download");
           Show.mainGaugeProgress(currentSpeed/1000); //Valores de descarga convertidos a Gbps (/1000 para lograrlo)
           Show.LiveSpeed(currentSpeed/1000);
-          Show.Graph(currentSpeed/1000, 0);
+  
           downloadSpeed = Get.AvgSpeed(currentSpeed, dlFinal, dlDuration);
           if (downloadTimeing >= dlDuration && ProG == "done") {
             if (SelectTest) {
@@ -455,7 +460,7 @@ window.onload = function() {
           reportCurrentSpeed("up");
           Show.mainGaugeProgress(currentSpeed/1000);
           Show.LiveSpeed(currentSpeed/1000);
-          Show.Graph(currentSpeed, 1);
+      
           uploadSpeed = Get.AvgSpeed(currentSpeed, ulFinal, ulDuration);
           if (uploadTimeing >= ulDuration && stop == 1) {
             dataUsedforul = uLoaded;

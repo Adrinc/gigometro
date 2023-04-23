@@ -33,4 +33,18 @@
     border-bottom: 20px solid transparent;
     border-left: 40px solid red;
   }
-  
+  .boton {
+    position: absolute;
+    fill: #ba0e35;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    background-color: #ba0e35;
+    cursor: pointer;
+    pointer-events: visible;
+    bottom: 0;
+  left: 50%;
+  height: 50px;
+  width: 100px;
+  transform: translateX(-50%);
+  z-index: 100;
+  }  
