@@ -73,7 +73,7 @@ function mostrarMensaje() {
     var launch = true;
     var init = true;
 
-    Get.addEvt(Show.settingsDesk.el, "click", ShowIP);
+
     Get.addEvt(Show.startButtonDesk.el, "click", runTasks);
 
     Get.addEvt(document, "keypress", hiEnter);
@@ -284,19 +284,12 @@ function mostrarMensaje() {
     var Startit = 0;
     function removeEvts() {
 
-      Get.remEvt(Show.settingsDesk.el, "click", ShowIP);
+
       Get.remEvt(Show.startButtonDesk.el, "click", runTasks);
       Get.remEvt(document, "keypress", hiEnter);
     }
-    var requestIP = false;
-    function ShowIP() {
-      if (requestIP) {
-        Show.YourIP.el.textContent = "Please wait..";
-        ServerConnect(7);
-        requestIP = false;
-      }
-      Show.ip();
-    }
+   
+
     function runTasks() {
       if (addEvent) {
         removeEvts();

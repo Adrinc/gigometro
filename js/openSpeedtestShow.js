@@ -83,43 +83,15 @@ var easeOutQuint = function(t, b, c, d) {
 var openSpeedtestShow = function() {
     // Elementos SVG
     this.YourIP = _("YourIP");
-    this.ipDesk = _("ipDesk");
-
-
-
-
     this.settingsDesk = _("settingsDesk");
-    this.oDoLiveStatus = _("oDoLiveStatus");
-
-    this.ConnectErrorDesk = _("ConnectErrorDesk");
-    this.downResult = _("downResult");
-    this.upRestxt = _("upRestxt");
-
-/*     this.jitterDesk = _("jitterDesk"); */
-
-/*     this.JitterResultMon = _("JitterResultMon");
-    this.JitterResultms = _("JitterResultms"); */
     this.UI_Desk = _("UI-Desk");
-
-
-
     this.startButtonDesk = _("startButtonDesk");
     this.intro_Desk = _("intro-Desk");
-
     this.loader = _("loading_app");
     this.OpenSpeedtest = _("OpenSpeedtest");
-  
-
-
-
     this.oDoLiveSpeed = _("oDoLiveSpeed");
-
-
     this.text = _("text");
 
-
-    
-    
     // Configuraciones para la gráfica
     this.scale = [{degree:680, value:0}, {degree:570, value:0.5}, {degree:460, value:1}, {degree:337, value:10}, {degree:220, value:100}, {degree:115, value:500}, {degree:0, value:1000},];
     this.element = "";
@@ -149,16 +121,7 @@ var openSpeedtestShow = function() {
     this.points = [];
   };
 // Esta función alterna la visibilidad de dos elementos que muestran la dirección IP del usuario.
-openSpeedtestShow.prototype.ip = function() {
-  var Self = this;
-  if (Self.ipDesk.el.style.display === "block") {
-      Self.ipDesk.el.style.display = "none";
 
-  } else {
-      Self.ipDesk.el.style.display = "block";
-
-  }
-};
 // Esta función inicia una animación de carga antes de la prueba de ping.
 openSpeedtestShow.prototype.prePing = function() {
   this.loader.fade("out", 500);
@@ -191,124 +154,56 @@ openSpeedtestShow.prototype.ShowUI = function() {
 };
 
   //-----------------------------------------------------------------------------------------
-// Función para mostrar u ocultar los símbolos de subida y bajada
+// Función para mostrar u ocultar los símbolos de subida y bajada (Usar para modificar la interfaz de usuario)
 openSpeedtestShow.prototype.Symbol = function(dir) {
   if (dir == 0) {
     // Mostrar símbolos de bajada y ocultar símbolos de subida
  
-  /*   this.downSymbolDesk.el.style.display = "block";
 
-    this.upSymbolDesk.el.style.display = "none"; */
   }
   if (dir == 1) {
     // Mostrar símbolos de subida y ocultar símbolos de bajada
 
-/*     this.downSymbolDesk.el.style.display = "none";
 
-    this.upSymbolDesk.el.style.display = "block"; */
   }
   if (dir == 2) {
     // Ocultar todos los símbolos
 
- /*    this.downSymbolDesk.el.style.display = "none";
 
-    this.upSymbolDesk.el.style.display = "none"; */
   }
 };
-
 
   // Función para animar la barra de progreso
 openSpeedtestShow.prototype.progress = function(Switch, duration) {
   // Se definen variables y se inicializan
-
   var Stop = duration;
-
   var currTime = Date.now();
-
-  
   // Se define un intervalo para actualizar la barra de progreso
   var interval = setInterval(function() {
     // Se calcula el tiempo actual
-    var timeNow = (Date.now() - currTime) / 1000;
+  var timeNow = (Date.now() - currTime) / 1000;
     
 
     // Cuando se alcanza la duración se detiene el intervalo
     if (timeNow >= Stop) {
       clearInterval(interval);
       ProG = "done";
-
-
     }
   }, 14); //el 14 representa el tiempo en milisegundos que se actualiza el intervalo
 };
 
-
-  
-  
-
   // Función para mostrar el estado de la conexión en la interfaz
-openSpeedtestShow.prototype.showStatus = function(e) {
-  this.oDoLiveStatus.el.textContent = e;
-};
-
+openSpeedtestShow.prototype.showStatus = function(e) {setStatus(e)};
 // Función para mostrar un mensaje de error de conexión en la interfaz
-openSpeedtestShow.prototype.ConnectionError = function() {
-
-  this.ConnectErrorDesk.el.style.display = "block";
-};
+openSpeedtestShow.prototype.ConnectionError = function() {setError("Error de conexión");};
 // Función para mostrar el resultado de la velocidad de subida en la interfaz
-openSpeedtestShow.prototype.uploadResult = function(upload) {
-  // Si la velocidad de subida es menor a 1 Mbps
-  setSubida(upload);
-  if (upload < 1) {
-    this.upRestxt.el.textContent = upload.toFixed(3); // Mostrar con 3 decimales
-  }
-  // Si la velocidad de subida está entre 1 y 9999 Kbps
-  if (upload >= 1 && upload < 9999) {
-    this.upRestxt.el.textContent = upload.toFixed(1); // Mostrar con 1 decimal
-  }
-  // Si la velocidad de subida está entre 10000 y 99999 Kbps
-  if (upload >= 10000 && upload < 99999) {
-    this.upRestxt.el.textContent = upload.toFixed(1); // Mostrar con 1 decimal
-    this.upRestxt.el.style.fontSize = "20px"; // Aumentar el tamaño de fuente a 20px
-  }
-  // Si la velocidad de subida es mayor o igual a 100000 Kbps
-  if (upload >= 100000) {
-    this.upRestxt.el.textContent = upload.toFixed(1); // Mostrar con 1 decimal
-    this.upRestxt.el.style.fontSize = "18px"; // Disminuir el tamaño de fuente a 18px
-  }
-};
+openSpeedtestShow.prototype.uploadResult = function(upload) {setSubida(upload);};
 // Actualiza la visualización de los resultados del ping en la interfaz gráfica
-openSpeedtestShow.prototype.pingResults = function(data, Display) {
-  setPing(data);
-};
-
+openSpeedtestShow.prototype.pingResults = function(data, Display) {setPing(data);};
 // Actualiza la visualización de los resultados de la descarga en la interfaz gráfica
-openSpeedtestShow.prototype.downloadResult = function(download) {
-  // Si el valor de la descarga es menor que 1, muestra el valor redondeado a 3 decimales
-
-  setDescarga(download);
-  if (download < 1) {
-    this.downResult.el.textContent = download.toFixed(3);
-  } 
-  // Si el valor de la descarga está entre 1 y 9999, muestra el valor redondeado a 1 decimal
-  if (download >= 1 && download < 9999) {
-    this.downResult.el.textContent = download.toFixed(1);
-  }
-  // Si el valor de la descarga está entre 10000 y 99999, muestra el valor redondeado a 1 decimal y aumenta el tamaño de la fuente
-  if (download >= 10000 && download < 99999) {
-    this.downResult.el.textContent = download.toFixed(1);
-    this.downResult.el.style.fontSize = "20px";
-  }
-  // Si el valor de la descarga es mayor o igual a 100000, muestra el valor redondeado a 1 decimal y reduce el tamaño de la fuente
-  if (download >= 100000) {
-    this.downResult.el.textContent = download.toFixed(1);
-    this.downResult.el.style.fontSize = "18px";
-  }
-};
+openSpeedtestShow.prototype.downloadResult = function(download) {setDescarga(download);};
 
 /**
-
 Función que muestra el resultado del jitter obtenido durante el test de velocidad.
 @param {number} data - El valor del jitter obtenido.
 @param {string} Display - El tipo de resultado a mostrar.
@@ -335,8 +230,7 @@ setJitter(kData + "k");
   if (ShowData == 0) {
   ShowData = 0;
   }
-  // Muestra el resultado del jitter en el panel de escritorio y en el panel móvil.
-
+  // Muestra el resultado del jitter
   setJitter(ShowData);
   }
   }

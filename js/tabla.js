@@ -22,6 +22,9 @@ function setVelocidad(speed) {
 }
 
   
+  function setStatus(status) {
+    document.getElementById("estado").innerHTML = status;
+  }
   function setDescarga(download) {
     document.getElementById("descarga").innerHTML = download.toFixed(1) + " Gsp";
   }
@@ -36,5 +39,8 @@ function setVelocidad(speed) {
   
   function setJitter(jitter) {
     document.getElementById("jitter").innerHTML = jitter + " ms";
+  }
+  function setError(error) {
+    document.getElementById("error").innerHTML = error;
   }
   

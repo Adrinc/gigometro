@@ -2,80 +2,19 @@
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
     class="openSpeedtestApp">
-	<!-- Relleno interior circulo speedometer (Donde aparecen las letras y numeros del speedTest) -->
-
-  
-
 
 	<!-- LOS NUMEROS DE LOS VALORES EN LA BARRA DE PROGRESO -->
 	<symbol id="oDoMeter" viewBox="0 0 295.93 270.18">
-<!-- 		<text transform="translate(76.34 264.28) scale(0.9 1)">0Gb</text>
-		<text transform="translate(23.81 164.6) scale(0.9 1)">1Gb</text>
-		<text transform="translate(50.01 80.11) scale(0.9 1)">3Gb</text>
-		<text transform="translate(140.58 36.04) scale(0.9 1)">5Gb</text>
-		<text transform="translate(220.43 79.11) scale(0.9 1)">7Gb</text>
-		<text transform="translate(240 164.6) scale(0.9 1)">8Gb</text> -->
 		<text id="oDoTopSpeed" class="oDoTop-Speed" transform="translate(220.71 265.99) scale(0.9 1)">10Gb</text>
 		<!-- Valor de velocidad que se visualiza en la parte central del valor del medidor, su valor es actualizado por la variable this.oDoLiveSpeed.el.textContent -->
 		<text id="oDoLiveSpeed" class="oDoLive-Speed" transform="translate(150 150) scale(1 1)">...</text>
-		<!-- Texto que se visualiza en la parde inferior del valor de velocidad, su valor es actualizado por la variable this.oDoLiveStatus.el.textContent -->
-		<text id="oDoLiveStatus" class="oDoLive-Status" transform="translate(151 170) scale(1 1)"></text>
 	</symbol>
-
-	<!-- Tarjetas de la derecha -->
-
-	<!-- TEXTOS DOWNLOAD Y UPLOAD -->
-	<symbol id="downloadRc1" viewBox="0 0 66.93 13.85">
-		<g>
-			<text transform="translate(0 10.52)" class="rtext">DOWNLOAD</text>
-		</g>
-	</symbol>
-	<symbol id="uploadRc2" viewBox="0 0 46.73 13.85">
-		<g>
-			<text transform="translate(0 10.52)" class="rtext">UPLOAD</text>
-		</g>
-	</symbol>
-	<!-- SIMBOLOS DEL PING y JITTER -->
-	<symbol id="pingSymbol" viewBox="0 0 14.28 14.28">
-		<g>
-			<path
-          d="M13.92.64a.55.55,0,0,0-.65.13L12.06,2A7.21,7.21,0,0,0,9.79.52a7,7,0,0,0-5.42,0,7,7,0,0,0-3.8,3.8,7,7,0,0,0,0,5.54,7.23,7.23,0,0,0,1.52,2.28,7.25,7.25,0,0,0,2.28,1.53,6.89,6.89,0,0,0,2.77.56,7.12,7.12,0,0,0,5.5-2.57.31.31,0,0,0,.07-.21.23.23,0,0,0-.09-.19L11.35,10a.36.36,0,0,0-.24-.09.27.27,0,0,0-.21.11,4.61,4.61,0,0,1-1.67,1.37,4.68,4.68,0,0,1-2.09.48,4.75,4.75,0,0,1-3.36-1.39A4.84,4.84,0,0,1,2.76,9a4.68,4.68,0,0,1-.38-1.85A4.63,4.63,0,0,1,2.76,5.3,4.74,4.74,0,0,1,5.3,2.76a4.72,4.72,0,0,1,5.09.9L9.1,4.94A.54.54,0,0,0,9,5.58.56.56,0,0,0,9.52,6h4.17a.61.61,0,0,0,.42-.17.57.57,0,0,0,.17-.42V1.19a.56.56,0,0,0-.36-.55Z"
-          style="fill: #ba0e35" />
-		</g>
-	</symbol>
-	<symbol id="pingRc3" viewBox="0 0 28.43 13.85">
-		<g>
-			<text transform="translate(0 10.52)" class="rtext">PING</text>
-		</g>
-	</symbol>
-	<symbol id="jitterRc3" viewBox="0 0 39.95 13.85">
-		<text class="rtext" transform="translate(0 9.64)">JITTER</text>
-	</symbol>
-	<symbol id="downResultC1" viewBox="0 0 53.35 39.8">
-		<text id="downResult" transform="translate(0 20.07)" class="rtextnum">---</text>
-		<text x="0" y="35" class="rtextmbms">Gbps</text>
-	</symbol>
-	<symbol id="upResultC2" viewBox="0 0 53.35 39.8">
-		<text id="upRestxt" transform="translate(0 20.07)" class="rtextnum">---</text>
-		<text x="0" y="36.09" class="rtextmbms">Gbps</text>
-	</symbol>
-	<symbol id="pingResultC3" viewBox="0 0 40.01 39.79">
-		<text transform="translate(0 20.07)" id="pingResult" class="rtextnum">--</text>
-		<text x="0" y="35" class="rtextmbms">ms</text>
-	</symbol>
-	<symbol id="jitterResultC3" viewBox="0 0 21.99 39.79">
-		<text id="jitterDesk" transform="translate(2.33 20.07)" class="rtextnum">--</text>
-		<text x="2" y="35" xml:space="preserve" class="rtextmbms">ms</text>
-	</symbol>
-
 
 	<!-- BOTON PARA INICIAR TEST -->
 	<symbol id="playButton" style="fill: #eaeaea" viewBox="0 0 191.255 191.255">
 		<rect width="180" height="90" rx="10" ry="10" class="startButton" />
 		<text class="buttonTxt" x="90" y="60">Iniciar</text>
 		</symbol>
-
-
 		<symbol id="dark" viewBox="0 0 1024 1024">
 			<path
         d="M524.8 938.666667h-4.266667a439.893333 439.893333 0 0 1-313.173333-134.4 446.293333 446.293333 0 0 1-11.093333-597.333334 432.213333 432.213333 0 0 1 170.666666-116.906666 42.666667 42.666667 0 0 1 45.226667 9.386666 42.666667 42.666667 0 0 1 10.24 42.666667 358.4 358.4 0 0 0 82.773333 375.893333 361.386667 361.386667 0 0 0 376.746667 82.773334 42.666667 42.666667 0 0 1 54.186667 55.04A433.493333 433.493333 0 0 1 836.266667 810.666667a438.613333 438.613333 0 0 1-311.466667 128z"
@@ -85,19 +24,10 @@
 			<svg class="Desktop" viewBox="0 0 586 346">
 				<title id="title1">HTML5 Network Performance Estimation Tool. by OpenSpeedTest™</title>
 				<g id="UI-Desk">
-			
-
-		
-		
-					<use id="ConnectErrorDesk" xlink:href="#ConnectError" class="ConnectError" x="135" y="107.8" width="32.21" height="41.62"></use>
 					<use class="oDo-Meter" xlink:href="#oDoMeter" x="10.28" y="36.11" width="273.94" height="245.39"></use>
-	
 				</g>
 				<!-- ESTO REPRESENTA LO QUE ES VISIBLE ANTES DE PRESIONAR EL BOTON DE INICIAR -->
 				<g id="intro-Desk">
-
-			
-				
 					<use id="nightmode"  class="darkmode" onclick="toggleSkin()" xlink:href="#dark" x="10" y="25" width="30" height="30"></use>
 					<use id="daymode"  class="darkmode" onclick="toggleSkin()" xlink:href="#light" x="10" y="25" width="30" height="30"></use>
 					<use id="startButtonDesk" class="startButton" xlink:href="#playButton" x="125" y="300.6" width="50.2" height="50.2">
@@ -106,10 +36,8 @@
 					<use id="settingsDesk" class="Startsettings" xlink:href="#settings" x="100" y="260" width="100" height="40">
 						<title id="title1">Options</title>
 					</use>
-					<use class="Desktop" id="ipDesk" xlink:href="#YourIP" x="7" y="70"></use>
+				
 				</g>
 			</svg>
-
 		</a>
-
 	</svg>

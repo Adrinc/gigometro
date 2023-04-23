@@ -44,7 +44,7 @@
   <!-- --------- -->
   
   <body>
-    <button class="boton"  onclick="mostrarMensaje()">Haz clic aquí</button>
+    <button id="boton"  class="boton">Haz clic aquí</button>
 
     <div class="arrow"><div class="arrow-inner"></div></div>
     <script type="text/javascript" src="js/arrow.js"></script>
@@ -56,6 +56,10 @@
       <tr>
         <th>Nombre</th>
         <th>Valor</th>
+      </tr>
+      <tr>
+        <td>Estado:</td>
+        <td id="estado"></td>
       </tr>
       <tr>
         <td>Velocidad:</td>
@@ -76,6 +80,10 @@
       <tr>
         <td>Jitter:</td>
         <td id="jitter"></td>
+      </tr>
+      <tr>
+        <td>Error</td>
+        <td id="error"></td>
       </tr>
     </table>
   </div>
