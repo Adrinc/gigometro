@@ -297,7 +297,7 @@ function mostrarMensaje() {
       }
       if (OpenSpeedTestStart >= 0) {
         launch = false;
-        Show.userInterface();
+        Show.ShowUI();
         init = false;
         var AutoTme = Math.ceil(Math.abs(OpenSpeedTestStart));
         Show.showStatus("Automatic Test Starts in ...");
@@ -360,7 +360,7 @@ function mostrarMensaje() {
     }
     function testRun() {
       if (init) {
-        Show.userInterface();
+        Show.ShowUI();
         init = false;
       }
       OpenSpeedtest();
@@ -489,9 +489,7 @@ function mostrarMensaje() {
           if (location.hostname != myname.toLowerCase() + com) {
             saveTestData = "https://" + myname.toLowerCase() + com + "/results/show.php?" + "&d=" + downloadSpeed.toFixed(3) + "&u=" + uploadSpeed.toFixed(3) + "&p=" + pingEstimate + "&j=" + jitterEstimate + "&dd=" + (dataUsedfordl / 1048576).toFixed(3) + "&ud=" + (dataUsedforul / 1048576).toFixed(3) + "&ua=" + userAgentString;
             saveTestData = encodeURI(saveTestData);
-            var circleSVG2 = document.getElementById("resultsData");
-            circleSVG2.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", saveTestData);
-            circleSVG2.setAttribute("target", "_blank");
+    
             if (saveData) {
               ServerConnect(5);
             }

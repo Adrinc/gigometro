@@ -195,21 +195,7 @@ color: #ba0e35;
   stroke-dashoffset: 0;
   display: block;
 }
-/*
-@Color de los 3 punntos <...>
-*/
-.Startsettings {
-  fill: #ba0e35;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  pointer-events: visible;
-  opacity: 0.1;
-  transition: opacity 1s ease-in-out;
-}
-.Startsettings:hover {
-  opacity: 1;
-}
+
 
 .progressbg {
   stroke: rgb(231, 231, 232);
@@ -241,12 +227,12 @@ color: #ba0e35;
   transition: opacity 1s ease-in-out;
   font-size: small;
 }
-#UI-Desk {
+/* #UI-Desk {
   display: none;
 }
 #UI-Mob {
   display: none;
-}
+} */
 .oDoTop-Speed {
   font-size: 16.96px;
   fill: gray;

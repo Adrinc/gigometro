@@ -64,7 +64,7 @@
  };
  // La función "easeOutQuint" implementa una curva de animación con un cambio gradual y suave en la velocidad.
  
-var easeOutQuint = function(t, b, c, d) {
+    var easeOutQuint = function(t, b, c, d) {
     t /= d;
     t--;
     return c * (t * t * t * t * t + 1) + b;
@@ -83,10 +83,10 @@ var easeOutQuint = function(t, b, c, d) {
 var openSpeedtestShow = function() {
     // Elementos SVG
     this.YourIP = _("YourIP");
-    this.settingsDesk = _("settingsDesk");
-    this.UI_Desk = _("UI-Desk");
+ 
+   /*  this.UI_Desk = _("UI-Desk"); */
     this.startButtonDesk = _("startButtonDesk");
-    this.intro_Desk = _("intro-Desk");
+/*     this.intro_Desk = _("intro-Desk"); */
     this.loader = _("loading_app");
     this.OpenSpeedtest = _("OpenSpeedtest");
     this.oDoLiveSpeed = _("velocidad");
@@ -135,22 +135,17 @@ openSpeedtestShow.prototype.app = function() {
 openSpeedtestShow.prototype.ShowAppIntro = function() {
   this.OpenSpeedtest.fade("in", 500);
 };
-// Esta función muestra la interfaz de usuario de la prueba de velocidad.
-openSpeedtestShow.prototype.userInterface = function() {
-  var Self = this;
-  this.intro_Desk.fade("out", 500);
 
-  this.ShowUI();
-};
 // Esta función muestra la interfaz de usuario de la prueba de velocidad una vez que se ha cargado.
 openSpeedtestShow.prototype.ShowUI = function() {
-  this.UI_Desk.fade("in", 500,uiLoaded);
+/*   this.UI_Desk.fade("in", 500,uiLoaded);
 
   // Esta función anónima se llama cuando se ha cargado la interfaz de usuario.
   function uiLoaded(argument) {
       Status = "Loaded"; // Establece el estado de la prueba en "Loaded"
 
-  }
+  } */
+  Status = "Loaded"; 
 };
 
   //-----------------------------------------------------------------------------------------
@@ -258,8 +253,6 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
     if (ShowData <= 0) {
       ShowData = 0;
     }
-
- 
     setVelocidad(ShowData);
     return;
   }
