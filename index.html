@@ -4,12 +4,26 @@
         <title>RTA</title>
         <meta name="description"
           content="Test your network speed now. HTML5 Network Performance Estimation Tool. Self-Hosted SpeedTest by OpenSpeedTest™"/>
-        <link href="assets/css/app.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/rta.css" rel="stylesheet" type="text/css" />
+        <link href="css/app.css" rel="stylesheet" type="text/css" />
+        <link href="css/index.css" rel="stylesheet" type="text/css" />
+       
+        <link href="css/tabla.css" rel="stylesheet" type="text/css" />
+        <link href="css/arrows.css" rel="stylesheet" type="text/css" />
+    
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-        <script> window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&(document.head.innerHTML+='<link id="darkmode" rel="stylesheet" href="assets/css/darkmode.css" type="text/css"/>');function getCookieValue(b,a){return(a=document.cookie.match("(^|;)\\s*"+b+"\\s*=\\s*([^;]+)"))?a.pop():""}if("light"===getCookieValue("mode")){var darkStyle=document.getElementById("darkmode");darkStyle&&darkStyle.parentNode.removeChild(darkStyle)}; </script>
+<!--         <script> window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&(document.head.innerHTML+='<link id="darkmode" rel="stylesheet" href="css/darkmode.css" type="text/css"/>');function getCookieValue(b,a){return(a=document.cookie.match("(^|;)\\s*"+b+"\\s*=\\s*([^;]+)"))?a.pop():""}if("light"===getCookieValue("mode")){var darkStyle=document.getElementById("darkmode");darkStyle&&darkStyle.parentNode.removeChild(darkStyle)}; </script> -->
+        <script type="text/javascript" src="js/globals.js"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="js/openSpeedtestShow.js"></script>
+        <script src="js/openSpeedtestGet.js"></script>
+<!--         <script src="js/darkmode.js"></script> -->
+
+<script src="js/app.js"></script>
+
+
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,115 +39,72 @@
         <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
       </head>
-      
-<body>
-  <script type="text/javascript">
-
-    var openSpeedTestServerList = [
-        {"ServerName":"Home", "Download":"downloading", "Upload":"upload", "ServerIcon":"DefaultIcon"}
-      ];
-          
-    // Send pings 'pingSamples' times to each Server URL.
-        var pingSamples = 10;
-
-    // 50% samples(Least)/length 1=100% 0.1 = 10%
-        var jitterFinalSample = 0.5; 
-
-    // Set a pingSample dynamically by passing "Ping" or "p" as a URL Parameter.
-        var setPingSamples = true;
-
-    // If Server has not responded within 5 Seconds for any requests we send ('pingSamples' times)
-    // We will show Network Error. You can change the limit here.
-    // In milliseconds, if you need to set 6 seconds. Change the value to 6000.
-        var pingTimeOut = 5000; 
-
-    // Set a PingTimeout dynamically by passing "Out" or "O" as a URL Parameter    
-        var setPingTimeout = true;
-
-    // GET or HEAD  // Other Methods may work. but why?
-        var pingMethod = "GET";
-
-    //Choose Download or Upload from the Server list. If you Prefer Download, change pingMethod to HEAD.
-        var pingFile = "Upload";
-
-    // The amount of garbage data sent to the server in Mb, 30 = 30Mb
-        var ulDataSize = 30;
-
-    // Don't touch it
-        var ulDelay = 300;
-        var dlDelay = 300;
-
-    // Overhead Compensation factor, This is a browser-dependent test, Many Unknowns. Currently, 4%. That is within the margin of error.
-        var upAdjust = 1.04;
-        var dlAdjust = 1.04;
-
-   // You can pass "Clean" or "C" as a URL Parameter and reset the Overhead Compensation factor to Zero or set any value between 0 and 4. 1 = 1% to 4 = 4% 
-   // "clean" will not accept values above 4, so Compensation is limited to a maximum of 4%.
-        var enableClean = true;
-
-    // Minimum 12 Seconds is Expected. 
-        var dlDuration = 12;
-        var ulDuration = 12;
-
-    // 6 is the common limit found on most browsers.
-    // Choose  Number for parallel HTTP connections to Server | Default is 6 
-        var dlThreads = 6;
-        var ulThreads = 6;
-
-    // Allow user to Change default limit of 6 parallel HTTP connections to Server  | Accept values above 1 and max 32
-    // pass "XHR" or "X" as a URL Parameter
-        var setHTTPReq = true;
-
-    // Save Data to a Database
-        var saveData = false;
-        var saveDataURL = "//yourDatabase.Server.com:4500/save?data=";
-
-    // Allow user to change the default 12 seconds test duration
-    // Pass "Stress" or "S" as a URL Parameter.
-        var stressTest = true;
-
-    // Allow user to select and run one test at a time, download, upload, or ping
-    // Pass "Test" or "T" as a URL Parameter.
-        var selectTest = true;
-
-    // Allow user to select a different server to run a test  
-    // Pass "Host" or "H" ad a  URL Parameter.
-    // Accept only valid HTTP URLs like "http://192.168.1.10:3000" or "https://yourHost.com"
-        var selectServer = true;
-
-    // Start a test Automatically without pressing the start button
-    // You can Delay the test for 'n' seconds by passing any number as a value for Run Keyword. e.g.: "Run=10" or "R=10" to delay the test by 10 Seconds.
-    // Pass "Run" or "R" as a URL Parameter to start a test instantly.
-        var enableRun = true;
-
-
- 
-function ostOnload() {
-      console.log("OpenSpeedTest.com V2.5.4 Loaded!")
-      console.log("Now Press the Start Button or HIT Enter.")
-      console.log("The secret to living happy is giving happiness. Have a wonderful day.")
-      
-    }
+  <!-- --------- -->
+  <!-- --------- -->
+  <!-- --------- -->
+  <!-- --------- -->
   
-  var openChannel = "dev";
+  <body>
+    <div class="fondo-negro" id ="loading_app">
+      <div id="mensaje-carga">Cargando...</div>
+    </div>
+    <button id="startButtonDesk"  class="boton">Haz clic aquí</button>
 
-  </script>
+    <div class="arrow"><div class="arrow-inner"></div></div>
 
-  <!-- <div id="loading_app" class="spinner">
-    <div class="bounce1"></div>
-    <div class="bounce2"></div>
-    <div class="bounce3"></div>
-  </div> -->
-  <object style="visibility:hidden" id="OpenSpeedTest-UI" data="assets/images/app.svg" type="image/svg+xml"></object>
- 
-<!--   <div class="Credits">
-    <a href="https://openspeedtest.com?ref=Self-Hosted&Run">SpeedTest by OpenSpeedTest™</a> is a Free and <a href="https://github.com/openspeedtest/Speed-Test">Open-Source HTML5 Network Speed Test</a> Software.
-    <p style="font-size: 12px;">© Copyright 2013-2023 OpenSpeedTest™ All Rights Reserved.</p>
-</div>
-   -->
-<!--   <script src="assets/js/app-2.5.4.min.js"></script> -->
-  <script src="assets/js/app-2.5.4.js"></script>
-  <script src="assets/js/darkmode.js"></script>
 
-</body>
+    <div>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Valor</th>
+      </tr>
+      <tr>
+        <td>Estado:</td>
+        <td id="estado"></td>
+      </tr>
+      <tr>
+        <td>Velocidad:</td>
+        <td id="velocidad"></td>
+      </tr>
+      <tr>
+        <td>Descarga:</td>
+        <td id="descarga"></td>
+      </tr>
+      <tr>
+        <td>Subida:</td>
+        <td id="subida"></td>
+      </tr>
+      <tr>
+        <td>Ping:</td>
+        <td id="ping"></td>
+      </tr>
+      <tr>
+        <td>Jitter:</td>
+        <td id="jitter"></td>
+      </tr>
+      <tr>
+        <td>Error</td>
+        <td id="error"></td>
+      </tr>
+
+    </table>
+  </div>
+
+
+  
+  <script type="text/javascript" src="js/tabla.js"></script>
+
+
+
+
+  </body>
+ <!-- --------- -->
+  <!-- --------- -->
+  <!-- --------- -->
+  <!-- --------- -->
+
+
+
+<!-- -------------------------------------- -->
 </html>

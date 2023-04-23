@@ -55,18 +55,20 @@ color: #ba0e35;
   stroke-linejoin: round;
   stroke-width: 22px;
   stroke-dasharray: 681;
+  transition: stroke 0.3s ease-in-out;
 }
 /*
 @Color del medidor de velocidad cuando ya está en progreso
 */
 .main-GaugeBlue {
   fill: none;
-  stroke: #ba0e35;
+
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 22px;
   stroke-dasharray: 681;
   stroke-opacity: 0;
+  transition: stroke 0.3s ease-in-out;
 }
 /*
 @Color del circulo que está dentro de la barra
@@ -193,21 +195,7 @@ color: #ba0e35;
   stroke-dashoffset: 0;
   display: block;
 }
-/*
-@Color de los 3 punntos <...>
-*/
-.Startsettings {
-  fill: #ba0e35;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  pointer-events: visible;
-  opacity: 0.1;
-  transition: opacity 1s ease-in-out;
-}
-.Startsettings:hover {
-  opacity: 1;
-}
+
 
 .progressbg {
   stroke: rgb(231, 231, 232);
@@ -217,6 +205,9 @@ color: #ba0e35;
   stroke-dasharray: 400;
   stroke-dashoffset: 0;
 }
+/*
+@Color de la barra cuando está estatica
+ */
 .deskStart {
   fill: none;
   stroke: rgb(231, 231, 232);
@@ -224,7 +215,7 @@ color: #ba0e35;
   stroke-linejoin: round;
   stroke-width: 22px;
   stroke-dasharray: 681;
-  stroke: #ba0e35;
+
 }
 #downloadRc1{
   fill: #14ff20;
@@ -236,12 +227,12 @@ color: #ba0e35;
   transition: opacity 1s ease-in-out;
   font-size: small;
 }
-#UI-Desk {
+/* #UI-Desk {
   display: none;
 }
 #UI-Mob {
   display: none;
-}
+} */
 .oDoTop-Speed {
   font-size: 16.96px;
   fill: gray;
@@ -349,11 +340,6 @@ color: #ba0e35;
 #mainGaugebg{
 fill:none;
 }
-/* .circular-image {
-  clip-path: circle(50%);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg");
+#backgroundGauge{
+fill:none;
 }
- */
