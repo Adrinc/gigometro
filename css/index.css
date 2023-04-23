@@ -24,15 +24,29 @@
   }
   .arrow {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(var(--rotation, 0deg));
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 40px solid red;
+    top: 44%;
+    left: 14%;
+    transform-origin: 100% 50%; /* Cambiar el punto de origen de la transformación */
+    transform: rotate(var(--rotation, -50deg));
+    z-index: 10;
   }
+  
+  .arrow-inner {
+    position: relative;
+    width: 20rem; /* Incrementado en un 10% */
+    height: 2rem;
+    background: red;
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    
+  }
+  
+  
+  
+  
+  
+  
   .boton {
     position: absolute;
     fill: #ba0e35;

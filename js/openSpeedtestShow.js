@@ -84,25 +84,24 @@ var openSpeedtestShow = function() {
     // Elementos SVG
     this.YourIP = _("YourIP");
     this.ipDesk = _("ipDesk");
-    this.ipMob = _("ipMob");
+
     this.downSymbolDesk = _("downSymbolDesk");
     this.upSymbolDesk = _("upSymbolDesk");
-    this.upSymbolMob = _("upSymbolMob");
-    this.downSymbolMob = _("downSymbolMob");
+
 
     this.settingsDesk = _("settingsDesk");
     this.oDoLiveStatus = _("oDoLiveStatus");
-    this.ConnectErrorMob = _("ConnectErrorMob");
+
     this.ConnectErrorDesk = _("ConnectErrorDesk");
     this.downResult = _("downResult");
     this.upRestxt = _("upRestxt");
     this.pingResult = _("pingResult");
     this.jitterDesk = _("jitterDesk");
-    this.pingMobres = _("pingMobres");
+
     this.JitterResultMon = _("JitterResultMon");
     this.JitterResultms = _("JitterResultms");
     this.UI_Desk = _("UI-Desk");
-    this.UI_Mob = _("UI-Mob");
+
 
 
     this.startButtonDesk = _("startButtonDesk");
@@ -113,9 +112,7 @@ var openSpeedtestShow = function() {
     this.mainGaugebg_Desk = _("mainGaugebg-Desk");
 
     this.mainGaugeWhite_Desk = _("mainGaugeWhite-Desk");
-    this.mainGaugebg_Mob = _("mainGaugebg-Mob");
 
-    this.mainGaugeWhite_Mob = _("mainGaugeWhite-Mob");
     this.oDoLiveSpeed = _("oDoLiveSpeed");
 
 
@@ -157,10 +154,10 @@ openSpeedtestShow.prototype.ip = function() {
   var Self = this;
   if (Self.ipDesk.el.style.display === "block") {
       Self.ipDesk.el.style.display = "none";
-      Self.ipMob.el.style.display = "none";
+
   } else {
       Self.ipDesk.el.style.display = "block";
-      Self.ipMob.el.style.display = "block";
+
   }
 };
 // Esta función inicia una animación de carga antes de la prueba de ping.
@@ -185,13 +182,12 @@ openSpeedtestShow.prototype.userInterface = function() {
 };
 // Esta función muestra la interfaz de usuario de la prueba de velocidad una vez que se ha cargado.
 openSpeedtestShow.prototype.ShowUI = function() {
-  this.UI_Desk.fade("in", 500);
-  this.UI_Mob.fade("in", 500, uiLoaded);
-  
+  this.UI_Desk.fade("in", 500,uiLoaded);
+
   // Esta función anónima se llama cuando se ha cargado la interfaz de usuario.
   function uiLoaded(argument) {
       Status = "Loaded"; // Establece el estado de la prueba en "Loaded"
-      console.log("Developed by Vishnu. Email --\x3e me@vishnu.pro"); // Muestra un mensaje en la consola
+
   }
 };
 
@@ -200,23 +196,23 @@ openSpeedtestShow.prototype.ShowUI = function() {
 openSpeedtestShow.prototype.Symbol = function(dir) {
   if (dir == 0) {
     // Mostrar símbolos de bajada y ocultar símbolos de subida
-    this.downSymbolMob.el.style.display = "block";
+ 
     this.downSymbolDesk.el.style.display = "block";
-    this.upSymbolMob.el.style.display = "none";
+
     this.upSymbolDesk.el.style.display = "none";
   }
   if (dir == 1) {
     // Mostrar símbolos de subida y ocultar símbolos de bajada
-    this.downSymbolMob.el.style.display = "none";
+
     this.downSymbolDesk.el.style.display = "none";
-    this.upSymbolMob.el.style.display = "block";
+
     this.upSymbolDesk.el.style.display = "block";
   }
   if (dir == 2) {
     // Ocultar todos los símbolos
-    this.downSymbolMob.el.style.display = "none";
+
     this.downSymbolDesk.el.style.display = "none";
-    this.upSymbolMob.el.style.display = "none";
+
     this.upSymbolDesk.el.style.display = "none";
   }
 };
@@ -225,37 +221,18 @@ openSpeedtestShow.prototype.Symbol = function(dir) {
   // Función para animar la barra de progreso
 openSpeedtestShow.prototype.progress = function(Switch, duration) {
   // Se definen variables y se inicializan
-  var Self = this;
+
   var Stop = duration;
-  var Stage = Switch;
+
   var currTime = Date.now();
-  var chan2 = 0 - 400;
+
   
   // Se define un intervalo para actualizar la barra de progreso
   var interval = setInterval(function() {
     // Se calcula el tiempo actual
     var timeNow = (Date.now() - currTime) / 1000;
     
-    // Se calculan las posiciones de la barra de progreso
-    var toLeft = easeOutCubic(timeNow, 400, 400, Stop);
-    var toRight = easeOutCubic(timeNow, 400, chan2, Stop);
-    
-    // Se actualiza la barra de progreso según el estado actual
-    /* La propiedad "strokeDashoffset" se está estableciendo con un valor calculado dinámicamente. 
-    Dependiendo del valor de la variable "Stage", se establece el valor de "strokeDashoffset" 
-    en uno de los dos valores calculados,"toLeft" o "toRight".
-    Si "Stage" es verdadero, los elementos "progressStatus_Desk" y "progressStatus_Mob" 
-    se animan desde la izquierda hacia la derecha 
-    con el valor "toLeft", de lo contrario se animan 
-    desde la derecha hacia la izquierda con el valor "toRight". */
-    if (Stage) {
 
-     
-    } else {
-
-     
-    }
-    
     // Cuando se alcanza la duración se detiene el intervalo
     if (timeNow >= Stop) {
       clearInterval(interval);
@@ -275,17 +252,7 @@ openSpeedtestShow.prototype.progress = function(Switch, duration) {
       speed = 0;
     }
 
-  var colorScale = d3.scaleLinear()
-    .domain([0, 2.5, 5, 7.5, 10])
-    .range(["#ff0000", "#ff8000", "#ffff00", "#00ff00", "#008000"])
-    .interpolate(d3.interpolateRgb);
-  var color = colorScale(speed);
 
-  // Calcular el porcentaje de llenado actual del indicador
-  var fillPercentage = speed;
-  
-  // Obtener el color para el porcentaje de llenado actual
-  var color = colorScale(fillPercentage);
     // Se obtiene el valor del offset del indicador principal en función de la velocidad
     var mainGaugeOffset = Self.getNonlinearDegree(speed);
     
@@ -294,29 +261,21 @@ openSpeedtestShow.prototype.progress = function(Switch, duration) {
 
       this.mainGaugeWhite_Desk.el.style.strokeOpacity = 1;
 
-      this.mainGaugeWhite_Mob.el.style.strokeOpacity = 1;
-  
-      // Se establece el color del indicador principal en función de la velocidad
-
-  
       // Se establece el offset de los indicadores principal en función del valor de mainGaugeOffset
 
       this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
   
-      this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
     }
   
     // Si el valor de mainGaugeOffset es 0 y la velocidad es mayor que 1000, se ajustan los indicadores principal
     if (mainGaugeOffset == 0 && speed > 1000) {
 
-      this.mainGaugeWhite_Mob.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
       this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
 
     }
     // Si el valor de mainGaugeOffset es 0 y la velocidad es menor o igual que 0, se ajustan los indicadores principal
     else if (mainGaugeOffset == 0 && speed <= 0) {
 
-      this.mainGaugeWhite_Mob.el.style.strokeDashoffset = 0.1;
       this.mainGaugeWhite_Desk.el.style.strokeDashoffset = 0.1;
 
     }
@@ -331,7 +290,7 @@ openSpeedtestShow.prototype.showStatus = function(e) {
 
 // Función para mostrar un mensaje de error de conexión en la interfaz
 openSpeedtestShow.prototype.ConnectionError = function() {
-  this.ConnectErrorMob.el.style.display = "block";
+
   this.ConnectErrorDesk.el.style.display = "block";
 };
 // Función para mostrar el resultado de la velocidad de subida en la interfaz
@@ -365,7 +324,7 @@ openSpeedtestShow.prototype.pingResults = function(data, Display) {
     // Si el valor del ping está entre 1 y 9999, muestra el valor redondeado
     if (ShowData >= 1 && ShowData < 10000) {
       this.pingResult.el.textContent = Math.floor(ShowData);
-      this.pingMobres.el.textContent = Math.floor(ShowData);
+
     } 
     // Si el valor del ping está entre 0 y 1, muestra el valor directamente
     else if (ShowData >= 0 && ShowData < 1) {
@@ -373,7 +332,7 @@ openSpeedtestShow.prototype.pingResults = function(data, Display) {
         ShowData = 0;
       }
       this.pingResult.el.textContent = ShowData;
-      this.pingMobres.el.textContent = ShowData;
+  
     }
   }
   // Si Display es "Error", actualiza el texto de la velocidad en vivo
@@ -518,7 +477,7 @@ openSpeedtestShow.prototype.GaugeProgresstoZero = function(currentSpeed, status)
       Self.mainGaugeProgress(speedToZero); // Actualizar el indicador principal con la velocidad actualizada
       if (timeNow >= duration || speedToZero <= 0) { // Si se ha completado la animación o la velocidad ha llegado a cero
         clearInterval(interval); // Detener el intervalo de tiempo
-        Self.LiveSpeed(1, "speedToZero"); // Actualizar el elemento de velocidad en vivo con cero
+        Self.LiveSpeed(0, "speedToZero"); // Actualizar el elemento de velocidad en vivo con cero
         Self.mainGaugeProgress(0.001); // Actualizar el indicador principal con 0.001 valor que evita que desaparezca el indicador si este es cero
         Status = status; // Establecer el estado de la prueba en el valor especificado
       }

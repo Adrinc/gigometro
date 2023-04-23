@@ -1,9 +1,26 @@
 function setVelocidad(speed) {
-    document.getElementById("velocidad").innerHTML = speed;
+  document.getElementById("velocidad").innerHTML = speed;
 
-document.documentElement.style.setProperty('--rotation', speed*100 + 'deg');
+  // Aquí se modificaría la rotación del indicador de velocidad
+  const arrow = document.querySelector(".arrow");
 
+  // Establecer el ángulo de rotación según la velocidad
+  const minAngle = -52; // Ángulo mínimo en grados para una velocidad de 0
+  const maxAngle = 230; // Ángulo máximo en grados para una velocidad de 10
+  const maxSpeed = 10;
+
+  let rotationAngle;
+
+  if (speed >= maxSpeed) {
+    rotationAngle = maxAngle;
+  } else {
+    rotationAngle = ((speed / maxSpeed) * (maxAngle - minAngle)) + minAngle;
   }
+
+  // Aplicar la rotación
+  arrow.style.setProperty("--rotation", `${rotationAngle}deg`);
+}
+
   
   function setDescarga(download) {
     document.getElementById("descarga").innerHTML = download.toFixed(1) + " Gsp";
