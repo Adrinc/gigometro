@@ -411,7 +411,6 @@ function mostrarMensaje() {
           downloadTimeing = (window.performance.now() - downloadTime) / 1000;
           reportCurrentSpeed("dl");
           Show.showStatus("Gbps download");
-          Show.mainGaugeProgress(currentSpeed/1000); //Valores de descarga convertidos a Gbps (/1000 para lograrlo)
           Show.LiveSpeed(currentSpeed/1000);
   
           downloadSpeed = Get.AvgSpeed(currentSpeed, dlFinal, dlDuration);
@@ -458,7 +457,6 @@ function mostrarMensaje() {
           Show.showStatus("Gbps upload");
           uploadTimeing = (window.performance.now() - uploadTime) / 1000;
           reportCurrentSpeed("up");
-          Show.mainGaugeProgress(currentSpeed/1000);
           Show.LiveSpeed(currentSpeed/1000);
       
           uploadSpeed = Get.AvgSpeed(currentSpeed, ulFinal, ulDuration);

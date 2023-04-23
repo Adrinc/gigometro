@@ -85,8 +85,7 @@ var openSpeedtestShow = function() {
     this.YourIP = _("YourIP");
     this.ipDesk = _("ipDesk");
 
-    this.downSymbolDesk = _("downSymbolDesk");
-    this.upSymbolDesk = _("upSymbolDesk");
+
 
 
     this.settingsDesk = _("settingsDesk");
@@ -95,11 +94,11 @@ var openSpeedtestShow = function() {
     this.ConnectErrorDesk = _("ConnectErrorDesk");
     this.downResult = _("downResult");
     this.upRestxt = _("upRestxt");
-    this.pingResult = _("pingResult");
-    this.jitterDesk = _("jitterDesk");
 
-    this.JitterResultMon = _("JitterResultMon");
-    this.JitterResultms = _("JitterResultms");
+/*     this.jitterDesk = _("jitterDesk"); */
+
+/*     this.JitterResultMon = _("JitterResultMon");
+    this.JitterResultms = _("JitterResultms"); */
     this.UI_Desk = _("UI-Desk");
 
 
@@ -109,9 +108,9 @@ var openSpeedtestShow = function() {
 
     this.loader = _("loading_app");
     this.OpenSpeedtest = _("OpenSpeedtest");
-    this.mainGaugebg_Desk = _("mainGaugebg-Desk");
+  
 
-    this.mainGaugeWhite_Desk = _("mainGaugeWhite-Desk");
+
 
     this.oDoLiveSpeed = _("oDoLiveSpeed");
 
@@ -197,23 +196,23 @@ openSpeedtestShow.prototype.Symbol = function(dir) {
   if (dir == 0) {
     // Mostrar símbolos de bajada y ocultar símbolos de subida
  
-    this.downSymbolDesk.el.style.display = "block";
+  /*   this.downSymbolDesk.el.style.display = "block";
 
-    this.upSymbolDesk.el.style.display = "none";
+    this.upSymbolDesk.el.style.display = "none"; */
   }
   if (dir == 1) {
     // Mostrar símbolos de subida y ocultar símbolos de bajada
 
-    this.downSymbolDesk.el.style.display = "none";
+/*     this.downSymbolDesk.el.style.display = "none";
 
-    this.upSymbolDesk.el.style.display = "block";
+    this.upSymbolDesk.el.style.display = "block"; */
   }
   if (dir == 2) {
     // Ocultar todos los símbolos
 
-    this.downSymbolDesk.el.style.display = "none";
+ /*    this.downSymbolDesk.el.style.display = "none";
 
-    this.upSymbolDesk.el.style.display = "none";
+    this.upSymbolDesk.el.style.display = "none"; */
   }
 };
 
@@ -243,43 +242,7 @@ openSpeedtestShow.prototype.progress = function(Switch, duration) {
   }, 14); //el 14 representa el tiempo en milisegundos que se actualiza el intervalo
 };
 
-  // Función para actualizar el progreso del indicador principal
-  openSpeedtestShow.prototype.mainGaugeProgress = function(currentSpeed) {
-    var Self = this;
-    var speed = currentSpeed;
-    
-    if (speed < 0) {
-      speed = 0;
-    }
 
-
-    // Se obtiene el valor del offset del indicador principal en función de la velocidad
-    var mainGaugeOffset = Self.getNonlinearDegree(speed);
-    
-    // Si la velocidad actual es mayor que 0 se establece la opacidad de los indicadores principal
-    if (currentSpeed > 0) {
-
-      this.mainGaugeWhite_Desk.el.style.strokeOpacity = 1;
-
-      // Se establece el offset de los indicadores principal en función del valor de mainGaugeOffset
-
-      this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-  
-    }
-  
-    // Si el valor de mainGaugeOffset es 0 y la velocidad es mayor que 1000, se ajustan los indicadores principal
-    if (mainGaugeOffset == 0 && speed > 1000) {
-
-      this.mainGaugeWhite_Desk.el.style.strokeDashoffset = mainGaugeOffset == 0 ? 1 : mainGaugeOffset + 1;
-
-    }
-    // Si el valor de mainGaugeOffset es 0 y la velocidad es menor o igual que 0, se ajustan los indicadores principal
-    else if (mainGaugeOffset == 0 && speed <= 0) {
-
-      this.mainGaugeWhite_Desk.el.style.strokeDashoffset = 0.1;
-
-    }
-  };
   
   
 
@@ -318,27 +281,6 @@ openSpeedtestShow.prototype.uploadResult = function(upload) {
 // Actualiza la visualización de los resultados del ping en la interfaz gráfica
 openSpeedtestShow.prototype.pingResults = function(data, Display) {
   setPing(data);
-  var ShowData = data;
-  // Si Display es "Ping"
-  if (Display === "Ping") {
-    // Si el valor del ping está entre 1 y 9999, muestra el valor redondeado
-    if (ShowData >= 1 && ShowData < 10000) {
-      this.pingResult.el.textContent = Math.floor(ShowData);
-
-    } 
-    // Si el valor del ping está entre 0 y 1, muestra el valor directamente
-    else if (ShowData >= 0 && ShowData < 1) {
-      if (ShowData == 0) {
-        ShowData = 0;
-      }
-      this.pingResult.el.textContent = ShowData;
-  
-    }
-  }
-  // Si Display es "Error", actualiza el texto de la velocidad en vivo
-  if (Display === "Error") {
-    this.oDoLiveSpeed.el.textContent = ShowData;
-  }
 };
 
 // Actualiza la visualización de los resultados de la descarga en la interfaz gráfica
@@ -376,23 +318,25 @@ openSpeedtestShow.prototype.jitterResult = function(data, Display) {
   var ShowData = data;
   if (Display === "Jitter") {
   if (ShowData >= 1 && ShowData < 10000) {
-  // Muestra el resultado del jitter en el panel de escritorio y en el panel móvil.
-  this.jitterDesk.el.textContent = Math.floor(ShowData);
+
+var datjit = Math.floor(ShowData);
+setJitter(datjit);
   if (ShowData >= 1 && ShowData < 100) {
-  this.JitterResultMon.el.textContent = Math.floor(ShowData);
+
+var datjit = Math.floor(ShowData);
+setJitter(datjit);
   }
   if (ShowData >= 100) {
   // Si el valor del jitter es mayor o igual a 100, se muestra en formato k (kilos).
   var kData = (ShowData / 1000).toFixed(1);
-  this.JitterResultMon.el.textContent = kData + "k";
+setJitter(kData + "k");
   }
   } else if (ShowData >= 0 && ShowData < 1) {
   if (ShowData == 0) {
   ShowData = 0;
   }
   // Muestra el resultado del jitter en el panel de escritorio y en el panel móvil.
-  this.jitterDesk.el.textContent = ShowData;
-  this.JitterResultMon.el.textContent = ShowData;
+
   setJitter(ShowData);
   }
   }
@@ -474,11 +418,11 @@ openSpeedtestShow.prototype.GaugeProgresstoZero = function(currentSpeed, status)
       var timeNow = (Date.now() - time) / 1000; // Tiempo transcurrido desde el inicio de la animación
       var speedToZero = easeOutQuint(timeNow, speed, SpeedtoZero, duration); // Velocidad actualizada con una animación suave
       Self.LiveSpeed(speedToZero, "speedToZero"); // Actualizar el elemento de velocidad en vivo con la velocidad actualizada
-      Self.mainGaugeProgress(speedToZero); // Actualizar el indicador principal con la velocidad actualizada
+
       if (timeNow >= duration || speedToZero <= 0) { // Si se ha completado la animación o la velocidad ha llegado a cero
         clearInterval(interval); // Detener el intervalo de tiempo
         Self.LiveSpeed(0, "speedToZero"); // Actualizar el elemento de velocidad en vivo con cero
-        Self.mainGaugeProgress(0.001); // Actualizar el indicador principal con 0.001 valor que evita que desaparezca el indicador si este es cero
+
         Status = status; // Establecer el estado de la prueba en el valor especificado
       }
     }, 16); // Actualizar cada 16 milisegundos
