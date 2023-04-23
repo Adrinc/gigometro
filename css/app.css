@@ -343,18 +343,3 @@ fill:none;
 #backgroundGauge{
 fill:none;
 }
-
-/* ARROW */
-
-#arrow  {
-  position: absolute;
-  fill:#ba0e35;
-  stroke: rgb(255, 17, 17);
-  transform: translate(15px, 16px);
-  transform-origin: center;
-  transition: transform 0.2s ease;
-  z-index: 10;
-}
-#arrow:hover  {
-  transform: translate(18px, 16px);
-}

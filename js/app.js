@@ -1,11 +1,15 @@
 
 window.onload = function() {
+/* 
   //Obtiene la referencia al elemento appSVG por su ID y lo reemplaza por su contenido
   var appSVG = document.getElementById("OpenSpeedTest-UI");
   appSVG.parentNode.replaceChild(appSVG.contentDocument.documentElement, appSVG);
   //Llama a la función ostOnload que se encarga de inicializar la interfaz de usuario
   ostOnload();
   //Inicia la prueba de velocidad en el objeto OpenSpeedTest
+
+
+   */
   OpenSpeedTest.Start();
 };
 

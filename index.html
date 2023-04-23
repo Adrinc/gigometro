@@ -6,19 +6,20 @@
           content="Test your network speed now. HTML5 Network Performance Estimation Tool. Self-Hosted SpeedTest by OpenSpeedTest™"/>
         <link href="css/app.css" rel="stylesheet" type="text/css" />
         <link href="css/index.css" rel="stylesheet" type="text/css" />
-        <link href="css/rta.css" rel="stylesheet" type="text/css" />
+       
         <link href="css/tabla.css" rel="stylesheet" type="text/css" />
+        <link href="css/arrows.css" rel="stylesheet" type="text/css" />
     
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-        <script> window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&(document.head.innerHTML+='<link id="darkmode" rel="stylesheet" href="css/darkmode.css" type="text/css"/>');function getCookieValue(b,a){return(a=document.cookie.match("(^|;)\\s*"+b+"\\s*=\\s*([^;]+)"))?a.pop():""}if("light"===getCookieValue("mode")){var darkStyle=document.getElementById("darkmode");darkStyle&&darkStyle.parentNode.removeChild(darkStyle)}; </script>
+<!--         <script> window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&(document.head.innerHTML+='<link id="darkmode" rel="stylesheet" href="css/darkmode.css" type="text/css"/>');function getCookieValue(b,a){return(a=document.cookie.match("(^|;)\\s*"+b+"\\s*=\\s*([^;]+)"))?a.pop():""}if("light"===getCookieValue("mode")){var darkStyle=document.getElementById("darkmode");darkStyle&&darkStyle.parentNode.removeChild(darkStyle)}; </script> -->
         <script type="text/javascript" src="js/globals.js"></script>
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="js/openSpeedtestShow.js"></script>
         <script src="js/openSpeedtestGet.js"></script>
 <!--         <script src="js/darkmode.js"></script> -->
-<script src="https://unpkg.com/@rive-app/canvas@1.0.102"></script>
+
 <script src="js/app.js"></script>
 
 
@@ -47,13 +48,11 @@
     <div class="fondo-negro" id ="loading_app">
       <div id="mensaje-carga">Cargando...</div>
     </div>
-    <button id="boton"  class="boton">Haz clic aquí</button>
+    <button id="startButtonDesk"  class="boton">Haz clic aquí</button>
 
     <div class="arrow"><div class="arrow-inner"></div></div>
 
-    <div style="position:relative;">
-      <object style="visibility:hidden" id="OpenSpeedTest-UI" data="assets/images/app.svg" type="image/svg+xml"></object>
-    </div>
+
     <div>
     <table>
       <tr>
