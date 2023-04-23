@@ -89,7 +89,7 @@ var openSpeedtestShow = function() {
     this.intro_Desk = _("intro-Desk");
     this.loader = _("loading_app");
     this.OpenSpeedtest = _("OpenSpeedtest");
-    this.oDoLiveSpeed = _("oDoLiveSpeed");
+    this.oDoLiveSpeed = _("velocidad");
     this.text = _("text");
 
     // Configuraciones para la gráfica
@@ -125,11 +125,11 @@ var openSpeedtestShow = function() {
 // Esta función inicia una animación de carga antes de la prueba de ping.
 openSpeedtestShow.prototype.prePing = function() {
   this.loader.fade("out", 500);
-  this.OpenSpeedtest.fade("in", 1);
+  this.OpenSpeedtest.fade("in", 5000);
 };
 // Esta función inicia una animación de carga antes de la prueba de carga.
 openSpeedtestShow.prototype.app = function() {
-  this.loader.fade("out", 500, this.ShowAppIntro());
+  this.loader.fade("out", 3000, this.ShowAppIntro());
 };
 // Esta función muestra la introducción a la prueba de carga.
 openSpeedtestShow.prototype.ShowAppIntro = function() {

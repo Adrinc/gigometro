@@ -3,23 +3,13 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
     class="openSpeedtestApp">
 
-	<!-- LOS NUMEROS DE LOS VALORES EN LA BARRA DE PROGRESO -->
-	<symbol id="oDoMeter" viewBox="0 0 295.93 270.18">
-		<text id="oDoTopSpeed" class="oDoTop-Speed" transform="translate(220.71 265.99) scale(0.9 1)">10Gb</text>
-		<!-- Valor de velocidad que se visualiza en la parte central del valor del medidor, su valor es actualizado por la variable this.oDoLiveSpeed.el.textContent -->
-		<text id="oDoLiveSpeed" class="oDoLive-Speed" transform="translate(150 150) scale(1 1)">...</text>
-	</symbol>
 
 	<!-- BOTON PARA INICIAR TEST -->
 	<symbol id="playButton" style="fill: #eaeaea" viewBox="0 0 191.255 191.255">
 		<rect width="180" height="90" rx="10" ry="10" class="startButton" />
 		<text class="buttonTxt" x="90" y="60">Iniciar</text>
 		</symbol>
-		<symbol id="dark" viewBox="0 0 1024 1024">
-			<path
-        d="M524.8 938.666667h-4.266667a439.893333 439.893333 0 0 1-313.173333-134.4 446.293333 446.293333 0 0 1-11.093333-597.333334 432.213333 432.213333 0 0 1 170.666666-116.906666 42.666667 42.666667 0 0 1 45.226667 9.386666 42.666667 42.666667 0 0 1 10.24 42.666667 358.4 358.4 0 0 0 82.773333 375.893333 361.386667 361.386667 0 0 0 376.746667 82.773334 42.666667 42.666667 0 0 1 54.186667 55.04A433.493333 433.493333 0 0 1 836.266667 810.666667a438.613333 438.613333 0 0 1-311.466667 128z"
-      />
-		</symbol>
+
 		<a id="resultsData">
 			<svg class="Desktop" viewBox="0 0 586 346">
 				<title id="title1">HTML5 Network Performance Estimation Tool. by OpenSpeedTest™</title>
@@ -28,8 +18,7 @@
 				</g>
 				<!-- ESTO REPRESENTA LO QUE ES VISIBLE ANTES DE PRESIONAR EL BOTON DE INICIAR -->
 				<g id="intro-Desk">
-					<use id="nightmode"  class="darkmode" onclick="toggleSkin()" xlink:href="#dark" x="10" y="25" width="30" height="30"></use>
-					<use id="daymode"  class="darkmode" onclick="toggleSkin()" xlink:href="#light" x="10" y="25" width="30" height="30"></use>
+
 					<use id="startButtonDesk" class="startButton" xlink:href="#playButton" x="125" y="300.6" width="50.2" height="50.2">
 						<title id="title1">Click here to Run a Speed Test! Or Press "Enter"</title>
 					</use>
