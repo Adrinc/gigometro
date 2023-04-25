@@ -22,4 +22,47 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: -1;
   }
+
   
+  
+  
+  
+  
+  .boton {
+    position: absolute;
+    fill: #ba0e35;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    background-color: #ba0e35;
+    cursor: pointer;
+    pointer-events: visible;
+    bottom: 0;
+  left: 50%;
+  height: 50px;
+  width: 100px;
+  transform: translateX(-50%);
+  z-index: 100;
+  }  
+
+
+
+  .fondo-negro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    z-index: 9999;
+  }
+
+  /* Estilo para el mensaje de carga */
+  #mensaje-carga {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+  }

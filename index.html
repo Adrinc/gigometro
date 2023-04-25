@@ -6,16 +6,22 @@
           content="Test your network speed now. HTML5 Network Performance Estimation Tool. Self-Hosted SpeedTest by OpenSpeedTest™"/>
         <link href="css/app.css" rel="stylesheet" type="text/css" />
         <link href="css/index.css" rel="stylesheet" type="text/css" />
-        <link href="css/rta.css" rel="stylesheet" type="text/css" />
- 
+       
+        <link href="css/tabla.css" rel="stylesheet" type="text/css" />
+        <link href="css/arrows.css" rel="stylesheet" type="text/css" />
+    
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-        <script> window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&(document.head.innerHTML+='<link id="darkmode" rel="stylesheet" href="css/darkmode.css" type="text/css"/>');function getCookieValue(b,a){return(a=document.cookie.match("(^|;)\\s*"+b+"\\s*=\\s*([^;]+)"))?a.pop():""}if("light"===getCookieValue("mode")){var darkStyle=document.getElementById("darkmode");darkStyle&&darkStyle.parentNode.removeChild(darkStyle)}; </script>
+<!--         <script> window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&(document.head.innerHTML+='<link id="darkmode" rel="stylesheet" href="css/darkmode.css" type="text/css"/>');function getCookieValue(b,a){return(a=document.cookie.match("(^|;)\\s*"+b+"\\s*=\\s*([^;]+)"))?a.pop():""}if("light"===getCookieValue("mode")){var darkStyle=document.getElementById("darkmode");darkStyle&&darkStyle.parentNode.removeChild(darkStyle)}; </script> -->
         <script type="text/javascript" src="js/globals.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/darkmode.js"></script>
         <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="js/openSpeedtestShow.js"></script>
+        <script src="js/openSpeedtestGet.js"></script>
+<!--         <script src="js/darkmode.js"></script> -->
+
+<script src="js/app.js"></script>
+
 
 
         <meta charset="UTF-8">
@@ -39,12 +45,59 @@
   <!-- --------- -->
   
   <body>
-    <div style="position:relative;">
-      <object style="visibility:hidden" id="OpenSpeedTest-UI" data="assets/images/app.svg" type="image/svg+xml"></object>
-      <object style="visibility:hidden" id="OpenSpeedTest-UI" data="assets/images/arrow.svg" type="image/svg+xml"></object>
-   <!--    <img class="my-image circular-image" src="https://w7.pngwing.com/pngs/145/895/png-transparent-investment-largest-tech-conference-sensor-velocity-loan-internet-speed-test-angle-investment-logo.png" />
-       -->
-   </div>
+    <div class="fondo-negro" id ="loading_app">
+      <div id="mensaje-carga">Cargando...</div>
+    </div>
+    <button id="startButtonDesk"  class="boton">Haz clic aquí</button>
+
+    <div class="arrow"><div class="arrow-inner"></div></div>
+
+
+    <div>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Valor</th>
+      </tr>
+      <tr>
+        <td>Estado:</td>
+        <td id="estado"></td>
+      </tr>
+      <tr>
+        <td>Velocidad:</td>
+        <td id="velocidad"></td>
+      </tr>
+      <tr>
+        <td>Descarga:</td>
+        <td id="descarga"></td>
+      </tr>
+      <tr>
+        <td>Subida:</td>
+        <td id="subida"></td>
+      </tr>
+      <tr>
+        <td>Ping:</td>
+        <td id="ping"></td>
+      </tr>
+      <tr>
+        <td>Jitter:</td>
+        <td id="jitter"></td>
+      </tr>
+      <tr>
+        <td>Error</td>
+        <td id="error"></td>
+      </tr>
+
+    </table>
+  </div>
+
+
+  
+  <script type="text/javascript" src="js/tabla.js"></script>
+
+
+
+
   </body>
  <!-- --------- -->
   <!-- --------- -->
