@@ -1,3 +1,16 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+
 .my-image {
     position: absolute;
     top: 49.3%;
@@ -23,11 +36,6 @@
     z-index: -1;
   }
 
-  
-  
-  
-  
-  
   .boton {
     position: absolute;
     fill: #ba0e35;
@@ -36,15 +44,14 @@
     background-color: #ba0e35;
     cursor: pointer;
     pointer-events: visible;
-    bottom: 0;
-  left: 50%;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   height: 50px;
   width: 100px;
-  transform: translateX(-50%);
+
   z-index: 100;
   }  
-
-
 
   .fondo-negro {
     display: flex;
@@ -66,3 +73,34 @@
     font-weight: bold;
     text-align: center;
   }
+
+  .background {
+
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2e478c;
+    z-index: -10;
+ 
+  }
+
+  .gigometer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 30rem;
+    height: 30rem;
+    background-image: url("/assets/images/gigo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+  }
+  
