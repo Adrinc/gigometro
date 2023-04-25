@@ -1,12 +1,5 @@
 
-@font-face {
-  font-family: "Plus Jakarta Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/plusjakartasans/v3/LDIkYRESXAYIAYA9DyJMIZhPGe8_tlJ_FaeQB0Y.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+
 
 *
 {
@@ -25,13 +18,17 @@ body
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  font-size: 4rem;
+  font-size: 5rem;
  
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-family: "Plus Jakarta Sans", sans-serif;
 }
-
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2.5rem; /* Tamaño de fuente reducido para pantallas más pequeñas */
+  }
+}
 
 .my-image {
     position: absolute;
@@ -58,22 +55,65 @@ body
     z-index: -1;
   }
 
+
   .boton {
-    position: absolute;
-    fill: #ba0e35;
+    fill: #25cb8e;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
-    background-color: #ba0e35;
+    background-color: #25cb8e;
     cursor: pointer;
     pointer-events: visible;
+    height: 50px;
+    width: 100px;
+    border: 6px solid #7ce0bb; /* Agregar borde del color especificado */
+    border-radius: 25px; /* Para bordes redondeados */
+    color: white; /* Cambiar el color del texto a blanco */
+    font-weight: bold; /* Hacer el texto en negrita */
+    display: flex; /* Para centrar el contenido del botón */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: larger;
+  }
+  .boton:hover {
+    background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
+    border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+  }
+  .boton-secondary {
+    background-color: #d20030;
+    border-color: #e46683;
+    margin-left: 25px; /* Ajusta la separación entre los botones según prefieras */
+  /* Ajusta la separación entre los botones según prefieras */
+  }
+  
+  .boton-secondary:hover {
+    background-color: #e46683; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
+    border-color: #e46683; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+  }
+
+  .boton-container {
+    position: absolute;
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
-  height: 50px;
-  width: 100px;
+    display: flex;
+    z-index: 100;
+  }
 
-  z-index: 100;
-  }  
+  .circle-image {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9; /* Asegurarse de que la imagen esté por encima de los círculos */
+    width: 20%; /* Ajusta el tamaño de la imagen según sea necesario */
+  }
+  
+  .circle-image-left {
+    left: calc(50% - 35%);
+  }
+  
 
   .fondo-negro {
     display: flex;
@@ -97,16 +137,17 @@ body
   }
 
   .background {
-
-
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #2e478c;
+    background-color: #184995;
     z-index: -10;
- 
+    background-image: url("/assets/images/ondas.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
   .gigometer {
@@ -116,8 +157,8 @@ body
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 30rem;
-    height: 30rem;
+    width: 27rem;
+    height: 27rem;
     background-image: url("/assets/images/gigo.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -126,3 +167,126 @@ body
     transform: translate(-50%, -50%);
   }
   
+
+  /* CIRCULOS */
+  .circle-container-left,
+  .circle-container-right {
+    position: relative;
+  }
+  .circle-container {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 8;
+  }
+  
+  .circle-container-left {
+    left: calc(50% - 25%);
+  }
+  
+  .circle-container-right {
+    left: calc(50% + 25%);
+  }
+  
+  .circle-1,
+  .circle-2,
+  .circle-3 {
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .circle-1 {
+    width: 24rem;
+    height: 24rem;
+    background-color: rgba(59, 111, 178, 0.671);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .circle-2 {
+    width: 19.2rem;
+    height: 19.2rem;
+    background-color: #5ca2e6;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .circle-3 {
+    width: 15.36rem;
+    height: 15.36rem;
+    background-color: #2587e2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+/* Carrusel */
+.carousel {
+  position: absolute;
+  top: 77%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-content {
+  color: white;
+  text-align: center;
+}
+
+.carousel-content h4 {
+  font-size: 1.15em;
+  margin-bottom: 2px;
+}
+.carousel-content p {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+.carousel-inner {
+  background-color: transparent;
+}
+
+
+.boton-carrusel {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 50px;
+  width: 130px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.boton-carrusel:hover {
+  background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
+  border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
+  transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+}
+
+
+  /* ************************************************************/
+  /* ************************************************************/
+  /* ************************************************************/
+  /* ************************************************************/
+  /* **************************OCULTAR ELEMENTOS ****************/
+  /* ************************************************************/
+  /* ************************************************************/
+  /* ************************************************************/
+  /* ************************************************************/
+
+    /* Ocultar los círculos en dispositivos móviles */
+    @media screen and (max-width: 1250px) {
+      .circle-container {
+        display: none;
+      }
+      .circle-image {
+        display: none;
+      }
+      .circle-image-left {
+        display: none;
+      }
+    }

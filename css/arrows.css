@@ -12,8 +12,8 @@
 
 .arrow-inner {
   position: relative;
-  width: 10rem; /* Disminuir el ancho de la flecha */
-  height: 1rem; /* Disminuir el alto de la flecha */
+  width: 9rem; /* Disminuir el ancho de la flecha (10rem * 0.8 = 8rem) */
+  height: 0.9rem; /* Disminuir el alto de la flecha (1rem * 0.8 = 0.8rem) */
   background: linear-gradient(to right, red, transparent);
   clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
   border-top-right-radius: 1px;
