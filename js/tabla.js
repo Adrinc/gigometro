@@ -1,12 +1,13 @@
 function setVelocidad(speed) {
+  speed=speed*5;
   document.getElementById("velocidad").innerHTML = speed;
 
   // Aquí se modificaría la rotación del indicador de velocidad
   const arrow = document.querySelector(".arrow");
 
   // Establecer el ángulo de rotación según la velocidad
-  const minAngle = -52; // Ángulo mínimo en grados para una velocidad de 0
-  const maxAngle = 230; // Ángulo máximo en grados para una velocidad de 10
+  const minAngle = -46; // Ángulo mínimo en grados para una velocidad de 0
+  const maxAngle = 230 - (230 * 0.205); // Ángulo máximo en grados para una velocidad de 10
   const maxSpeed = 10;
 
   let rotationAngle;
@@ -20,8 +21,6 @@ function setVelocidad(speed) {
   // Aplicar la rotación
   arrow.style.setProperty("--rotation", `${rotationAngle}deg`);
 }
-
-  
   function setStatus(status) {
     document.getElementById("estado").innerHTML = status;
   }

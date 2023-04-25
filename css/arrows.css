@@ -1,20 +1,21 @@
 .arrow {
-    position: absolute;
-    top: 44%;
-    left: 14%;
-    transform-origin: 100% 50%; /* Cambiar el punto de origen de la transformación */
-    transform: rotate(var(--rotation, -50deg));
-    z-index: 10;
-  }
-  
-  .arrow-inner {
-    position: relative;
-    width: 20rem; /* Incrementado en un 10% */
-    height: 2rem;
-    background: red;
-    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    border-top-right-radius: 1px;
-    border-bottom-right-radius: 1px;
-    
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform-origin: 100% 50%; /* Mantener el punto de origen de la transformación */
+  transform: translate(-100%, -50%) rotate(var(--rotation, -50deg)); /* Cambiar la posición de la aguja */
+  z-index: 10;
+}
+
+.arrow-inner {
+  position: relative;
+  width: 10rem; /* Disminuir el ancho de la flecha */
+  height: 1rem; /* Disminuir el alto de la flecha */
+  background: linear-gradient(to right, red, transparent);
+  clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
