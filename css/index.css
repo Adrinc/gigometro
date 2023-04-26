@@ -1,5 +1,8 @@
 
-
+@font-face {
+  font-family: 'PlusJakartaSans';
+  src: url('../assets/fonts/plusJakartasans.ttf') format('truetype');
+}
 
 *
 {
@@ -19,10 +22,12 @@ body
   transform: translateX(-50%);
   color: white;
   font-size: 5rem;
- 
+  font-weight: 1000;
+  letter-spacing: -5px; 
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: 'PlusJakartaSans', sans-serif;
+
 }
 @media screen and (max-width: 768px) {
   .title {
@@ -157,9 +162,9 @@ body
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 27rem;
-    height: 27rem;
-    background-image: url("/assets/images/gigo.png");
+    width: 32rem;
+    height: 32rem;
+    background-image: url("/assets/images/whitegigometer.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

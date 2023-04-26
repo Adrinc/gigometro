@@ -6,7 +6,7 @@
   top: 50%;
   left: 50%;
   transform-origin: 100% 50%; /* Mantener el punto de origen de la transformación */
-  transform: translate(-100%, -50%) rotate(var(--rotation, -50deg)); /* Cambiar la posición de la aguja */
+  transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg)); /* Cambiar la posición de la aguja */
   z-index: 10;
 }
 
