@@ -107,17 +107,7 @@ body
     z-index: 100;
   }
 
-  .circle-image {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 9; /* Asegurarse de que la imagen esté por encima de los círculos */
-    width: 20%; /* Ajusta el tamaño de la imagen según sea necesario */
-  }
-  
-  .circle-image-left {
-    left: calc(50% - 35%);
-  }
+ 
   
 
   .fondo-negro {
@@ -155,25 +145,11 @@ body
     background-size: cover;
   }
 
-  .gigometer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 32rem;
-    height: 32rem;
-    background-image: url("/assets/images/whitegigometer.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    z-index: 10;
-    transform: translate(-50%, -50%);
-  }
-  
+ 
 
   /* CIRCULOS */
+
+
   .circle-container-left,
   .circle-container-right {
     position: relative;
@@ -201,8 +177,8 @@ body
   }
   
   .circle-1 {
-    width: 24rem;
-    height: 24rem;
+    width: 26rem;
+    height: 26rem;
     background-color: rgba(59, 111, 178, 0.671);
     top: 50%;
     left: 50%;
@@ -210,8 +186,8 @@ body
   }
   
   .circle-2 {
-    width: 19.2rem;
-    height: 19.2rem;
+    width: 24rem;
+    height: 24rem;
     background-color: #5ca2e6;
     top: 50%;
     left: 50%;
@@ -219,18 +195,36 @@ body
   }
   
   .circle-3 {
-    width: 15.36rem;
-    height: 15.36rem;
+    width: 20rem;
+    height: 20rem;
     background-color: #2587e2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  /*
+  **@Imagen circular  
+  */
+
+  .circle-image {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9; /* Asegurarse de que la imagen esté por encima de los círculos */
+    width: 20%; /* Ajusta el tamaño de la imagen según sea necesario */
+  }
   
-/* Carrusel */
+  .circle-image-left {
+    left: calc(50% - 35%);
+  }
+
+/*
+  **@Carrusel
+  */
 .carousel {
   position: absolute;
-  top: 77%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -257,7 +251,7 @@ body
 
 .boton-carrusel {
   position: absolute;
-  bottom: 5%;
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
   height: 50px;

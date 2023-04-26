@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform-origin: 100% 50%; /* Mantener el punto de origen de la transformación */
   transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg)); /* Cambiar la posición de la aguja */
@@ -18,4 +18,20 @@
   clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
   border-top-right-radius: 1px;
   border-bottom-right-radius: 1px;
+}
+.gigometer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  width: 32rem;
+  height: 32rem;
+  background-image: url("/assets/images/whitegigometer.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 10;
+  transform: translate(-50%, -50%);
 }
