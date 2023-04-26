@@ -31,13 +31,18 @@ function setVelocidad(speed) {
   function setStatus(status) {
     document.getElementById("estado").innerHTML = status;
   }
-  function setDescarga(download) {
-    document.getElementById("descarga").innerHTML = download.toFixed(1) + " Gsp";
-  }
-  
   function setSubida(upload) {
     document.getElementById("subida").innerHTML = upload.toFixed(1) + " Gsp";
+    document.getElementById("circle-upload-value").innerHTML = upload.toFixed(1) + " G";
+    document.getElementById("circle-upload-mbps").innerHTML = (upload * 1000).toFixed(1) + " Mbps";
   }
+  
+  function setDescarga(download) {
+    document.getElementById("descarga").innerHTML = download.toFixed(4) + " Gsp";
+    document.getElementById("circle-download-value").innerHTML = download.toFixed(4) + " G";
+    document.getElementById("circle-download-mbps").innerHTML = (download * 1000).toFixed(1) + " Mbps";
+  }
+  
   
   function setPing(ping) {
     document.getElementById("ping").innerHTML = ping.toFixed(1) + " ms";

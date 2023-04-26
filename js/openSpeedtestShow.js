@@ -129,7 +129,7 @@ openSpeedtestShow.prototype.prePing = function() {
 };
 // Esta función inicia una animación de carga antes de la prueba de carga.
 openSpeedtestShow.prototype.app = function() {
-  this.loader.fade("out", 3000, this.ShowAppIntro());
+  this.loader.fade("out", 1000, this.ShowAppIntro());
 };
 // Esta función muestra la introducción a la prueba de carga.
 openSpeedtestShow.prototype.ShowAppIntro = function() {
