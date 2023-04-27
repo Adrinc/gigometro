@@ -1,15 +1,6 @@
 
 window.onload = function() {
-/* 
-  //Obtiene la referencia al elemento appSVG por su ID y lo reemplaza por su contenido
-  var appSVG = document.getElementById("OpenSpeedTest-UI");
-  appSVG.parentNode.replaceChild(appSVG.contentDocument.documentElement, appSVG);
-  //Llama a la función ostOnload que se encarga de inicializar la interfaz de usuario
-  ostOnload();
-  //Inicia la prueba de velocidad en el objeto OpenSpeedTest
 
-
-   */
   OpenSpeedTest.Start();
 };
 
@@ -289,8 +280,8 @@ function mostrarMensaje() {
     function removeEvts() {
 
 
-      Get.remEvt(Show.startButtonDesk.el, "click", runTasks);
-      Get.remEvt(document, "keypress", hiEnter);
+    /*   Get.remEvt(Show.startButtonDesk.el, "click", runTasks);
+      Get.remEvt(document, "keypress", hiEnter); */
     }
    
 
@@ -338,7 +329,7 @@ function mostrarMensaje() {
         }
       }
     }
-    //-------MENSAJE FINAL AL TERMINAR LA PRUEBA DE VELOCIDAD u2122 representa el simbolo de TM var osttm = "\u2122"; 
+
     var myname = "RTA";
     var com = ".com";
     var ost = myname;
@@ -474,9 +465,7 @@ function mostrarMensaje() {
           Show.ConnectionError();
           Status = "busy";
           clearInterval(Engine);
-        /*   var dummyElement = document.createElement("div");
-          dummyElement.innerHTML = '<a xlink:href="https://openspeedtest.com/FAQ.php?ref=NetworkError" style="cursor: pointer" target="_blank"></a>';
-      */
+  
           Show.oDoLiveSpeed.el.textContent = "Network Error";
         }
         if (Status === "SendR") {

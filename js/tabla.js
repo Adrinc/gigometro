@@ -8,7 +8,7 @@ function setVelocidad(speed) {
   const minAngle = -44.5; // Ángulo mínimo en grados para una velocidad de 0
   const maxAngle = 226 - (226 * 0.205); // Ángulo máximo en grados para una velocidad de 10
 
-  const speedValues = [0, 0.002, 0.005, 0.008, 0.5, 1, 2, 5, 8, 10];
+  const speedValues = [0, 0.002, 0.005, 0.008,0.1, 0.5, 1, 2, 5, 8, 10];
   const angleSteps = (maxAngle - minAngle) / (speedValues.length - 1);
   
   let rotationAngle;
@@ -32,8 +32,8 @@ function setVelocidad(speed) {
     document.getElementById("estado").innerHTML = status;
   }
   function setSubida(upload) {
-    document.getElementById("subida").innerHTML = upload.toFixed(1) + " Gsp";
-    document.getElementById("circle-upload-value").innerHTML = upload.toFixed(1) + " G";
+    document.getElementById("subida").innerHTML = upload.toFixed(4) + " Gsp";
+    document.getElementById("circle-upload-value").innerHTML = upload.toFixed(4) + " G";
     document.getElementById("circle-upload-mbps").innerHTML = (upload * 1000).toFixed(1) + " Mbps";
   }
   
