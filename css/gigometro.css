@@ -51,3 +51,11 @@
   z-index: 10;
   transform: translate(-50%, -50%);
 }
+.carrito {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translate(-50%, 0) scale(0.15);
+  z-index: 15;
+}
+

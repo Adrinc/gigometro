@@ -111,3 +111,34 @@ function setVelocidad(speed) {
     const uploadCircle = document.querySelector(".circle-upload");
     uploadCircle.classList.remove("color-blue");
   }
+
+  function startCarAnimation() {
+    const carrito = document.querySelector(".carrito");
+  
+    // Configura la animación GSAP
+    gsap.to(carrito, {
+      duration: 3, // Duración de la animación en segundos
+      rotation: "+=360", // Grados de rotación
+      transformOrigin: "50% 600%", // Punto de origen de la rotación
+      ease: "none", // Animación lineal
+      repeat: -1, // Repite la animación indefinidamente
+    
+      onload: () => {
+        //change Top
+        gsap.to(carrito, {
+         
+          y: -1185,
+  
+        });
+      },
+      onComplete: () => {
+        // Función para agregar una pausa entre repeticiones
+        gsap.delayedCall(3, () => {
+          // Reinicia la animación después de la pausa
+          carrito._gsTransform.rotation = 0;
+        });
+      },
+    });
+  }
+  
+  
