@@ -75,9 +75,3 @@ var openSpeedtestGet = function() {
     return new Blob(genData(size), {type:"application/octet-stream"}, Callback(callback)); // Retorna los datos aleatorios como un objeto Blob
   };
   
-    openSpeedtestGet.prototype.addEvt = function(o, e, f) {
-      o.addEventListener(e, f);
-    };
-    openSpeedtestGet.prototype.remEvt = function(o, e, f) {
-      o.removeEventListener(e, f);
-    };

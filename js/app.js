@@ -4,9 +4,9 @@ window.onload = function() {
  openSpeedtestEngine();
 
 };
-function loadVars(){
-  
-}
+
+
+var stopTest = false;
 var SendData;
 var myhostName = location.hostname;
 var key;
@@ -58,7 +58,6 @@ var com = ".com";
 var ost = myname;
 var showResult = 0;
 var uReQ = [];
-/* Variables de velocidad */
 var dLoad = 0;
 var dDiff = 0;
 var dTotal = 0;
@@ -79,6 +78,95 @@ var dualReset;
 var neXT = dlDuration * 1000 - 6000;
 var dualupReset;
 var neXTUp = ulDuration * 1000 - 6000;
+
+
+
+function resetValues(){
+
+  var Show = new openSpeedtestShow();
+  var Get = new openSpeedtestGet();
+  Show.showStatus("");
+  Show.uploadResult(0);
+  Show.pingResults(0);
+  Show.downloadResult(0);
+  Show.GaugeProgresstoZero(0, "SendR");
+  Get.reset();
+  Show.reset();
+  reSett();
+
+
+  SendData = null;
+  myhostName = location.hostname;
+  key = null;
+  TestServerip = null;
+  downloadSpeed = 0;
+  uploadSpeed = 0;
+  dataUsedfordl = 0;
+  dataUsedforul = 0;
+  pingEstimate = 0;
+  jitterEstimate = 0;
+  logData = null;
+  return_data = null;
+  ReQ = [];
+  StartTime = [];
+  CurrentTime = [];
+  LiveSpeedArr = null;
+  dLoaded = 0;
+  uLoaded = 0;
+  currentSpeed = 0;
+  uploadTimeing = null;
+  downloadTimeing = null;
+  downloadTime = null;
+  uploadTime = null;
+  saveTestData = null;
+  stop = 0;
+  userAgentString = null;
+  ulFinal = ulDuration * 0.6;
+  dlFinal = dlDuration * 0.6;
+  launch = true;
+  init = true;
+  OpenSpeedTestStart = undefined;
+  SelectTest = false;
+
+  fianlPingServer = null;
+  statusPing = null;
+  statusPingFinal = null;
+  statusJitter = null;
+  statusJitterFinal = null;
+  statusPingTest = null;
+  pingSendStatus = -1;
+  finalPing = [];
+  pingServer = [];
+  finalJitter = [];
+  pingSendLength = openSpeedTestServerList.length;
+
+  Startit = 0;
+  myname = "RTA";
+  com = ".com";
+  ost = myname;
+  showResult = 0;
+  uReQ = [];
+  dLoad = 0;
+  dDiff = 0;
+  dTotal = 0;
+  dtLoad = 0;
+  dtDiff = 0;
+  dtTotal = 0;
+  dRest = 0;
+  dReset = null;
+  uReset = null;
+  uLoad = 0;
+  uDiff = 0;
+  uTotal = 0;
+  utLoad = 0;
+  utDiff = 0;
+  utTotal = 0;
+  uRest = 0;
+  dualReset = null;
+  neXT = dlDuration * 1000 - 6000;
+  dualupReset = null;
+  neXTUp = ulDuration * 1000 - 6000;
+}
 
 function sendPing() {
   readServerList();
@@ -320,6 +408,7 @@ function SendReQ(i) {
 
 
 var ServerConnect = function(auth) {
+  var Show = new openSpeedtestShow();
   var Self = this;
   var xhr = new XMLHttpRequest();
   var url = OpenSpeedTestdb;
@@ -372,11 +461,6 @@ var ServerConnect = function(auth) {
   }
   xhr.send(logData);
 };
-
-
-
-
-
 
 
 function OpenSpeedtest() {
@@ -614,9 +698,19 @@ function setFinal() {
 }
 
 function runTasks() {
+  var Show = new openSpeedtestShow();
+  console.log(stopTest);
+  if (stopTest==true){
+    console.log("detenido");
+    return;
+  }else{
+
+ 
       console.log("runTasks");
+      console.log(OpenSpeedTestStart);
 
       if (OpenSpeedTestStart >= 0) {
+        console.log("OpenSpeedTestStart");
         launch = false;
         Show.ShowUI();
         init = false;
@@ -625,11 +719,15 @@ function runTasks() {
         var autoTest = setInterval(countDownF, 1000);
       }
       function countDownF() {
+        console.log("countDownF");
         if (AutoTme >= 1) {
+          console.log("AutoTme >= 1");
           AutoTme = AutoTme - 1;
           Show.LiveSpeed(AutoTme, "countDown");
         } else {
           if (AutoTme <= 0) {
+            console.log("AutoTme <= 0");
+            console.log(autoTest);
             clearInterval(autoTest);
             launch = true;
             OpenSpeedTestStart = undefined;
@@ -637,12 +735,16 @@ function runTasks() {
           }
         }
       }
+      console.log(openSpeedTestServerList);
+      console.log("launch: "+launch);
       if (openSpeedTestServerList === "fetch" && launch === true) {
         launch = false;
         Show.showStatus("Fetching Server Info..");
         ServerConnect(6);
       }
       if (launch === true) {
+        console.log("launch === true");
+        console.log(SelectTest);
         if (SelectTest === "Ping") {
           testRun();
         } else if (SelectTest === "Download") {
@@ -654,6 +756,7 @@ function runTasks() {
         }
       }
     }
+    }
 
 
 
@@ -661,14 +764,14 @@ function runTasks() {
 
 
    function openSpeedtestEngine(){
-    var Get = new openSpeedtestGet();
+    
     var Show = new openSpeedtestShow();
     Show.app();
     reSett();
     if (window.navigator.userAgent) {userAgentString = window.navigator.userAgent;} else {userAgentString = "Not Found";}
     setFinal();
 
-    Get.addEvt(Show.startButtonDesk.el, "click", runTasks);
+
 
     var getParams = function(url) {
       var params = {};
@@ -835,6 +938,7 @@ function runTasks() {
     var runTestT = getCommand.t;
     SelectTest = false;
     if (selectTest) {
+
       if (typeof runTest === "string" || typeof runTestT === "string") {
         var runTestC;
         if (runTest) {
@@ -893,8 +997,17 @@ function runTasks() {
 
     OpenSpeedtest();
 
-/*     sendPing(); */
-
-
-
   }
+
+function stopall(){
+  console.log("stopAll");
+  stopTest = true;
+  resetValues();
+  runTasks();
+}
+function start(){
+  stopTest = false;
+
+  runTasks();
+}
+  
