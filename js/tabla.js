@@ -112,33 +112,28 @@ function setVelocidad(speed) {
     uploadCircle.classList.remove("color-blue");
   }
 
+
+  //-----------------------------------------------------
+  //-----------------------------------------------------
+  //-----------------------------------------------------
+  //---------------------CARRITO-------------------------
+  //-----------------------------------------------------
+  //-----------------------------------------------------
+  let carAnimation;
   function startCarAnimation() {
     const carrito = document.querySelector(".carrito");
   
     // Configura la animación GSAP
-    gsap.to(carrito, {
-      duration: 3, // Duración de la animación en segundos
-      rotation: "+=360", // Grados de rotación
-      transformOrigin: "50% 600%", // Punto de origen de la rotación
-      ease: "none", // Animación lineal
-      repeat: -1, // Repite la animación indefinidamente
-    
-      onload: () => {
-        //change Top
-        gsap.to(carrito, {
-         
-          y: -1185,
-  
-        });
-      },
-      onComplete: () => {
-        // Función para agregar una pausa entre repeticiones
-        gsap.delayedCall(3, () => {
-          // Reinicia la animación después de la pausa
-          carrito._gsTransform.rotation = 0;
-        });
-      },
-    });
+    carAnimation = gsap.timeline({repeat: -1, defaults: {duration: 2, ease: "Sine.easeOut"}})
+      .set(carrito, {y: -1185}) // Establece la posición vertical del carrito antes de comenzar la animación
+      .to(carrito, {
+        rotation: "+=360", // Grados de rotación
+        transformOrigin: "50% 600%", // Punto de origen de la rotación
+      })
+      .add(function() {
+        carrito._gsTransform.rotation = 0; // Reinicia la animación después de la pausa
+      });
   }
+  
   
   

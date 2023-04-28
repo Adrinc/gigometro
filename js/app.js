@@ -167,6 +167,8 @@ function resetValues(){
   neXT = dlDuration * 1000 - 6000;
   dualupReset = null;
   neXTUp = ulDuration * 1000 - 6000;
+  carAnimation.pause();
+  carAnimation.progress(1);
 }
 
 function sendPing() {
