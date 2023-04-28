@@ -1,24 +1,40 @@
+.arrow-red {
+  --arrow-color: red;
+}
+
+.arrow-green {
+  --arrow-color: #25cb8e;
+}
+
+.arrow-blue {
+  --arrow-color: #2196f3;
+}
+.arrow-hidden {
+  display: none;
+}
+
 .arrow {
-  display: flex;
+
   align-items: center;
   justify-content: center;
   position: fixed;
   top: 60%;
   left: 50%;
-  transform-origin: 100% 50%; /* Mantener el punto de origen de la transformación */
-  transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg)); /* Cambiar la posición de la aguja */
+  transform-origin: 100% 50%;
+  transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg));
   z-index: 10;
 }
 
 .arrow-inner {
   position: relative;
-  width: 9rem; /* Disminuir el ancho de la flecha (10rem * 0.8 = 8rem) */
-  height: 0.9rem; /* Disminuir el alto de la flecha (1rem * 0.8 = 0.8rem) */
-  background: linear-gradient(to right, red, transparent);
+  width: 9rem;
+  height: 0.9rem;
+  background: linear-gradient(to right, var(--arrow-color), transparent);
   clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
   border-top-right-radius: 1px;
   border-bottom-right-radius: 1px;
 }
+
 .gigometer {
   display: flex;
   align-items: center;

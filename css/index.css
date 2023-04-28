@@ -221,6 +221,11 @@ body
   }
 
   /* Circulo indicadores de velocidad */
+  .circle-download > div:first-child,
+.circle-upload > div:first-child {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
   .circle-download,
   .circle-upload {
     position: fixed;
@@ -230,7 +235,7 @@ body
     justify-content: center;
     width: 10rem;
     height: 10rem;
-    border: 10px solid #5ca2e6;/* Borde más grueso */
+    border: 10px solid rgba(59, 111, 178, 0.952);/* Borde más grueso */
     border-radius: 50%;
     color: white;
     font-family: 'PlusJakartaSans', sans-serif;
@@ -242,14 +247,20 @@ body
   .circle-download .value,
   .circle-upload .value {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   
   .circle-download .mbps,
   .circle-upload .mbps {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
-  
+  .circle-download .value,
+.circle-upload .value,
+.circle-download .mbps,
+.circle-upload .mbps {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
   .circle-download {
     top: 25%; /* Posición más arriba */
     left: 45%; /* Posición más centrada */
@@ -258,6 +269,13 @@ body
   .circle-upload {
     top: 25%; /* Posición más arriba */
     left: 55%; /* Posición más centrada */
+  }
+  .circle-download.color-green {
+    background-color: #25cb8e;
+  }
+  
+  .circle-upload.color-blue {
+    background-color: #2196f3;
   }
   
 

@@ -4,12 +4,7 @@ window.onload = function() {
     OpenSpeedTest.Start();
   };
   
-  function mostrarMensaje() {
-   
-    var test= openSpeedtestEngine();
-    console.log(test);
-  }
-  
+
   (function(OpenSpeedTest) {
   
   

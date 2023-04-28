@@ -93,7 +93,8 @@ function resetValues(){
   Get.reset();
   Show.reset();
   reSett();
-
+  
+  hideArrows();
 
   SendData = null;
   myhostName = location.hostname;
