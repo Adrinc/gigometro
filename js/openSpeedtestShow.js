@@ -129,7 +129,7 @@ openSpeedtestShow.prototype.prePing = function() {
 };
 // Esta función inicia una animación de carga antes de la prueba de carga.
 openSpeedtestShow.prototype.app = function() {
-  this.loader.fade("out", 3000, this.ShowAppIntro());
+  this.loader.fade("out", 1000, this.ShowAppIntro());
 };
 // Esta función muestra la introducción a la prueba de carga.
 openSpeedtestShow.prototype.ShowAppIntro = function() {
@@ -248,7 +248,7 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
   // Si el parámetro "Display" es "speedToZero", se muestra la velocidad como cero
   if (Display === "speedToZero") {
     if (typeof ShowData == "number") {
-      ShowData = ShowData.toFixed(1);
+      ShowData = ShowData.toFixed(4);
     }
     if (ShowData <= 0) {
       ShowData = 0;
@@ -273,7 +273,7 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
       this.oDoLiveSpeed.el.textContent = speed;  setVelocidad(speed);
     }
     if (ShowData <= 1 && ShowData > 0) {
-      var speed = ShowData.toFixed(3);
+      var speed = ShowData.toFixed(4);
       this.oDoLiveSpeed.el.textContent = speed;  setVelocidad(speed);
     }
     if (ShowData > 1) {
