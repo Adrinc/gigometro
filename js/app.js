@@ -558,6 +558,7 @@ function OpenSpeedtest() {
         Status = "busy";
         stop = 0;
         resetAnimation();
+        retryButton();
       }
     }
     if (Status === "Error") {
@@ -1007,7 +1008,7 @@ function openSpeedtestEngine(){
     resetVisuals();
     resetAnimation();
     runTasks();
-  
+    document.getElementById("startButtonDesk").innerHTML = "Start";
     document.getElementById("startButtonDesk").disabled = false;
     document.getElementById("startButtonDesk").classList.remove("disabled");
     document.getElementById("secondButtonDesk").disabled = true;
@@ -1039,6 +1040,15 @@ function resetVisuals(){
   Get.reset();
   Show.reset();
   hideArrows();
-
 }
   
+function retryButton() {
+  //disable stop button and change start button name to retry
+  document.getElementById("startButtonDesk").innerHTML = "Retry";
+  document.getElementById("startButtonDesk").disabled = false;
+  document.getElementById("startButtonDesk").classList.remove("disabled");
+  document.getElementById("secondButtonDesk").disabled = true;
+  document.getElementById("secondButtonDesk").classList.add("disabled");
+
+
+}
