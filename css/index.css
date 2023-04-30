@@ -1,3 +1,7 @@
+#myTable {
+  display: none;
+}
+
 @font-face {
   font-family: 'PlusJakartaSans';
   src: url('../assets/fonts/plusJakartasans.ttf') format('truetype');
@@ -14,6 +18,10 @@ body
 {
   
     overflow: hidden;
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer, Edge */
+    user-select: none; /* Standard syntax */
 }
 
 .title {
@@ -81,22 +89,22 @@ body
     text-align: center;
     font-size: larger;
   }
-  .boton:hover {
-    background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
-    border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+  .boton:not([disabled]):hover {
+    background-color: #7ce0bb;
+    border-color: #7ce0bb;
+    transition: background-color 0.3s, border-color 0.3s;
   }
   .boton-secondary {
     background-color: #d20030;
     border-color: #e46683;
     margin-left: 25px; /* Ajusta la separación entre los botones según prefieras */
-  /* Ajusta la separación entre los botones según prefieras */
+  
   }
   
-  .boton-secondary:hover {
-    background-color: #e46683; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
-    border-color: #e46683; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+  .boton-secondary:not([disabled]):hover {
+    background-color: #e46683;
+    border-color: #e46683;
+    transition: background-color 0.3s, border-color 0.3s;
   }
 
   .boton-container {
@@ -108,7 +116,12 @@ body
     z-index: 100;
   }
 
- 
+  .disabled {
+    background-color: grey;
+    border-color: grey;
+    cursor: default;
+  }
+  
   
 
   .fondo-negro {
@@ -221,6 +234,11 @@ body
   }
 
   /* Circulo indicadores de velocidad */
+  .circle-download > div:first-child,
+.circle-upload > div:first-child {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
   .circle-download,
   .circle-upload {
     position: fixed;
@@ -230,7 +248,7 @@ body
     justify-content: center;
     width: 10rem;
     height: 10rem;
-    border: 10px solid #5ca2e6;/* Borde más grueso */
+    border: 10px solid rgba(59, 111, 178, 0.952);/* Borde más grueso */
     border-radius: 50%;
     color: white;
     font-family: 'PlusJakartaSans', sans-serif;
@@ -238,18 +256,31 @@ body
     z-index: 11;
     transform: translate(-50%, -50%);
   }
+  .circle-download{
+    margin-left: 8px;
+  }
+  .circle-upload{
+  
+    margin-right: 10px;
+  }
   
   .circle-download .value,
   .circle-upload .value {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   
   .circle-download .mbps,
   .circle-upload .mbps {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
-  
+  .circle-download .value,
+.circle-upload .value,
+.circle-download .mbps,
+.circle-upload .mbps {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
   .circle-download {
     top: 25%; /* Posición más arriba */
     left: 45%; /* Posición más centrada */
@@ -258,6 +289,13 @@ body
   .circle-upload {
     top: 25%; /* Posición más arriba */
     left: 55%; /* Posición más centrada */
+  }
+  .circle-download.color-green {
+    background-color: #25cb8e;
+  }
+  
+  .circle-upload.color-blue {
+    background-color: #2196f3;
   }
   
 
