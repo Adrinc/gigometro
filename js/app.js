@@ -762,11 +762,7 @@ function runTasks() {
     }
 
 
-
-
-
-
-   function openSpeedtestEngine(){
+function openSpeedtestEngine(){
     
     var Show = new openSpeedtestShow();
     Show.app();
@@ -1014,13 +1010,13 @@ function stopall(){
 }
 function start(){
   stopTest = false;
+  shouldStopAnimation = false;
   resetValues();
   resetVisuals();
   runTasks();
 }
 function resetAnimation(){
-  carAnimation.pause();
-  carAnimation.progress(1);
+  shouldStopAnimation = true; 
 }
 function resetVisuals(){
   var Show = new openSpeedtestShow();
