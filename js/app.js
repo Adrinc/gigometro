@@ -998,22 +998,32 @@ function openSpeedtestEngine(){
 
   }
 
-function stopall(){
-  console.log("stopAll");
-  stopTest = true;
-  var Show = new openSpeedtestShow();
-  Show.GaugeProgresstoZero(0, "SendR");
-  resetValues();
-  resetVisuals();
-  resetAnimation();
-  runTasks();
-}
-function start(){
+  function stopall() {
+    console.log("stopAll");
+    stopTest = true;
+    var Show = new openSpeedtestShow();
+    Show.GaugeProgresstoZero(0, "SendR");
+    resetValues();
+    resetVisuals();
+    resetAnimation();
+    runTasks();
+  
+    document.getElementById("startButtonDesk").disabled = false;
+    document.getElementById("startButtonDesk").classList.remove("disabled");
+    document.getElementById("secondButtonDesk").disabled = true;
+    document.getElementById("secondButtonDesk").classList.add("disabled");
+  }
+function start() {
   stopTest = false;
   shouldStopAnimation = false;
   resetValues();
   resetVisuals();
   runTasks();
+
+  document.getElementById("startButtonDesk").disabled = true;
+  document.getElementById("startButtonDesk").classList.add("disabled");
+  document.getElementById("secondButtonDesk").disabled = false;
+  document.getElementById("secondButtonDesk").classList.remove("disabled");
 }
 function resetAnimation(){
   shouldStopAnimation = true; 

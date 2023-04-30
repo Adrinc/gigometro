@@ -89,10 +89,10 @@ body
     text-align: center;
     font-size: larger;
   }
-  .boton:hover {
-    background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
-    border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+  .boton:not([disabled]):hover {
+    background-color: #7ce0bb;
+    border-color: #7ce0bb;
+    transition: background-color 0.3s, border-color 0.3s;
   }
   .boton-secondary {
     background-color: #d20030;
@@ -101,10 +101,10 @@ body
   
   }
   
-  .boton-secondary:hover {
-    background-color: #e46683; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
-    border-color: #e46683; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+  .boton-secondary:not([disabled]):hover {
+    background-color: #e46683;
+    border-color: #e46683;
+    transition: background-color 0.3s, border-color 0.3s;
   }
 
   .boton-container {
@@ -116,7 +116,12 @@ body
     z-index: 100;
   }
 
- 
+  .disabled {
+    background-color: grey;
+    border-color: grey;
+    cursor: default;
+  }
+  
   
 
   .fondo-negro {
