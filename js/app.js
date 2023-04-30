@@ -1014,18 +1014,23 @@ function openSpeedtestEngine(){
     document.getElementById("secondButtonDesk").disabled = true;
     document.getElementById("secondButtonDesk").classList.add("disabled");
   }
-function start() {
-  stopTest = false;
-  shouldStopAnimation = false;
-  resetValues();
-  resetVisuals();
-  runTasks();
-
-  document.getElementById("startButtonDesk").disabled = true;
-  document.getElementById("startButtonDesk").classList.add("disabled");
-  document.getElementById("secondButtonDesk").disabled = false;
-  document.getElementById("secondButtonDesk").classList.remove("disabled");
-}
+  function start() {
+    if (carAnimationCompleted) {
+      stopTest = false;
+      shouldStopAnimation = false;
+      resetValues();
+      resetVisuals();
+      runTasks(); // Mueve esta línea dentro de la condición
+  
+      // Añade esta línea para comenzar la animación del carrito cuando se presiona el botón "Start"
+      startCarAnimation();
+  
+      document.getElementById("startButtonDesk").disabled = true;
+      document.getElementById("startButtonDesk").classList.add("disabled");
+      document.getElementById("secondButtonDesk").disabled = false;
+      document.getElementById("secondButtonDesk").classList.remove("disabled");
+    }
+  }
 function resetAnimation(){
   shouldStopAnimation = true; 
 }
@@ -1043,12 +1048,9 @@ function resetVisuals(){
 }
   
 function retryButton() {
-  //disable stop button and change start button name to retry
   document.getElementById("startButtonDesk").innerHTML = "Retry";
   document.getElementById("startButtonDesk").disabled = false;
   document.getElementById("startButtonDesk").classList.remove("disabled");
   document.getElementById("secondButtonDesk").disabled = true;
   document.getElementById("secondButtonDesk").classList.add("disabled");
-
-
 }
