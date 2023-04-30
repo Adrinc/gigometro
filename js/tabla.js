@@ -130,9 +130,7 @@ function setVelocidad(speed) {
         rotation: "+=360", // Grados de rotación
         transformOrigin: "50% 600%", // Punto de origen de la rotación
       })
-      .add(function() {
-        carrito._gsTransform.rotation = 0; // Reinicia la animación después de la pausa
-      });
+
   }
   
   

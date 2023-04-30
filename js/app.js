@@ -83,19 +83,8 @@ var neXTUp = ulDuration * 1000 - 6000;
 
 function resetValues(){
 
-  var Show = new openSpeedtestShow();
-  var Get = new openSpeedtestGet();
-  Show.showStatus("");
-  Show.uploadResult(0);
-  Show.pingResults(0);
-  Show.downloadResult(0);
-  Show.GaugeProgresstoZero(0, "SendR");
-  Get.reset();
-  Show.reset();
   reSett();
   
-  hideArrows();
-
   SendData = null;
   myhostName = location.hostname;
   key = null;
@@ -167,8 +156,7 @@ function resetValues(){
   neXT = dlDuration * 1000 - 6000;
   dualupReset = null;
   neXTUp = ulDuration * 1000 - 6000;
-  carAnimation.pause();
-  carAnimation.progress(1);
+
 }
 
 function sendPing() {
@@ -361,6 +349,9 @@ function reportCurrentSpeed(now) {
 }
 
 function SendReQ(i) {
+  try{
+
+  
   var lastLoaded = 0;
   var OST = new XMLHttpRequest();
   ReQ[i] = OST;
@@ -407,6 +398,7 @@ function SendReQ(i) {
   };
   ReQ[i].responseType = "arraybuffer";
   ReQ[i].send();
+}catch(e){ return;}
 }
 
 
@@ -565,6 +557,7 @@ function OpenSpeedtest() {
         Show.Symbol(2);
         Status = "busy";
         stop = 0;
+        resetAnimation();
       }
     }
     if (Status === "Error") {
@@ -576,6 +569,9 @@ function OpenSpeedtest() {
       Show.oDoLiveSpeed.el.textContent = "Network Error";
     }
     if (Status === "SendR") {
+      try{
+
+   
       Show.showStatus("Termine: Status SendR");
       Show.oDoLiveSpeed.el.textContent = ost;
       if (location.hostname != myname.toLowerCase() + com) {
@@ -594,6 +590,7 @@ function OpenSpeedtest() {
       reSett();
       clearInterval(Engine);
       console.log("Termino: Reseteado");
+    }catch(e){return;}
     }
   }, 100);
 
@@ -671,7 +668,10 @@ function SendUpReq(i) {
   uReQ[i].setRequestHeader("Content-Type", "application/octet-stream");
   if (i > 0 && uLoaded <= 17000) {
   } else {
+    try{
     uReQ[i].send(SendData);
+    }
+    catch(e){confirm("Error al enviar datos");}
   }
 }
 function testRun() {
@@ -1005,12 +1005,34 @@ function runTasks() {
 function stopall(){
   console.log("stopAll");
   stopTest = true;
+  var Show = new openSpeedtestShow();
+  Show.GaugeProgresstoZero(0, "SendR");
   resetValues();
+  resetVisuals();
+  resetAnimation();
   runTasks();
 }
 function start(){
   stopTest = false;
-
+  resetValues();
+  resetVisuals();
   runTasks();
+}
+function resetAnimation(){
+  carAnimation.pause();
+  carAnimation.progress(1);
+}
+function resetVisuals(){
+  var Show = new openSpeedtestShow();
+  var Get = new openSpeedtestGet();
+  Show.showStatus("");
+  Show.uploadResult(0);
+  Show.pingResults(0);
+  Show.downloadResult(0);
+
+  Get.reset();
+  Show.reset();
+  hideArrows();
+
 }
   
