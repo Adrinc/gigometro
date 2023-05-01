@@ -121,25 +121,29 @@ function setVelocidad(speed) {
   //-----------------------------------------------------
   let carAnimation;
   let shouldStopAnimation = false; // Añade esta variable global
-  
+  let carAnimationCompleted = true;
   function startCarAnimation() {
     const carrito = document.querySelector(".carrito");
   
     // Configura la animación GSAP
-    carAnimation = gsap.timeline({defaults: {duration: 2, ease: "Sine.easeOut"}})
-      .set(carrito, {y: -1185}) // Establece la posición vertical del carrito antes de comenzar la animación
+    carAnimation = gsap.timeline({ defaults: { duration: 2, ease: "Sine.easeOut" } })
+      .set(carrito, { y: -1185 }) // Establece la posición vertical del carrito antes de comenzar la animación
       .to(carrito, {
         rotation: "+=360", // Grados de rotación
         transformOrigin: "50% 600%", // Punto de origen de la rotación
       })
+      .eventCallback("onStart", () => {
+        carAnimationCompleted = false;
+      })
       .eventCallback("onComplete", () => {
         if (shouldStopAnimation) {
-          carAnimation.progress(1); // Cambia esta línea
+          carAnimation.progress(1); 
           carAnimation.pause();
           shouldStopAnimation = false;
         } else {
           carAnimation.restart();
         }
+        carAnimationCompleted = true;
       });
   }
   
