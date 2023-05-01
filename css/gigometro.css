@@ -62,3 +62,47 @@
   z-index: 15;
 }
 
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .gigometer {
+    top: 50%;
+    width: 22rem;
+    height: 22rem;
+  }
+  .arrow {
+    top: 50%;
+    transform-origin: 100% 50%;
+  }
+  .arrow-inner {
+    position: relative;
+    width: 7.5rem;
+    height: 0.6rem;
+  }
+  .carrito {
+    top: -20%;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0.08);
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .gigometer {
+
+    width: 28rem;
+    height: 28rem;
+  }
+  .arrow {
+    transform-origin: 100% 50%;
+  }
+  .arrow-inner {
+    position: relative;
+    width: 9rem;
+    height: 0.8rem;
+  }
+  .carrito {
+    top: -18%;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0.1);
+  }
+}
+
