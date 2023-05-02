@@ -1,4 +1,5 @@
 function setVelocidad(speed) {
+  speed = speed*1000;
   document.getElementById("velocidad").innerHTML = speed;
 
   // Aquí se modificaría la rotación del indicador de velocidad
@@ -8,7 +9,7 @@ function setVelocidad(speed) {
   const minAngle = -44.5; // Ángulo mínimo en grados para una velocidad de 0
   const maxAngle = 226 - (226 * 0.205); // Ángulo máximo en grados para una velocidad de 10
 
-  const speedValues = [0, 0.002, 0.005, 0.008,0.1, 0.5, 1, 2, 5, 8, 10];
+  const speedValues = [0, 20, 50, 80, 100, 500, 1000, 2000, 5000, 8000, 10000];
   const angleSteps = (maxAngle - minAngle) / (speedValues.length - 1);
   
   let rotationAngle;
@@ -21,7 +22,7 @@ function setVelocidad(speed) {
     }
   }
 
-  if (speed >= 10) {
+  if (speed >= 10000) {
     rotationAngle = maxAngle;
   }
 
@@ -32,26 +33,30 @@ function setVelocidad(speed) {
     document.getElementById("estado").innerHTML = status;
   }
   function setSubida(upload) {
-    document.getElementById("subida").innerHTML = upload.toFixed(3) + " Gsp";
-    document.getElementById("circle-upload-value").innerHTML = upload.toFixed(3) + " G";
-    document.getElementById("circle-upload-mbps").innerHTML = (upload * 1000).toFixed(1) + " Mbps";
+   
+    document.getElementById("subida").innerHTML = upload.toFixed(3) + " GB";
+    document.getElementById("circle-upload-value").innerHTML = upload.toFixed(3) + " GB";
+    document.getElementById("circle-upload-mbps").innerHTML = (upload * 1000).toFixed(1) + " MB";
       // Mostrar y rotar la flecha azul
       const blueArrow = document.querySelector(".arrow-blue");
       blueArrow.classList.remove("arrow-hidden");
       const uploadCircle = document.querySelector(".circle-upload");
       uploadCircle.classList.add("color-blue");
+      upload=upload*1000;
   setArrowRotation(blueArrow, upload);
   }
   
   function setDescarga(download) {
-    document.getElementById("descarga").innerHTML = download.toFixed(3) + " Gsp";
-    document.getElementById("circle-download-value").innerHTML = download.toFixed(3) + " G";
-    document.getElementById("circle-download-mbps").innerHTML = (download * 1000).toFixed(1) + " Mbps";
+  
+    document.getElementById("descarga").innerHTML = download.toFixed(3) + " GB";
+    document.getElementById("circle-download-value").innerHTML = download.toFixed(3) + " GB";
+    document.getElementById("circle-download-mbps").innerHTML = (download * 1000).toFixed(1) + " MB";
       // Mostrar y rotar la flecha verde
       const greenArrow = document.querySelector(".arrow-green");
       greenArrow.classList.remove("arrow-hidden");
       const downloadCircle = document.querySelector(".circle-download");
       downloadCircle.classList.add("color-green");
+      download=download*1000;
   setArrowRotation(greenArrow, download);
   
   }
@@ -73,7 +78,7 @@ function setVelocidad(speed) {
     const minAngle = -44.5; // Ángulo mínimo en grados para una velocidad de 0
     const maxAngle = 226 - (226 * 0.205); // Ángulo máximo en grados para una velocidad de 10
   
-    const speedValues = [0, 0.002, 0.005, 0.008,0.1, 0.5, 1, 2, 5, 8, 10];
+    const speedValues = [0, 20, 50, 80, 100, 500, 1000, 2000, 5000, 8000, 10000];
     const angleSteps = (maxAngle - minAngle) / (speedValues.length - 1);
     
     let rotationAngle;
@@ -86,7 +91,7 @@ function setVelocidad(speed) {
       }
     }
   
-    if (speed >= 10) {
+    if (speed >= 10000) {
       rotationAngle = maxAngle;
     }
   
