@@ -71,7 +71,7 @@
 
 
 /* ------------------------------ */
-@media screen and (max-width: 768px) and (orientation: landscape) {
+/* @media screen and (max-width: 768px) and (orientation: landscape) {
   .gigometer {
     top: 50%;
     width: 22rem;
@@ -114,4 +114,4 @@
     transform: translate(-50%, 0) scale(0.1);
   }
 }
-
+ */

@@ -23,6 +23,10 @@ body
     -ms-user-select: none; /* Internet Explorer, Edge */
     user-select: none; /* Standard syntax */
 }
+/* Media screen for 1080p 2k and 4k */
+@media screen and (min-width: 1px) {
+ 
+
 
 .title {
   position: absolute;
@@ -348,16 +352,6 @@ body
 }
 
 
-  /* ************************************************************/
-  /* ************************************************************/
-  /* ************************************************************/
-  /* ************************************************************/
-  /* **************************OCULTAR ELEMENTOS ****************/
-  /* ************************************************************/
-  /* ************************************************************/
-  /* ************************************************************/
-  /* ************************************************************/
-/* Móvil: 375 x 667 */
 
   @media screen and (max-width: 1600px) {
  
@@ -390,22 +384,15 @@ body
     letter-spacing: -2px; 
 
   }
-
-
+  .circle-container {
+    display: none;
+  }
+  .circle-image {
+    display: none;
+  }
+  .circle-image-left {
+    display: none;
   }
 
-
-
-  
-    /* Ocultar los círculos en dispositivos móviles */
-    @media screen and (max-width: 1250px) {
-      .circle-container {
-        display: none;
-      }
-      .circle-image {
-        display: none;
-      }
-      .circle-image-left {
-        display: none;
-      }
-    }
+  }
+}

@@ -127,19 +127,19 @@ function setVelocidad(speed) {
   //-----------------------------------------------------
   //-----------------------------------------------------
   let carAnimation;
-  let shouldStopAnimation = false; 
+  let shouldStopAnimation = false; // Añade esta variable global
   let carAnimationCompleted = true;
   let puntoOrigen = -1185;
   let radioRotacion = "50% 600%";
   function startCarAnimation() {
     const carrito = document.querySelector(".carrito");
     updateCarAnimationTransformOrigin();  
-
+    // Configura la animación GSAP
     carAnimation = gsap.timeline({ defaults: { duration: 2, ease: "Sine.easeOut" } })
-      .set(carrito, { y: puntoOrigen }) 
+      .set(carrito, { y: puntoOrigen }) // Establece la posición vertical del carrito antes de comenzar la animación
       .to(carrito, {
-        rotation: "+=360", 
-        transformOrigin: radioRotacion, 
+        rotation: "+=360", // Grados de rotación
+        transformOrigin: radioRotacion, // Punto de origen de la rotación
       })
       .eventCallback("onStart", () => {
         carAnimationCompleted = false;
