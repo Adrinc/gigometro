@@ -153,7 +153,7 @@ body
     height: 100vh;
     background-color: #184995;
     z-index: -10;
-    background-image: url("/assets/images/ondas.png");
+    background-image: url("../assets/images/ondas.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -357,6 +357,7 @@ body
   /* ************************************************************/
   /* ************************************************************/
   /* ************************************************************/
+/* Móvil: 375 x 667 */
 
   @media screen and (max-width: 1600px) {
  
@@ -393,52 +394,6 @@ body
 
   }
 
-  @media screen and (max-width: 768px) {
- 
-    .circle-download,
-    .circle-upload {
-
-      width: 8.5rem;
-      height: 8.5rem;
-      border: 8px solid rgba(59, 111, 178, 0.952);/* Borde más grueso */
-      border-radius: 50%;
-   
-    }
-
-  .circle-download{
-    margin-left: -50px;
-
-  }
-  .circle-upload{
-
-    margin-left: 50px;
-  }
-
-  .circle-download .value,
-  .circle-upload .value {
-    font-weight: bold;
-    font-size: 1.3rem;
-  }
-  
-  .circle-download .mbps,
-  .circle-upload .mbps {
-    font-size: 0.9rem;
-  }
-
-  .title {
-    position: absolute;
-    top: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 2.5rem;
-    font-weight: 1000;
-    letter-spacing: -1px; 
-
-  }
-
-
-  }
 
 
   

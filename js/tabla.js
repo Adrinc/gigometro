@@ -43,6 +43,7 @@ function setVelocidad(speed) {
       const uploadCircle = document.querySelector(".circle-upload");
       uploadCircle.classList.add("color-blue");
       upload=upload*1000;
+      //upload=83;
   setArrowRotation(blueArrow, upload);
   }
   
@@ -57,6 +58,7 @@ function setVelocidad(speed) {
       const downloadCircle = document.querySelector(".circle-download");
       downloadCircle.classList.add("color-green");
       download=download*1000;
+      //download=58;
   setArrowRotation(greenArrow, download);
   
   }
@@ -125,19 +127,19 @@ function setVelocidad(speed) {
   //-----------------------------------------------------
   //-----------------------------------------------------
   let carAnimation;
-  let shouldStopAnimation = false; // Añade esta variable global
+  let shouldStopAnimation = false; 
   let carAnimationCompleted = true;
   let puntoOrigen = -1185;
   let radioRotacion = "50% 600%";
   function startCarAnimation() {
     const carrito = document.querySelector(".carrito");
     updateCarAnimationTransformOrigin();  
-    // Configura la animación GSAP
+
     carAnimation = gsap.timeline({ defaults: { duration: 2, ease: "Sine.easeOut" } })
-      .set(carrito, { y: puntoOrigen }) // Establece la posición vertical del carrito antes de comenzar la animación
+      .set(carrito, { y: puntoOrigen }) 
       .to(carrito, {
-        rotation: "+=360", // Grados de rotación
-        transformOrigin: radioRotacion, // Punto de origen de la rotación
+        rotation: "+=360", 
+        transformOrigin: radioRotacion, 
       })
       .eventCallback("onStart", () => {
         carAnimationCompleted = false;
@@ -160,15 +162,21 @@ function setVelocidad(speed) {
   window.addEventListener("resize", updateCarAnimationTransformOrigin); 
   function updateCarAnimationTransformOrigin() {
     const carrito = document.querySelector('.carrito');
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 375 && window.innerHeight <= 667) {
+      puntoOrigen = -1250;
+      radioRotacion = "50% 599%";
+      gsap.set(carrito, { transformOrigin: '50% 50%' });
+    }
+    else if(window.innerWidth <= 667 && window.innerHeight <= 375){
+       puntoOrigen = -1120;
+      radioRotacion = "50% 542%";
+      gsap.set(carrito, { transformOrigin: '50% 50%' });
+    } 
+    else if (window.innerWidth <= 768) {
       puntoOrigen = -1582;
       radioRotacion = "50% 745%";
       gsap.set(carrito, { transformOrigin: '50% 50%' });
-    } /* else {
-      puntoOrigen = -1185;
-      radioRotacion = "50% 600%";
-      gsap.set(carrito, { transformOrigin: '50% 50%' });
-    } */
+    } 
   }
   
   

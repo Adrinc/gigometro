@@ -590,7 +590,7 @@ function OpenSpeedtest() {
       Get.reset();
       reSett();
       clearInterval(Engine);
-      console.log("Termino: Reseteado");
+      
     }catch(e){return;}
     }
   }, 100);
@@ -703,18 +703,17 @@ function setFinal() {
 
 function runTasks() {
   var Show = new openSpeedtestShow();
-  console.log(stopTest);
+
   if (stopTest==true){
-    console.log("detenido");
+
     return;
   }else{
 
  
-      console.log("runTasks");
-      console.log(OpenSpeedTestStart);
+  
 
       if (OpenSpeedTestStart >= 0) {
-        console.log("OpenSpeedTestStart");
+    
         launch = false;
         Show.ShowUI();
         init = false;
@@ -723,15 +722,14 @@ function runTasks() {
         var autoTest = setInterval(countDownF, 1000);
       }
       function countDownF() {
-        console.log("countDownF");
+     
         if (AutoTme >= 1) {
-          console.log("AutoTme >= 1");
+
           AutoTme = AutoTme - 1;
           Show.LiveSpeed(AutoTme, "countDown");
         } else {
           if (AutoTme <= 0) {
-            console.log("AutoTme <= 0");
-            console.log(autoTest);
+
             clearInterval(autoTest);
             launch = true;
             OpenSpeedTestStart = undefined;
@@ -739,16 +737,14 @@ function runTasks() {
           }
         }
       }
-      console.log(openSpeedTestServerList);
-      console.log("launch: "+launch);
+
       if (openSpeedTestServerList === "fetch" && launch === true) {
         launch = false;
         Show.showStatus("Fetching Server Info..");
         ServerConnect(6);
       }
       if (launch === true) {
-        console.log("launch === true");
-        console.log(SelectTest);
+
         if (SelectTest === "Ping") {
           testRun();
         } else if (SelectTest === "Download") {
@@ -1000,7 +996,7 @@ function openSpeedtestEngine(){
   }
 
   function stopall() {
-    console.log("stopAll");
+   
     stopTest = true;
     var Show = new openSpeedtestShow();
     Show.GaugeProgresstoZero(0, "SendR");
