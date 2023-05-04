@@ -1,3 +1,5 @@
+
+
 function setVelocidad(speed) {
   speed = speed*1000;
   document.getElementById("velocidad").innerHTML = speed;
@@ -127,13 +129,15 @@ function setVelocidad(speed) {
   //-----------------------------------------------------
   //-----------------------------------------------------
   let carAnimation;
-  let shouldStopAnimation = false; // Añade esta variable global
+  let shouldStopAnimation = false; 
   let carAnimationCompleted = true;
   let puntoOrigen = -1185;
   let radioRotacion = "50% 600%";
+  let carrito = document.querySelector(".carrito");
+  
   function startCarAnimation() {
-    const carrito = document.querySelector(".carrito");
-    updateCarAnimationTransformOrigin();  
+
+   updateCarAnimationTransformOrigin();  
     // Configura la animación GSAP
     carAnimation = gsap.timeline({ defaults: { duration: 2, ease: "Sine.easeOut" } })
       .set(carrito, { y: puntoOrigen }) // Establece la posición vertical del carrito antes de comenzar la animación
@@ -157,26 +161,90 @@ function setVelocidad(speed) {
   }
   document.addEventListener('DOMContentLoaded', () => {
     updateCarAnimationTransformOrigin();
+   
   });
   
-  window.addEventListener("resize", updateCarAnimationTransformOrigin); 
+/*   window.addEventListener("resize", updateCarAnimationTransformOrigin);  */
+  window.addEventListener("resize", resetCarAnimation); 
+  function resetCarAnimation() {
+    updateCarAnimationTransformOrigin();
+    if (carAnimation) {
+     stopall();
+    }
+  }
+
   function updateCarAnimationTransformOrigin() {
-    const carrito = document.querySelector('.carrito');
+  const carritoStyles = window.getComputedStyle(carrito);
+  const carritoElements = document.querySelectorAll(".carrito");
+/*   const topValue = carritoStyles.getPropertyValue('top');
+  const transformValue = carritoStyles.getPropertyValue('transform'); */
+    gsap.set(carrito, { transformOrigin: '50% 50%' });
+    //375x667
     if (window.innerWidth <= 375 && window.innerHeight <= 667) {
       puntoOrigen = -1250;
       radioRotacion = "50% 599%";
-      gsap.set(carrito, { transformOrigin: '50% 50%' });
+  
     }
     else if(window.innerWidth <= 667 && window.innerHeight <= 375){
        puntoOrigen = -1120;
       radioRotacion = "50% 542%";
-      gsap.set(carrito, { transformOrigin: '50% 50%' });
+  
     } 
-    else if (window.innerWidth <= 768) {
-      puntoOrigen = -1582;
-      radioRotacion = "50% 745%";
-      gsap.set(carrito, { transformOrigin: '50% 50%' });
+    //-----------------------------------------------------
+    //390x844
+    else if(window.innerWidth <= 390 && window.innerHeight <= 884){
+       puntoOrigen = -1250;
+      radioRotacion = "50% 599%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-26%"; 
+        carrito.style.transform = "translate(-50%, 0) scale(0.10)"; 
+      });
     } 
+    else if(window.innerWidth <= 884 && window.innerHeight <= 390){
+       puntoOrigen = -1120;
+      radioRotacion = "50% 542%";
+     carritoElements.forEach((carrito) => {
+        carrito.style.top = "-32%"; 
+        carrito.style.transform = "translate(-50%, 0) scale(0.10)"; 
+      });
+    } 
+
+    //-----------------------------------------------------
+    //414x896
+    else if(window.innerWidth <= 414 && window.innerHeight <= 896){ console.log("414x896");
+        puntoOrigen = -1278;
+      radioRotacion = "50% 630%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-16%"; 
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)"; 
+      });
+    
+    }
+    else if(window.innerWidth <= 896 && window.innerHeight <= 414){ console.log("896x414");
+      puntoOrigen = -990;
+      radioRotacion = "50% 500%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-25%"; 
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)"; 
+      });
+    
+    }
+    //-----------------------------------------------------
+    else if (window.innerWidth <= 1) {
+      puntoOrigen = -1185;
+      radioRotacion = "50% 600%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-15%"; 
+        carrito.style.transform = "translate(-50%, 0) scale(0.15)"; 
+      } );
+    } 
+
+/* 
+console.log('Top value:', topValue);
+console.log('Transform value:', transformValue);
+ */
+
+
   }
   
   
