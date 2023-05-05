@@ -212,7 +212,7 @@ function setVelocidad(speed) {
 
     //-----------------------------------------------------
     //414x896
-    else if(window.innerWidth <= 414 && window.innerHeight <= 896){ console.log("414x896");
+    else if(window.innerWidth <= 414 && window.innerHeight <= 896){ 
         puntoOrigen = -1278;
       radioRotacion = "50% 630%";
       carritoElements.forEach((carrito) => {
@@ -221,7 +221,27 @@ function setVelocidad(speed) {
       });
     
     }
-    else if(window.innerWidth <= 896 && window.innerHeight <= 414){ console.log("896x414");
+    else if(window.innerWidth <= 896 && window.innerHeight <= 414){ 
+      puntoOrigen = -990;
+      radioRotacion = "50% 500%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-25%"; 
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)"; 
+      });
+    
+    }
+    //-----------------------------------------------------
+    //600x900
+    else if(window.innerWidth <= 600 && window.innerHeight <= 900){ 
+        puntoOrigen = -1235;
+      radioRotacion = "50% 610%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-19%"; 
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)"; 
+      });
+    
+    }
+    else if(window.innerWidth <= 900 && window.innerHeight <= 600){ 
       puntoOrigen = -990;
       radioRotacion = "50% 500%";
       carritoElements.forEach((carrito) => {
