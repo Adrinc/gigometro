@@ -29,52 +29,6 @@ body
  
 
 
-.title {
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 5rem;
-  font-weight: 1000;
-  letter-spacing: -5px; 
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: 'PlusJakartaSans', sans-serif;
-}
-
-@media screen and (max-width: 768px) {
-  .title {
-    font-size: 2.5rem; /* Tamaño de fuente reducido para pantallas más pequeñas */
-  }
-}
-
-.my-image {
-    position: absolute;
-    top: 49.3%;
-    left: 26.4%;
-    transform: translate(-50%, -50%);
-    width: 640px;
-    height: 640px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: -1;
-  }
-  .my-image2 {
-    position: absolute;
-    top: 49.3%;
-    left: 22%;
-    transform: translate(-50%, -50%);
-    width: 25%;
-    height: 44%;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: -1;
-  }
-
-
   .boton {
     fill: #25cb8e;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -114,7 +68,7 @@ body
 
   .boton-container {
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -150,91 +104,7 @@ body
     text-align: center;
   }
 
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #184a9500;
-    z-index: -10;
-
-  }
-
  
-
-  /* CIRCULOS */
-
-
-  .circle-container-left,
-  .circle-container-right {
-    position: relative;
-  }
-  .circle-container {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 8;
-  }
-  
-  .circle-container-left {
-    left: calc(50% - 25%);
-  }
-  
-  .circle-container-right {
-    left: calc(50% + 25%);
-  }
-  
-  .circle-1,
-  .circle-2,
-  .circle-3 {
-    position: absolute;
-    border-radius: 50%;
-  }
-  
-  .circle-1 {
-    width: 26rem;
-    height: 26rem;
-    background-color: rgba(59, 111, 178, 0.671);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .circle-2 {
-    width: 24rem;
-    height: 24rem;
-    background-color: #5ca2e6;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .circle-3 {
-    width: 20rem;
-    height: 20rem;
-    background-color: #2587e2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /*
-  **@Imagen circular  
-  */
-
-  .circle-image {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 9; /* Asegurarse de que la imagen esté por encima de los círculos */
-    width: 20%; /* Ajusta el tamaño de la imagen según sea necesario */
-  }
-  
-  .circle-image-left {
-    left: calc(50% - 35%);
-  }
-
   /* Circulo indicadores de velocidad */
   .circle-download > div:first-child,
 .circle-upload > div:first-child {
@@ -284,13 +154,15 @@ body
 }
 
   .circle-download {
-    top: 25%; /* Posición más arriba */
+    top: 15%; /* Posición más arriba */
     left: 45%; /* Posición más centrada */
+    margin-left: -55px;
   }
   
   .circle-upload {
-    top: 25%; /* Posición más arriba */
+    top: 15%; /* Posición más arriba */
     left: 55%; /* Posición más centrada */
+    margin-left: 55px;
   }
   .circle-download.color-green {
     background-color: #25cb8e;
@@ -301,98 +173,6 @@ body
   }
   
 
-
-/*
-  **@Carrusel
-  */
-.carousel {
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-content {
-  color: white;
-  text-align: center;
-}
-
-.carousel-content h4 {
-  font-size: 1.15em;
-  margin-bottom: 2px;
-}
-.carousel-content p {
-  font-size: 0.9em;
-  margin-bottom: 10px;
-}
-.carousel-inner {
-  background-color: transparent;
-}
-
-
-.boton-carrusel {
-  position: absolute;
-  bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 50px;
-  width: 130px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.boton-carrusel:hover {
-  background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
-  border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
-  transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
-}
-
-
-
-  @media screen and (max-width: 1600px) {
- 
-    .circle-image {
-      position: fixed;
-      top: 50%;
-      margin-left: -80px;
-      transform: translateY(-50%);
-      z-index: 9; /* Asegurarse de que la imagen esté por encima de los círculos */
-      width: 30%; /* Ajusta el tamaño de la imagen según sea necesario */
-    }
-
-  .circle-download{
-    margin-left: -50px;
-
-  }
-  .circle-upload{
-
-    margin-left: 50px;
-  }
-
-  .title {
-    position: absolute;
-    top: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 3.4rem;
-    font-weight: 1000;
-    letter-spacing: -2px; 
-
-  }
-  .circle-container {
-    display: none;
-  }
-  .circle-image {
-    display: none;
-  }
-  .circle-image-left {
-    display: none;
-  }
-
-  }
 
   .arrow-red {
     --arrow-color: #ba1f3b;
@@ -414,7 +194,7 @@ body
     align-items: center;
     justify-content: center;
     position: fixed;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform-origin: 100% 50%;
     transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg));
@@ -439,7 +219,7 @@ body
     align-items: center;
     justify-content: center;
     position: fixed;
-    top: 60%;
+    top: 50%;
     left: 50%;
     width: 32rem;
     height: 32rem;

@@ -155,15 +155,12 @@ function setVelocidad(speed) {
           shouldStopAnimation = false;
         } else {
           carAnimation.restart();
+          carAnimation.set(carrito, { y: puntoOrigen }) 
         }
         carAnimationCompleted = true;
       });
   }
-  document.addEventListener('DOMContentLoaded', () => {
-    disableScroll();
-    updateCarAnimationTransformOrigin();
-   
-  });
+
   
 /*   window.addEventListener("resize", updateCarAnimationTransformOrigin);  */
   window.addEventListener("resize", resetCarAnimation); 
@@ -209,8 +206,25 @@ function setVelocidad(speed) {
         carrito.style.transform = "translate(-50%, 0) scale(0.10)"; 
       });
     } 
-
+    //393x851
+    else if(window.innerWidth <= 393 && window.innerHeight <= 851){
+        puntoOrigen = -1250;
+      radioRotacion = "50% 599%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-26%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.10)";
+      });
+    }
+    else if(window.innerWidth <= 851 && window.innerHeight <= 393){
+        puntoOrigen = -1120;
+      radioRotacion = "50% 542%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-32%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.10)";
+      });
+    }
     //-----------------------------------------------------
+
     //414x896
     else if(window.innerWidth <= 414 && window.innerHeight <= 896){ 
         puntoOrigen = -1278;
@@ -230,6 +244,28 @@ function setVelocidad(speed) {
       });
     
     }
+
+    //-----------------------------------------------------
+    //412x915
+    else if(window.innerWidth <= 412 && window.innerHeight <= 915){
+        puntoOrigen = -1210; 
+      radioRotacion = "50% 600%";
+    
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-18%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+       
+      });
+    }
+    else if(window.innerWidth <= 915 && window.innerHeight <= 412){
+        puntoOrigen = -1015;
+      radioRotacion = "50% 500%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-33%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.11)";
+      });
+    }
+
     //-----------------------------------------------------
     //600x900
     else if(window.innerWidth <= 600 && window.innerHeight <= 900){ 
@@ -274,4 +310,8 @@ function disableScroll() {
 }
   
   
-  
+document.addEventListener('DOMContentLoaded', () => {
+  disableScroll();
+  updateCarAnimationTransformOrigin();
+ 
+});

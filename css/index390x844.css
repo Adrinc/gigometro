@@ -1,45 +1,5 @@
 @media screen and (max-width: 390px) and (max-height: 884px) {
-    .title {
-      position: absolute;
-      top: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 2rem;
-      font-weight: 1000;
-      letter-spacing: -1px; 
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      font-family: 'PlusJakartaSans', sans-serif;
-    }
-    
-  
-    .my-image {
-        position: absolute;
-        top: 49.3%;
-        left: 26.4%;
-        transform: translate(-50%, -50%);
-        width: 640px;
-        height: 640px;
-        object-fit: cover;
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        z-index: -1;
-      }
-      .my-image2 {
-        position: absolute;
-        top: 49.3%;
-        left: 22%;
-        transform: translate(-50%, -50%);
-        width: 25%;
-        height: 44%;
-        object-fit: cover;
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        z-index: -1;
-      }
-    
-    
+
       .boton {
         fill: #25cb8e;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -168,8 +128,8 @@
         align-items: center;
         justify-content: center;
     
-        width: 8rem;
-        height: 8rem;
+        width: 7.5rem;
+        height: 7.5rem;
         border: 7px solid rgba(59, 111, 178, 0.952);/* Borde más grueso */
         border-radius: 50%;
         color: white;
@@ -197,15 +157,15 @@
     }
     
       .circle-download {
-        top: 27%; 
+        top: 15%; 
         left: 45%; 
-        margin-left: -50px;
+        margin-left: -55px;
       }
       
       .circle-upload {
-        top: 27%; 
+        top: 15%; 
         left: 55%; 
-        margin-left: 50px;
+        margin-left: 55px;
       }
       .circle-download.color-green {
         background-color: #25cb8e;
@@ -299,12 +259,7 @@
         }
         
         .arrow {
-        
-          align-items: center;
-          justify-content: center;
-          position: fixed;
-          top: 60%;
-          left: 50%;
+   
           transform-origin: 100% 50%;
           transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg));
           z-index: 10;  
@@ -325,11 +280,7 @@
         
         .gigometer {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          position: fixed;
-          top: 60%;
-          left: 50%;
+   
           width: 22rem;
           height: 22rem;
           background-image: url("../assets/images/whitegigometer.png");
@@ -346,6 +297,15 @@
           transform: translate(-50%, 0) scale(0.10);
           z-index: 15;
         }
+
+        .gigometer,
+        .arrow{
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+        }
     }
   
   
@@ -354,46 +314,7 @@
     /* Horizontal */
   
     @media screen and (max-width: 844px) and (max-height: 390px) {
-      .title {
-        position: absolute;
-        top: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        font-size: 2rem;
-        font-weight: 1000;
-        letter-spacing: -1px; 
-        text-align: center;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        font-family: 'PlusJakartaSans', sans-serif;
-      }
-      
-    
-      .my-image {
-          position: absolute;
-          top: 49.3%;
-          left: 26.4%;
-          transform: translate(-50%, -50%);
-          width: 640px;
-          height: 640px;
-          object-fit: cover;
-          border-radius: 50%;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          z-index: -1;
-        }
-        .my-image2 {
-          position: absolute;
-          top: 49.3%;
-          left: 22%;
-          transform: translate(-50%, -50%);
-          width: 25%;
-          height: 44%;
-          object-fit: cover;
-          border-radius: 50%;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          z-index: -1;
-        }
-      
+ 
       
         .boton {
           fill: #25cb8e;
