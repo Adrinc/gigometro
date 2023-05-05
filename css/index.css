@@ -22,6 +22,7 @@ body
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer, Edge */
     user-select: none; /* Standard syntax */
+    background-color: #ffffff00 !important;
 }
 /* Media screen for 1080p 2k and 4k */
 @media screen and (min-width: 1px) {
@@ -42,7 +43,11 @@ body
   font-family: 'PlusJakartaSans', sans-serif;
 }
 
-
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2.5rem; /* Tamaño de fuente reducido para pantallas más pequeñas */
+  }
+}
 
 .my-image {
     position: absolute;
@@ -133,7 +138,7 @@ body
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: #2f5598;
+    background-color: #2f559800;
     z-index: 9999;
   }
 
@@ -151,12 +156,9 @@ body
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #184995;
+    background-color: #184a9500;
     z-index: -10;
-    background-image: url("../assets/images/ondas.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+
   }
 
  
@@ -351,7 +353,15 @@ body
 
   @media screen and (max-width: 1600px) {
  
-  
+    .circle-image {
+      position: fixed;
+      top: 50%;
+      margin-left: -80px;
+      transform: translateY(-50%);
+      z-index: 9; /* Asegurarse de que la imagen esté por encima de los círculos */
+      width: 30%; /* Ajusta el tamaño de la imagen según sea necesario */
+    }
+
   .circle-download{
     margin-left: -50px;
 
@@ -361,20 +371,27 @@ body
     margin-left: 50px;
   }
 
+  .title {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 3.4rem;
+    font-weight: 1000;
+    letter-spacing: -2px; 
 
   }
-  @media screen and (max-width: 768px) {
-    .title {
-      font-size: 2.5rem; 
-    }
-    .circle-download{
-      margin-left: -70px;
-  
-    }
-    .circle-upload{
-  
-      margin-left: 70px;
-    }
+  .circle-container {
+    display: none;
+  }
+  .circle-image {
+    display: none;
+  }
+  .circle-image-left {
+    display: none;
+  }
+
   }
 
   .arrow-red {
@@ -426,7 +443,7 @@ body
     left: 50%;
     width: 32rem;
     height: 32rem;
-    background-image: url("/assets/images/whitegigometer.png");
+    background-image: url("../assets/images/whitegigometer.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

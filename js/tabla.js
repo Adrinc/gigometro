@@ -36,8 +36,8 @@ function setVelocidad(speed) {
   }
   function setSubida(upload) {
    
-    document.getElementById("subida").innerHTML = upload.toFixed(3) + " GB";
-    document.getElementById("circle-upload-value").innerHTML = upload.toFixed(3) + " GB";
+    document.getElementById("subida").innerHTML = upload.toFixed(3) + " G";
+    document.getElementById("circle-upload-value").innerHTML = upload.toFixed(3) + " G";
     document.getElementById("circle-upload-mbps").innerHTML = (upload * 1000).toFixed(1) + " MB";
       // Mostrar y rotar la flecha azul
       const blueArrow = document.querySelector(".arrow-blue");
@@ -51,8 +51,8 @@ function setVelocidad(speed) {
   
   function setDescarga(download) {
   
-    document.getElementById("descarga").innerHTML = download.toFixed(3) + " GB";
-    document.getElementById("circle-download-value").innerHTML = download.toFixed(3) + " GB";
+    document.getElementById("descarga").innerHTML = download.toFixed(3) + " G";
+    document.getElementById("circle-download-value").innerHTML = download.toFixed(3) + " G";
     document.getElementById("circle-download-mbps").innerHTML = (download * 1000).toFixed(1) + " MB";
       // Mostrar y rotar la flecha verde
       const greenArrow = document.querySelector(".arrow-green");
@@ -160,6 +160,7 @@ function setVelocidad(speed) {
       });
   }
   document.addEventListener('DOMContentLoaded', () => {
+    disableScroll();
     updateCarAnimationTransformOrigin();
    
   });
@@ -178,7 +179,7 @@ function setVelocidad(speed) {
   const carritoElements = document.querySelectorAll(".carrito");
 /*   const topValue = carritoStyles.getPropertyValue('top');
   const transformValue = carritoStyles.getPropertyValue('transform'); */
-    gsap.set(carrito, { transformOrigin: '50% 50%' });
+/*     gsap.set(carrito, { transformOrigin: '50% 50%' }); */
     //375x667
     if (window.innerWidth <= 375 && window.innerHeight <= 667) {
       puntoOrigen = -1250;
@@ -230,7 +231,7 @@ function setVelocidad(speed) {
     
     }
     //-----------------------------------------------------
-    else if (window.innerWidth <= 1) {
+/*     else if (window.innerWidth <= 1) {
       puntoOrigen = -1185;
       radioRotacion = "50% 600%";
       carritoElements.forEach((carrito) => {
@@ -238,7 +239,7 @@ function setVelocidad(speed) {
         carrito.style.transform = "translate(-50%, 0) scale(0.15)"; 
       } );
     } 
-
+ */
 /* 
 console.log('Top value:', topValue);
 console.log('Transform value:', transformValue);
@@ -247,7 +248,10 @@ console.log('Transform value:', transformValue);
 
   }
   
-  
+  // Deshabilitar el scroll
+function disableScroll() {
+  document.body.style.overflow = 'hidden';
+}
   
   
   
