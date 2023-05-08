@@ -18,16 +18,15 @@ body
 {
   
     overflow: hidden;
-    -webkit-user-select: none; /* Chrome, Safari, Opera */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer, Edge */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
     background-color: #ffffff00 !important;
 }
 /* Media screen for 1080p 2k and 4k */
-@media screen and (min-width: 1px) {
- 
 
+ 
 
   .boton {
     fill: #25cb8e;
@@ -38,11 +37,11 @@ body
     pointer-events: visible;
     height: 50px;
     width: 100px;
-    border: 6px solid #7ce0bb; /* Agregar borde del color especificado */
-    border-radius: 25px; /* Para bordes redondeados */
-    color: white; /* Cambiar el color del texto a blanco */
-    font-weight: bold; /* Hacer el texto en negrita */
-    display: flex; /* Para centrar el contenido del botón */
+    border: 6px solid #7ce0bb; 
+    border-radius: 25px;
+    color: white; 
+    font-weight: bold; 
+    display: flex; 
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -81,8 +80,6 @@ body
     cursor: default;
   }
   
-  
-
   .fondo-negro {
     display: flex;
     align-items: center;
@@ -95,7 +92,6 @@ body
     background-color: #2f559800;
     z-index: 9999;
   }
-
   /* Estilo para el mensaje de carga */
   #mensaje-carga {
     color: #fff;
@@ -104,7 +100,6 @@ body
     text-align: center;
   }
 
- 
   /* Circulo indicadores de velocidad */
   .circle-download > div:first-child,
 .circle-upload > div:first-child {
@@ -154,14 +149,14 @@ body
 }
 
   .circle-download {
-    top: 15%; /* Posición más arriba */
-    left: 45%; /* Posición más centrada */
+    top: 15%; 
+    left: 45%; 
     margin-left: -55px;
   }
   
   .circle-upload {
-    top: 15%; /* Posición más arriba */
-    left: 55%; /* Posición más centrada */
+    top: 15%;
+    left: 55%; 
     margin-left: 55px;
   }
   .circle-download.color-green {
@@ -221,8 +216,10 @@ body
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 32rem;
+    width: 100%;
     height: 32rem;
+    max-width: 1000px; 
+    max-height: 500px;
     background-image: url("../assets/images/whitegigometer.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -237,4 +234,4 @@ body
     transform: translate(-50%, 0) scale(0.15);
     z-index: 15;
   }
-}
+

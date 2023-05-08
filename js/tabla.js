@@ -2,7 +2,7 @@
 
 function setVelocidad(speed) {
   speed = speed*1000;
-  document.getElementById("velocidad").innerHTML = speed;
+/*   document.getElementById("velocidad").innerHTML = speed; */
 
   // Aquí se modificaría la rotación del indicador de velocidad
   const arrow = document.querySelector(".arrow-red");
@@ -32,11 +32,11 @@ function setVelocidad(speed) {
 }
 
   function setStatus(status) {
-    document.getElementById("estado").innerHTML = status;
+   /*  document.getElementById("estado").innerHTML = status; */
   }
   function setSubida(upload) {
    
-    document.getElementById("subida").innerHTML = upload.toFixed(3) + " G";
+   /*  document.getElementById("subida").innerHTML = upload.toFixed(3) + " G"; */
     document.getElementById("circle-upload-value").innerHTML = upload.toFixed(3) + " G";
     document.getElementById("circle-upload-mbps").innerHTML = (upload * 1000).toFixed(1) + " MB";
       // Mostrar y rotar la flecha azul
@@ -51,7 +51,7 @@ function setVelocidad(speed) {
   
   function setDescarga(download) {
   
-    document.getElementById("descarga").innerHTML = download.toFixed(3) + " G";
+  /*   document.getElementById("descarga").innerHTML = download.toFixed(3) + " G"; */
     document.getElementById("circle-download-value").innerHTML = download.toFixed(3) + " G";
     document.getElementById("circle-download-mbps").innerHTML = (download * 1000).toFixed(1) + " MB";
       // Mostrar y rotar la flecha verde
@@ -67,14 +67,14 @@ function setVelocidad(speed) {
   
   
   function setPing(ping) {
-    document.getElementById("ping").innerHTML = ping.toFixed(1) + " ms";
+   /*  document.getElementById("ping").innerHTML = ping.toFixed(1) + " ms"; */
   }
   
   function setJitter(jitter) {
-    document.getElementById("jitter").innerHTML = jitter + " ms";
+/*     document.getElementById("jitter").innerHTML = jitter + " ms"; */
   }
   function setError(error) {
-    document.getElementById("error").innerHTML = error;
+  /*   document.getElementById("error").innerHTML = error; */
   }
   
 
