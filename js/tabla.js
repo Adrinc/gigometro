@@ -2,7 +2,7 @@
 
 function setVelocidad(speed) {
   speed = speed*1000;
-  document.getElementById("velocidad").innerHTML = speed;
+ /*  document.getElementById("velocidad").innerHTML = speed; */
 
   // Aquí se modificaría la rotación del indicador de velocidad
   const arrow = document.querySelector(".arrow-red");
@@ -32,11 +32,11 @@ function setVelocidad(speed) {
 }
 
   function setStatus(status) {
-    document.getElementById("estado").innerHTML = status;
+ /*    document.getElementById("estado").innerHTML = status; */
   }
   function setSubida(upload) {
    
-    document.getElementById("subida").innerHTML = upload.toFixed(3) + " G";
+  /*   document.getElementById("subida").innerHTML = upload.toFixed(3) + " G"; */
     document.getElementById("circle-upload-value").innerHTML = upload.toFixed(3) + " G";
     document.getElementById("circle-upload-mbps").innerHTML = (upload * 1000).toFixed(1) + " MB";
       // Mostrar y rotar la flecha azul
@@ -51,7 +51,7 @@ function setVelocidad(speed) {
   
   function setDescarga(download) {
   
-    document.getElementById("descarga").innerHTML = download.toFixed(3) + " G";
+/*     document.getElementById("descarga").innerHTML = download.toFixed(3) + " G"; */
     document.getElementById("circle-download-value").innerHTML = download.toFixed(3) + " G";
     document.getElementById("circle-download-mbps").innerHTML = (download * 1000).toFixed(1) + " MB";
       // Mostrar y rotar la flecha verde
@@ -67,14 +67,14 @@ function setVelocidad(speed) {
   
   
   function setPing(ping) {
-    document.getElementById("ping").innerHTML = ping.toFixed(1) + " ms";
+    /* document.getElementById("ping").innerHTML = ping.toFixed(1) + " ms"; */
   }
   
   function setJitter(jitter) {
-    document.getElementById("jitter").innerHTML = jitter + " ms";
+ /*    document.getElementById("jitter").innerHTML = jitter + " ms"; */
   }
   function setError(error) {
-    document.getElementById("error").innerHTML = error;
+    /* document.getElementById("error").innerHTML = error; */
   }
   
 
@@ -248,12 +248,12 @@ function setVelocidad(speed) {
     //-----------------------------------------------------
     //412x915
     else if(window.innerWidth <= 412 && window.innerHeight <= 915){
-        puntoOrigen = -1210; 
-      radioRotacion = "50% 600%";
+        puntoOrigen = -1440; 
+      radioRotacion = "50% 690%";
     
       carritoElements.forEach((carrito) => {
         carrito.style.top = "-18%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+        carrito.style.transform = "translate(-50%, 0) scale(0.11)";
        
       });
     }
@@ -296,6 +296,27 @@ function setVelocidad(speed) {
         carrito.style.transform = "translate(-50%, 0) scale(0.13)";
       });
     }
+    //-----------------------------------------------------
+    //1180x820
+    else if(window.innerWidth <= 1180 && window.innerHeight <= 820){
+        puntoOrigen = -1055;
+      radioRotacion = "50% 540%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-19%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.15)";
+      });
+    }
+    else if(window.innerWidth <= 820 && window.innerHeight <= 1180){
+        puntoOrigen = -1500;
+      radioRotacion = "50% 750%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-10%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.15)";
+      });
+    }
+    
+
+
 
     //-----------------------------------------------------
 /*     else if (window.innerWidth <= 1) {
