@@ -265,7 +265,24 @@ function setVelocidad(speed) {
         carrito.style.transform = "translate(-50%, 0) scale(0.11)";
       });
     }
-
+    //-----------------------------------------------------
+    //600x768
+    else if(window.innerWidth <= 600 && window.innerHeight <= 768){
+        puntoOrigen = -1235;
+      radioRotacion = "50% 610%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-19%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+      });
+    }
+    else if(window.innerWidth <= 768 && window.innerHeight <= 600){
+        puntoOrigen = -1100;
+      radioRotacion = "50% 550%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-21%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+      });
+    }
     //-----------------------------------------------------
     //600x900
     else if(window.innerWidth <= 600 && window.innerHeight <= 900){ 
