@@ -287,6 +287,17 @@ function setVelocidad(speed) {
     
     }
     //-----------------------------------------------------
+    //1024x600
+    else if(window.innerWidth <= 1024 && window.innerHeight <= 600){
+        puntoOrigen = -990;
+      radioRotacion = "50% 500%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-25%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+      });
+    }
+
+    //-----------------------------------------------------
 /*     else if (window.innerWidth <= 1) {
       puntoOrigen = -1185;
       radioRotacion = "50% 600%";

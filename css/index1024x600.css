@@ -1,4 +1,4 @@
-@media screen and (max-width: 540px) and (max-height: 720px) {
+@media screen and (max-width: 1024px) and (max-height: 600px) {
     .title {
       position: absolute;
       top: 2rem;
@@ -353,7 +353,7 @@
   
     /* Horizontal */
   
-    @media screen and (max-width: 720px) and (max-height: 540px) {
+    @media screen and (max-width: 1024px) and (max-height: 600px) {
 
       
       
