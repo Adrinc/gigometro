@@ -1,4 +1,4 @@
-@media screen and (max-width: 768px) and (max-height: 1024px) {
+@media screen and (max-width: 1280px) and (max-height: 800px) {
     .title {
       position: absolute;
       top: 2rem;
@@ -47,8 +47,8 @@
         background-color: #25cb8e;
         cursor: pointer;
         pointer-events: visible;
-        height: 50px;
-        width: 100px;
+        height: 80px;
+        width: 120px;
         border: 6px solid #7ce0bb; /* Agregar borde del color especificado */
         border-radius: 25px; /* Para bordes redondeados */
         color: white; /* Cambiar el color del texto a blanco */
@@ -182,7 +182,7 @@
       .circle-download .value,
       .circle-upload .value {
         font-weight: bold;
-        font-size: 1.7rem;
+        font-size: 1.6rem;
       }
       
       .circle-download .mbps,
@@ -199,13 +199,13 @@
       .circle-download {
         top: 10%; 
         left: 45%; 
-        margin-left: -70px;
+        margin-left: -60px;
       }
       
       .circle-upload {
         top: 10%; 
         left: 55%; 
-        margin-left: 70px;
+        margin-left: 60px;
       }
       .circle-download.color-green {
         background-color: #25cb8e;
@@ -215,7 +215,7 @@
         background-color: #2196f3;
       }
       
-    
+
     
     /*
       **@Carrusel
@@ -252,8 +252,8 @@
       bottom: 15%;
       left: 50%;
       transform: translateX(-50%);
-      height: 50px;
-      width: 150px;
+      height:80;
+      width: 250px;
       cursor: pointer;
       text-decoration: none;
     }
@@ -313,7 +313,7 @@
         
         .arrow-inner {
           position: relative;
-          width: 11rem;
+          width: 14rem;
           height: 0.9rem;
           background: linear-gradient(to right, var(--arrow-color) 0%, var(--arrow-color) 70%, transparent 90%);
           clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
@@ -330,8 +330,8 @@
           position: fixed;
           top: 50%;
           left: 50%;
-          width: 35rem;
-          height: 35rem;
+          width: 42rem;
+          height: 42rem;
           background-image: url("../assets/images/whitegigometer.png");
           background-repeat: no-repeat;
           background-position: center;
@@ -343,7 +343,7 @@
           position: absolute;
        
           left: 50%;
-          transform: translate(-50%, 0) scale(0.13);
+          transform: translate(-50%, 0) scale(0.17);
           z-index: 15;
         }
     }
@@ -353,7 +353,7 @@
   
     /* Horizontal */
   
-    @media screen and (max-width: 1024px) and (max-height: 768px) {
+    @media screen and (max-width: 1280px) and (max-height: 800px) {
 
       
       
@@ -630,7 +630,7 @@
           
           .arrow-inner {
             position: relative;
-            width: 9rem;
+            width: 7.5rem;
             height: 0.9rem;
             background: linear-gradient(to right, var(--arrow-color) 0%, var(--arrow-color) 70%, transparent 90%);
             clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
@@ -658,7 +658,7 @@
           }
           .carrito {
             position: absolute;
-        
+            top: -19%;
             left: 50%;
             transform: translate(-50%, 0) scale(0.13);
             

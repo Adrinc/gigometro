@@ -288,6 +288,24 @@ function setVelocidad(speed) {
     }
     //-----------------------------------------------------
     //1024x600
+    else if(window.innerWidth <= 768 && window.innerHeight <= 1024){
+        puntoOrigen = -1470;
+      radioRotacion = "50% 720%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-13%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+      });
+    }
+    else if(window.innerWidth <= 1024 && window.innerHeight <= 768){
+        puntoOrigen = -1210;
+      radioRotacion = "50% 600%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-19%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+      });
+    }
+    //-----------------------------------------------------
+    //1024x600
     else if(window.innerWidth <= 1024 && window.innerHeight <= 600){
         puntoOrigen = -990;
       radioRotacion = "50% 500%";
@@ -315,6 +333,16 @@ function setVelocidad(speed) {
       });
     }
     
+    //-----------------------------------------------------
+    //1280x800
+    else if(window.innerWidth <= 1280 && window.innerHeight <= 800){
+        puntoOrigen = -1055;
+      radioRotacion = "50% 540%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-19%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.15)";
+      });
+    }
 
 
 

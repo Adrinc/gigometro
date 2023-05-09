@@ -630,7 +630,7 @@
           
           .arrow-inner {
             position: relative;
-            width: 7.5rem;
+            width: 9rem;
             height: 0.9rem;
             background: linear-gradient(to right, var(--arrow-color) 0%, var(--arrow-color) 70%, transparent 90%);
             clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
