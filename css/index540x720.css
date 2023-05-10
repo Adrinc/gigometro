@@ -79,7 +79,7 @@
     
       .boton-container {
         position: absolute;
-        top: 85%;
+        top: 81%;
         left: 50%;
         transform: translate(-50%, -50%);
         display: flex;
@@ -658,7 +658,7 @@
           }
           .carrito {
             position: absolute;
-            top: -25%;
+      
             left: 50%;
             transform: translate(-50%, 0) scale(0.13);
             

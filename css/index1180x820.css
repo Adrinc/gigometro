@@ -47,7 +47,7 @@
         background-color: #25cb8e;
         cursor: pointer;
         pointer-events: visible;
-        height: 80px;
+        height: 60px;
         width: 120px;
         border: 6px solid #7ce0bb; /* Agregar borde del color especificado */
         border-radius: 25px; /* Para bordes redondeados */
@@ -79,7 +79,7 @@
     
       .boton-container {
         position: absolute;
-        top: 85%;
+        top: 81%;
         left: 50%;
         transform: translate(-50%, -50%);
         display: flex;

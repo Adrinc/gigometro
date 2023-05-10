@@ -266,6 +266,34 @@ function setVelocidad(speed) {
       });
     }
     //-----------------------------------------------------
+    //600x450
+    else if(window.innerWidth <= 600 && window.innerHeight <= 450){
+        puntoOrigen = -1010;
+      radioRotacion = "50% 500%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-30%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.11)";
+      });
+    }
+    //-----------------------------------------------------
+    //540x720
+    else if(window.innerWidth <= 540 && window.innerHeight <= 720){
+        puntoOrigen = -1235;
+      radioRotacion = "50% 610%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-19%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+      });
+    }
+    else if(window.innerWidth <= 720 && window.innerHeight <= 540){
+        puntoOrigen = -1015;
+      radioRotacion = "50% 510%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-25%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
+      });
+    }
+    //-----------------------------------------------------
     //600x768
     else if(window.innerWidth <= 600 && window.innerHeight <= 768){
         puntoOrigen = -1235;
@@ -358,6 +386,16 @@ function setVelocidad(speed) {
       carritoElements.forEach((carrito) => {
         carrito.style.top = "-19%";
         carrito.style.transform = "translate(-50%, 0) scale(0.15)";
+      });
+    }
+    //-----------------------------------------------------
+    //1368x766
+    else if(window.innerWidth <= 1366 && window.innerHeight <= 768){
+        puntoOrigen = -1280;
+      radioRotacion = "50% 620%";
+      carritoElements.forEach((carrito) => {
+        carrito.style.top = "-22%";
+        carrito.style.transform = "translate(-50%, 0) scale(0.11)";
       });
     }
 
