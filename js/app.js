@@ -672,7 +672,7 @@ function SendUpReq(i) {
     try{
     uReQ[i].send(SendData);
     }
-    catch(e){confirm("Error al enviar datos");}
+    catch(e){console.log("Error al enviar datos");}
   }
 }
 function testRun() {
@@ -1029,6 +1029,7 @@ function openSpeedtestEngine(){
   }
 function resetAnimation(){
   shouldStopAnimation = true; 
+  resetCarAnimation();
 }
 function resetVisuals(){
   var Show = new openSpeedtestShow();

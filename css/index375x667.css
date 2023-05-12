@@ -198,10 +198,7 @@
         display: flex;
         width: 22rem;
         height: 22rem;
-        background-image: url("../assets/images/whitegigometer.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
+    
         z-index: 10;
         transform: translate(-50%, -50%);
       }
@@ -562,10 +559,7 @@
           left: 50%;
           width: 19rem;
           height: 19rem;
-          background-image: url("../assets/images/whitegigometer.png");
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: contain;
+
           z-index: 10;
           transform: translate(-50%, -50%);
         }

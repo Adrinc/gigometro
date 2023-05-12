@@ -134,299 +134,39 @@ function setVelocidad(speed) {
   let puntoOrigen = -1185;
   let radioRotacion = "50% 600%";
   let carrito = document.querySelector(".carrito");
-  
+
+  const r = new rive.Rive({
+    src: "assets/images/loadingcar.riv",
+    canvas: document.getElementById("canvas"),
+    autoplay: false,
+    stateMachines: "State Machine 1",
+    onLoad: () => {
+      r.resizeDrawingSurfaceToCanvas();
+     
+    },
+  });
+
   function startCarAnimation() {
 
-   updateCarAnimationTransformOrigin();  
-    // Configura la animación GSAP
-    carAnimation = gsap.timeline({ defaults: { duration: 2, ease: "Sine.easeOut" } })
-      .set(carrito, { y: puntoOrigen }) // Establece la posición vertical del carrito antes de comenzar la animación
-      .to(carrito, {
-        rotation: "+=360", // Grados de rotación
-        transformOrigin: radioRotacion, // Punto de origen de la rotación
-      })
-      .eventCallback("onStart", () => {
-        carAnimationCompleted = false;
-      })
-      .eventCallback("onComplete", () => {
-        if (shouldStopAnimation) {
-          carAnimation.progress(1); 
-          carAnimation.pause();
-          shouldStopAnimation = false;
-        } else {
-          carAnimation.restart();
-          carAnimation.set(carrito, { y: puntoOrigen }) 
-        }
-        carAnimationCompleted = true;
-      });
+    r.play();
   }
 
   
-/*   window.addEventListener("resize", updateCarAnimationTransformOrigin);  */
-  window.addEventListener("resize", resetCarAnimation); 
   function resetCarAnimation() {
-    updateCarAnimationTransformOrigin();
-    if (carAnimation) {
-     stopall();
+    if(shouldStopAnimation) {
+    r.reset({
+      stateMachines: "State Machine 1",
+      autoplay: false,
+      });
     }
+
   }
 
-  function updateCarAnimationTransformOrigin() {
-  const carritoStyles = window.getComputedStyle(carrito);
-  const carritoElements = document.querySelectorAll(".carrito");
-/*   const topValue = carritoStyles.getPropertyValue('top');
-  const transformValue = carritoStyles.getPropertyValue('transform'); */
-/*     gsap.set(carrito, { transformOrigin: '50% 50%' }); */
-    //375x667
-    if (window.innerWidth <= 375 && window.innerHeight <= 667) {
-      puntoOrigen = -1250;
-      radioRotacion = "50% 599%";
-  
-    }
-    else if(window.innerWidth <= 667 && window.innerHeight <= 375){
-       puntoOrigen = -1120;
-      radioRotacion = "50% 542%";
-  
-    } 
-    //-----------------------------------------------------
-    //390x844
-    else if(window.innerWidth <= 390 && window.innerHeight <= 884){
-       puntoOrigen = -1250;
-      radioRotacion = "50% 599%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-26%"; 
-        carrito.style.transform = "translate(-50%, 0) scale(0.10)"; 
-      });
-    } 
-    else if(window.innerWidth <= 884 && window.innerHeight <= 390){
-       puntoOrigen = -1120;
-      radioRotacion = "50% 542%";
-     carritoElements.forEach((carrito) => {
-        carrito.style.top = "-32%"; 
-        carrito.style.transform = "translate(-50%, 0) scale(0.10)"; 
-      });
-    } 
-    //393x851
-    else if(window.innerWidth <= 393 && window.innerHeight <= 851){
-        puntoOrigen = -1250;
-      radioRotacion = "50% 599%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-26%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.10)";
-      });
-    }
-    else if(window.innerWidth <= 851 && window.innerHeight <= 393){
-        puntoOrigen = -1120;
-      radioRotacion = "50% 542%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-32%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.10)";
-      });
-    }
-    //-----------------------------------------------------
-
-    //414x896
-    else if(window.innerWidth <= 414 && window.innerHeight <= 896){ 
-        puntoOrigen = -1278;
-      radioRotacion = "50% 630%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-16%"; 
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)"; 
-      });
-    
-    }
-    else if(window.innerWidth <= 896 && window.innerHeight <= 414){ 
-      puntoOrigen = -990;
-      radioRotacion = "50% 500%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-25%"; 
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)"; 
-      });
-    
-    }
-
-    //-----------------------------------------------------
-    //412x915
-    else if(window.innerWidth <= 412 && window.innerHeight <= 915){
-        puntoOrigen = -1440; 
-      radioRotacion = "50% 690%";
-    
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-18%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.11)";
-       
-      });
-    }
-    else if(window.innerWidth <= 915 && window.innerHeight <= 412){
-        puntoOrigen = -1015;
-      radioRotacion = "50% 500%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-33%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.11)";
-      });
-    }
-    //-----------------------------------------------------
-    //600x450
-    else if(window.innerWidth <= 600 && window.innerHeight <= 450){
-        puntoOrigen = -1010;
-      radioRotacion = "50% 500%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-30%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.11)";
-      });
-    }
-    //-----------------------------------------------------
-    //540x720
-    else if(window.innerWidth <= 540 && window.innerHeight <= 720){
-        puntoOrigen = -1235;
-      radioRotacion = "50% 610%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-19%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
-      });
-    }
-    else if(window.innerWidth <= 720 && window.innerHeight <= 540){
-        puntoOrigen = -1015;
-      radioRotacion = "50% 510%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-25%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
-      });
-    }
-    //-----------------------------------------------------
-    //600x768
-    else if(window.innerWidth <= 600 && window.innerHeight <= 768){
-        puntoOrigen = -1235;
-      radioRotacion = "50% 610%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-19%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
-      });
-    }
-    else if(window.innerWidth <= 768 && window.innerHeight <= 600){
-        puntoOrigen = -1100;
-      radioRotacion = "50% 550%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-21%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
-      });
-    }
-    //-----------------------------------------------------
-    //600x900
-    else if(window.innerWidth <= 600 && window.innerHeight <= 900){ 
-        puntoOrigen = -1235;
-      radioRotacion = "50% 610%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-19%"; 
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)"; 
-      });
-    
-    }
-    else if(window.innerWidth <= 900 && window.innerHeight <= 600){ 
-      puntoOrigen = -990;
-      radioRotacion = "50% 500%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-25%"; 
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)"; 
-      });
-    
-    }
-    //-----------------------------------------------------
-    //1024x600
-    else if(window.innerWidth <= 768 && window.innerHeight <= 1024){
-        puntoOrigen = -1470;
-      radioRotacion = "50% 720%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-13%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
-      });
-    }
-    else if(window.innerWidth <= 1024 && window.innerHeight <= 768){
-        puntoOrigen = -1210;
-      radioRotacion = "50% 600%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-19%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
-      });
-    }
-    //-----------------------------------------------------
-    //1024x600
-    else if(window.innerWidth <= 1024 && window.innerHeight <= 600){
-        puntoOrigen = -990;
-      radioRotacion = "50% 500%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-25%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.13)";
-      });
-    }
-    //-----------------------------------------------------
-    //1180x820
-    else if(window.innerWidth <= 1180 && window.innerHeight <= 820){
-        puntoOrigen = -1055;
-      radioRotacion = "50% 540%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-19%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.15)";
-      });
-    }
-    else if(window.innerWidth <= 820 && window.innerHeight <= 1180){
-        puntoOrigen = -1500;
-      radioRotacion = "50% 750%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-10%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.15)";
-      });
-    }
-    
-    //-----------------------------------------------------
-    //1280x800
-    else if(window.innerWidth <= 1280 && window.innerHeight <= 800){
-        puntoOrigen = -1055;
-      radioRotacion = "50% 540%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-19%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.15)";
-      });
-    }
-    //-----------------------------------------------------
-    //1368x766
-    else if(window.innerWidth <= 1366 && window.innerHeight <= 768){
-        puntoOrigen = -1280;
-      radioRotacion = "50% 620%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-22%";
-        carrito.style.transform = "translate(-50%, 0) scale(0.11)";
-      });
-    }
-
-
-
-    //-----------------------------------------------------
-/*     else if (window.innerWidth <= 1) {
-      puntoOrigen = -1185;
-      radioRotacion = "50% 600%";
-      carritoElements.forEach((carrito) => {
-        carrito.style.top = "-15%"; 
-        carrito.style.transform = "translate(-50%, 0) scale(0.15)"; 
-      } );
-    } 
- */
-/* 
-console.log('Top value:', topValue);
-console.log('Transform value:', transformValue);
- */
-
-
-  }
-  
   // Deshabilitar el scroll
-function disableScroll() {
+/* function disableScroll() {
   document.body.style.overflow = 'hidden';
 }
   
-  
 document.addEventListener('DOMContentLoaded', () => {
   disableScroll();
-  updateCarAnimationTransformOrigin();
- 
-});
+}); */

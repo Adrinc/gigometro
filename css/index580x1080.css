@@ -332,7 +332,7 @@
           left: 50%;
           width: 35rem;
           height: 35rem;
-          background-image: url("../assets/images/whitegigometer.png");
+          
           background-repeat: no-repeat;
           background-position: center;
           background-size: contain;
@@ -647,7 +647,7 @@
             left: 50%;
             width: 28rem;
             height: 28rem;
-            background-image: url("../assets/images/whitegigometer.png");
+            
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
