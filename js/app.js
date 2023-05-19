@@ -1016,15 +1016,7 @@ function openSpeedtestEngine(){
       shouldStopAnimation = false;
       resetValues();
       resetVisuals();
-      runTasks(); // Mueve esta línea dentro de la condición
-  
-      // Añade esta línea para comenzar la animación del carrito cuando se presiona el botón "Start"
-      startCarAnimation();
-  
-      document.getElementById("startButtonDesk").disabled = true;
-      document.getElementById("startButtonDesk").classList.add("disabled");
-      document.getElementById("secondButtonDesk").disabled = false;
-      document.getElementById("secondButtonDesk").classList.remove("disabled");
+      initTest();
     }
   }
 function resetAnimation(){

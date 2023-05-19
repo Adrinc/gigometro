@@ -146,10 +146,47 @@ function setVelocidad(speed) {
     },
   });
 
-  function startCarAnimation() {
+  function initTest() {
+    fetch('https://api.ipify.org/?format=json')
+        .then(response => response.json())
+        .then(data => {
+            const buttonText = document.getElementById("startButtonDesk").innerHTML;
 
-    r.play();
-  }
+     /*        console.log(data.ip);
+            console.log(buttonText); */
+            const postData = {
+                "apikey": "svsvs54sef5se4fsv",
+                "action": "configuratorTracking",
+                "transaction": data.ip,
+                "page": "main",
+                "button": buttonText
+            };
+            
+            fetch('https://cblsrvr1.rtatel.com/planbuilder/api', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            })
+            .then(response => response.json())
+            .then(data => {
+             /*  console.log("testeo con api verdadera");
+                console.log('Success:', data); */
+                runTasks();
+                r.play();
+                document.getElementById("startButtonDesk").disabled = true;
+                document.getElementById("startButtonDesk").classList.add("disabled");
+                document.getElementById("secondButtonDesk").disabled = false;
+                document.getElementById("secondButtonDesk").classList.remove("disabled");
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
 
   
   function resetCarAnimation() {
