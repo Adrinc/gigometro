@@ -159,13 +159,15 @@ function setVelocidad(speed) {
                 "action": "configuratorTracking",
                 "transaction": data.ip,
                 "page": "main",
-                "button": buttonText
+                "button": buttonText,
+               
             };
             
             fetch('https://cblsrvr1.rtatel.com/planbuilder/api', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
                 },
                 body: JSON.stringify(postData),
             })
