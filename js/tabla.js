@@ -146,35 +146,82 @@ function setVelocidad(speed) {
     },
   });
 
-  function initTest() {
-    fetch('https://api.ipify.org/?format=json')
-        .then(response => response.json())
-        .then(data => {
-            const buttonText = document.getElementById("startButtonDesk").innerHTML;
-
-     /*        console.log(data.ip);
-            console.log(buttonText); */
+/*   function initTest() {
+    fetch('http://localhost:3000/ipfy', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const buttonText = document.getElementById("startButtonDesk").innerHTML;
+            console.log(data.ip);
+            console.log(buttonText); 
             const postData = {
                 "apikey": "svsvs54sef5se4fsv",
                 "action": "configuratorTracking",
                 "transaction": data.ip,
                 "page": "main",
-                "button": buttonText,
-               
+                "button": buttonText
             };
             
-            fetch('https://cblsrvr1.rtatel.com/planbuilder/api', {
+            fetch('https://rtadev-ecom.cbluna-dev.com/planbuilder/api', {//anteriormente https://cblsrvr1.rtatel.com/planbuilder/api (produccion) https://rtadev-ecom.cbluna-dev.com/planbuilder/api (desarrollo)
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
+                  //'Access-Control-Allow-Origin': '*' 
                 },
                 body: JSON.stringify(postData),
             })
             .then(response => response.json())
             .then(data => {
-             /*  console.log("testeo con api verdadera");
-                console.log('Success:', data); */
+              console.log("testeo con api desarrollo");
+                console.log('Success:', data);
+                runTasks();
+                r.play();
+                document.getElementById("startButtonDesk").disabled = true;
+                document.getElementById("startButtonDesk").classList.add("disabled");
+                document.getElementById("secondButtonDesk").disabled = false;
+                document.getElementById("secondButtonDesk").classList.remove("disabled");
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            }); 
+      })
+      .catch(error => console.error('Error:', error));
+  } */
+
+
+
+  function initTest() {
+    fetch('https://gigometer43.rtatel.com/ipfy') //anteriormente https://api.ipify.org/?format=json
+        .then(response => response.json())
+        .then(data => {
+            const buttonText = document.getElementById("startButtonDesk").innerHTML;
+
+            console.log(data.ip);
+            console.log(buttonText); 
+            const postData = {
+                "apikey": "svsvs54sef5se4fsv",
+                "action": "configuratorTracking",
+                "transaction": data.ip,
+                "page": "main",
+                "button": buttonText
+            };
+            
+            fetch('https://rtadev-ecom.cbluna-dev.com/planbuilder/api', {//anteriormente https://cblsrvr1.rtatel.com/planbuilder/api (produccion) https://rtadev-ecom.cbluna-dev.com/planbuilder/api (desarrollo)
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                  //'Access-Control-Allow-Origin': '*' 
+                },
+                body: JSON.stringify(postData),
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log("testeo con api verdadera");
+                console.log('Success:', data);
                 runTasks();
                 r.play();
                 document.getElementById("startButtonDesk").disabled = true;
@@ -188,7 +235,7 @@ function setVelocidad(speed) {
         })
         .catch(error => console.error('Error:', error));
 }
-
+ 
 
   
   function resetCarAnimation() {
