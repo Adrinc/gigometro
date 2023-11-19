@@ -67,11 +67,11 @@ function setVelocidad(speed) {
   
   
   function setPing(ping) {
-    /* document.getElementById("ping").innerHTML = ping.toFixed(1) + " ms"; */
+ /*    document.getElementById("ping").innerHTML = ping.toFixed(1) + " ms (Ping)"; */
   }
   
   function setJitter(jitter) {
- /*    document.getElementById("jitter").innerHTML = jitter + " ms"; */
+/*     document.getElementById("jitter").innerHTML = jitter + " ms (latencia)"; */
   }
   function setError(error) {
     /* document.getElementById("error").innerHTML = error; */
@@ -195,7 +195,7 @@ function setVelocidad(speed) {
 
 
   function initTest() {
-    fetch('https://gigometer43.rtatel.com/ipfy') //anteriormente https://api.ipify.org/?format=json
+    fetch(' https://api.ipify.org/?format=json') //anteriormente https://api.ipify.org/?format=json https://gigometer43.rtatel.com/ipfy
         .then(response => response.json())
         .then(data => {
             const buttonText = document.getElementById("startButtonDesk").innerHTML;
@@ -210,7 +210,7 @@ function setVelocidad(speed) {
                 "button": buttonText
             };
             
-            fetch('https://rtadev-ecom.cbluna-dev.com/planbuilder/api', {//anteriormente https://cblsrvr1.rtatel.com/planbuilder/api (produccion) https://rtadev-ecom.cbluna-dev.com/planbuilder/api (desarrollo)
+            fetch('https://cblsrvr1.rtatel.com/planbuilder/api', {//anteriormente https://cblsrvr1.rtatel.com/planbuilder/api (produccion) https://rtadev-ecom.cbluna-dev.com/planbuilder/api (desarrollo)
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

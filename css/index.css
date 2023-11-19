@@ -23,10 +23,44 @@ body
     -ms-user-select: none; /* Internet Explorer, Edge */
     user-select: none; /* Standard syntax */
     background-color: #ffffff00 !important;
+    box-sizing: border-box;
 }
 /* Media screen for 1080p 2k and 4k */
-@media screen and (min-width: 1px) {
- 
+
+ section{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-wrap: auto;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgba(217, 255, 0, 0.531);
+  height: 100vh;
+ }
+ .main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+
+background-color: salmon;
+  height: 100%;
+  width: 100%;
+ }
+
+
+
+ .circulos-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-wrap: auto;
+  justify-content: space-evenly;
+  background-color: rgb(43, 255, 0);
+
+ }
 
 
   .boton {
@@ -83,27 +117,6 @@ body
   
   
 
-  .fondo-negro {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #2f559800;
-    z-index: 9999;
-  }
-
-  /* Estilo para el mensaje de carga */
-  #mensaje-carga {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-  }
-
  
   /* Circulo indicadores de velocidad */
   .circle-download > div:first-child,
@@ -113,7 +126,6 @@ body
 
   .circle-download,
   .circle-upload {
-    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,14 +140,7 @@ body
     z-index: 11;
     transform: translate(-50%, -50%);
   }
-  .circle-download{
-    margin-left: 8px;
-  }
-  .circle-upload{
-  
-    margin-right: 10px;
-  }
-  
+
   .circle-download .value,
   .circle-upload .value {
     font-weight: bold;
@@ -153,17 +158,7 @@ body
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-  .circle-download {
-    top: 15%; /* Posición más arriba */
-    left: 45%; /* Posición más centrada */
-    margin-left: -55px;
-  }
-  
-  .circle-upload {
-    top: 15%; /* Posición más arriba */
-    left: 55%; /* Posición más centrada */
-    margin-left: 55px;
-  }
+
   .circle-download.color-green {
     background-color: #25cb8e;
   }
@@ -227,11 +222,4 @@ body
     z-index: 10;
     transform: translate(-50%, -50%);
   }
-  .carrito {
-    position: absolute;
-    top: -15%;
-    left: 50%;
-    transform: translate(-50%, 0) scale(0.15);
-    z-index: 15;
-  }
-}
+
