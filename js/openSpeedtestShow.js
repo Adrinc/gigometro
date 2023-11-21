@@ -59,7 +59,7 @@
      var fading = window.setInterval(func, interval);
    } else {
      // Si el elemento no existe, mostrar un error en la consola
-     console.error("Elemento no encontrado en el documento.");
+   /*   console.error("Elemento no encontrado en el documento."); */
    }
  };
  // La función "easeOutQuint" implementa una curva de animación con un cambio gradual y suave en la velocidad.
@@ -259,26 +259,26 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
   // Si el parámetro "Display" es "Ping", se muestra el resultado de ping
   if (Display === "Ping") {
     if (ShowData >= 1 && ShowData < 10000) {
-      this.oDoLiveSpeed.el.textContent = Math.floor(ShowData);
+/*       this.oDoLiveSpeed.el.textContent = Math.floor(ShowData); */
     } else if (ShowData >= 0 && ShowData < 1) {
       if (ShowData == 0) {
         ShowData = 0;
       }
-      this.oDoLiveSpeed.el.textContent = ShowData;
+   /*    this.oDoLiveSpeed.el.textContent = ShowData; */
     }
   } else {
     // En cualquier otro caso, se muestra la velocidad con una precisión específica
     if (ShowData == 0) {
       var speed = ShowData.toFixed(0);
-      this.oDoLiveSpeed.el.textContent = speed;  setVelocidad(speed);
+      /* this.oDoLiveSpeed.el.textContent = speed;  */ setVelocidad(speed);
     }
     if (ShowData <= 1 && ShowData > 0) {
       var speed = ShowData.toFixed(4);
-      this.oDoLiveSpeed.el.textContent = speed;  setVelocidad(speed);
+     /*  this.oDoLiveSpeed.el.textContent = speed;  */ setVelocidad(speed);
     }
     if (ShowData > 1) {
       var speed = ShowData.toFixed(1);
-      this.oDoLiveSpeed.el.textContent = speed;  setVelocidad(speed);
+  /*     this.oDoLiveSpeed.el.textContent = speed;  */ setVelocidad(speed);
     }
     // Si la velocidad es menor o igual a 1000, se muestra "10Gb+" como la velocidad máxima
     if (ShowData <= 1000) {

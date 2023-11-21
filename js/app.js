@@ -83,19 +83,8 @@ var neXTUp = ulDuration * 1000 - 6000;
 
 function resetValues(){
 
-  var Show = new openSpeedtestShow();
-  var Get = new openSpeedtestGet();
-  Show.showStatus("");
-  Show.uploadResult(0);
-  Show.pingResults(0);
-  Show.downloadResult(0);
-  Show.GaugeProgresstoZero(0, "SendR");
-  Get.reset();
-  Show.reset();
   reSett();
   
-  hideArrows();
-
   SendData = null;
   myhostName = location.hostname;
   key = null;
@@ -167,8 +156,7 @@ function resetValues(){
   neXT = dlDuration * 1000 - 6000;
   dualupReset = null;
   neXTUp = ulDuration * 1000 - 6000;
-  carAnimation.pause();
-  carAnimation.progress(1);
+
 }
 
 function sendPing() {
@@ -361,6 +349,9 @@ function reportCurrentSpeed(now) {
 }
 
 function SendReQ(i) {
+  try{
+
+  
   var lastLoaded = 0;
   var OST = new XMLHttpRequest();
   ReQ[i] = OST;
@@ -407,6 +398,7 @@ function SendReQ(i) {
   };
   ReQ[i].responseType = "arraybuffer";
   ReQ[i].send();
+}catch(e){ return;}
 }
 
 
@@ -565,6 +557,8 @@ function OpenSpeedtest() {
         Show.Symbol(2);
         Status = "busy";
         stop = 0;
+        resetAnimation();
+        retryButton();
       }
     }
     if (Status === "Error") {
@@ -576,6 +570,9 @@ function OpenSpeedtest() {
       Show.oDoLiveSpeed.el.textContent = "Network Error";
     }
     if (Status === "SendR") {
+      try{
+
+   
       Show.showStatus("Termine: Status SendR");
       Show.oDoLiveSpeed.el.textContent = ost;
       if (location.hostname != myname.toLowerCase() + com) {
@@ -593,7 +590,8 @@ function OpenSpeedtest() {
       Get.reset();
       reSett();
       clearInterval(Engine);
-      console.log("Termino: Reseteado");
+      
+    }catch(e){return;}
     }
   }, 100);
 
@@ -671,7 +669,10 @@ function SendUpReq(i) {
   uReQ[i].setRequestHeader("Content-Type", "application/octet-stream");
   if (i > 0 && uLoaded <= 17000) {
   } else {
+    try{
     uReQ[i].send(SendData);
+    }
+    catch(e){console.log("Error al enviar datos");}
   }
 }
 function testRun() {
@@ -702,18 +703,17 @@ function setFinal() {
 
 function runTasks() {
   var Show = new openSpeedtestShow();
-  console.log(stopTest);
+
   if (stopTest==true){
-    console.log("detenido");
+
     return;
   }else{
 
  
-      console.log("runTasks");
-      console.log(OpenSpeedTestStart);
+  
 
       if (OpenSpeedTestStart >= 0) {
-        console.log("OpenSpeedTestStart");
+    
         launch = false;
         Show.ShowUI();
         init = false;
@@ -722,15 +722,14 @@ function runTasks() {
         var autoTest = setInterval(countDownF, 1000);
       }
       function countDownF() {
-        console.log("countDownF");
+     
         if (AutoTme >= 1) {
-          console.log("AutoTme >= 1");
+
           AutoTme = AutoTme - 1;
           Show.LiveSpeed(AutoTme, "countDown");
         } else {
           if (AutoTme <= 0) {
-            console.log("AutoTme <= 0");
-            console.log(autoTest);
+
             clearInterval(autoTest);
             launch = true;
             OpenSpeedTestStart = undefined;
@@ -738,16 +737,14 @@ function runTasks() {
           }
         }
       }
-      console.log(openSpeedTestServerList);
-      console.log("launch: "+launch);
+
       if (openSpeedTestServerList === "fetch" && launch === true) {
         launch = false;
         Show.showStatus("Fetching Server Info..");
         ServerConnect(6);
       }
       if (launch === true) {
-        console.log("launch === true");
-        console.log(SelectTest);
+
         if (SelectTest === "Ping") {
           testRun();
         } else if (SelectTest === "Download") {
@@ -762,11 +759,7 @@ function runTasks() {
     }
 
 
-
-
-
-
-   function openSpeedtestEngine(){
+function openSpeedtestEngine(){
     
     var Show = new openSpeedtestShow();
     Show.app();
@@ -1002,15 +995,51 @@ function runTasks() {
 
   }
 
-function stopall(){
-  console.log("stopAll");
-  stopTest = true;
-  resetValues();
-  runTasks();
+  function stopall() {
+   
+    stopTest = true;
+    var Show = new openSpeedtestShow();
+    Show.GaugeProgresstoZero(0, "SendR");
+    resetValues();
+    resetVisuals();
+    resetAnimation();
+    runTasks();
+    document.getElementById("startButtonDesk").innerHTML = "Start";
+    document.getElementById("startButtonDesk").disabled = false;
+    document.getElementById("startButtonDesk").classList.remove("disabled");
+    document.getElementById("secondButtonDesk").disabled = true;
+    document.getElementById("secondButtonDesk").classList.add("disabled");
+  }
+  function start() {
+    if (carAnimationCompleted) {
+      stopTest = false;
+      shouldStopAnimation = false;
+      resetValues();
+      resetVisuals();
+      initTest();
+    }
+  }
+function resetAnimation(){
+  shouldStopAnimation = true; 
+  resetCarAnimation();
 }
-function start(){
-  stopTest = false;
+function resetVisuals(){
+  var Show = new openSpeedtestShow();
+  var Get = new openSpeedtestGet();
+  Show.showStatus("");
+  Show.uploadResult(0);
+  Show.pingResults(0);
+  Show.downloadResult(0);
 
-  runTasks();
+  Get.reset();
+  Show.reset();
+  hideArrows();
 }
   
+function retryButton() {
+  document.getElementById("startButtonDesk").innerHTML = "Retry";
+  document.getElementById("startButtonDesk").disabled = false;
+  document.getElementById("startButtonDesk").classList.remove("disabled");
+  document.getElementById("secondButtonDesk").disabled = true;
+  document.getElementById("secondButtonDesk").classList.add("disabled");
+}

@@ -22,52 +22,45 @@ body
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer, Edge */
     user-select: none; /* Standard syntax */
+    background-color: #ffffff00 !important;
+    box-sizing: border-box;
 }
+/* Media screen for 1080p 2k and 4k */
 
-.title {
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 5rem;
-  font-weight: 1000;
-  letter-spacing: -5px; 
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: 'PlusJakartaSans', sans-serif;
-}
+ section{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-wrap: auto;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgba(217, 255, 0, 0.531);
+  height: 100vh;
+ }
+ .main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 
-@media screen and (max-width: 768px) {
-  .title {
-    font-size: 2.5rem; /* Tamaño de fuente reducido para pantallas más pequeñas */
-  }
-}
 
-.my-image {
-    position: absolute;
-    top: 49.3%;
-    left: 26.4%;
-    transform: translate(-50%, -50%);
-    width: 640px;
-    height: 640px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: -1;
-  }
-  .my-image2 {
-    position: absolute;
-    top: 49.3%;
-    left: 22%;
-    transform: translate(-50%, -50%);
-    width: 25%;
-    height: 44%;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: -1;
-  }
+background-color: salmon;
+  height: 100%;
+  width: 100%;
+ }
+
+
+
+ .circulos-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-wrap: auto;
+  justify-content: space-evenly;
+  background-color: rgb(43, 255, 0);
+
+ }
 
 
   .boton {
@@ -89,10 +82,10 @@ body
     text-align: center;
     font-size: larger;
   }
-  .boton:hover {
-    background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
-    border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+  .boton:not([disabled]):hover {
+    background-color: #7ce0bb;
+    border-color: #7ce0bb;
+    transition: background-color 0.3s, border-color 0.3s;
   }
   .boton-secondary {
     background-color: #d20030;
@@ -101,133 +94,30 @@ body
   
   }
   
-  .boton-secondary:hover {
-    background-color: #e46683; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
-    border-color: #e46683; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+  .boton-secondary:not([disabled]):hover {
+    background-color: #e46683;
+    border-color: #e46683;
+    transition: background-color 0.3s, border-color 0.3s;
   }
 
   .boton-container {
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     z-index: 100;
   }
 
- 
+  .disabled {
+    background-color: grey;
+    border-color: grey;
+    cursor: default;
+  }
   
-
-  .fondo-negro {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(0, 0, 0);
-    z-index: 9999;
-  }
-
-  /* Estilo para el mensaje de carga */
-  #mensaje-carga {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #184995;
-    z-index: -10;
-    background-image: url("/assets/images/ondas.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
+  
 
  
-
-  /* CIRCULOS */
-
-
-  .circle-container-left,
-  .circle-container-right {
-    position: relative;
-  }
-  .circle-container {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 8;
-  }
-  
-  .circle-container-left {
-    left: calc(50% - 25%);
-  }
-  
-  .circle-container-right {
-    left: calc(50% + 25%);
-  }
-  
-  .circle-1,
-  .circle-2,
-  .circle-3 {
-    position: absolute;
-    border-radius: 50%;
-  }
-  
-  .circle-1 {
-    width: 26rem;
-    height: 26rem;
-    background-color: rgba(59, 111, 178, 0.671);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .circle-2 {
-    width: 24rem;
-    height: 24rem;
-    background-color: #5ca2e6;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .circle-3 {
-    width: 20rem;
-    height: 20rem;
-    background-color: #2587e2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /*
-  **@Imagen circular  
-  */
-
-  .circle-image {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 9; /* Asegurarse de que la imagen esté por encima de los círculos */
-    width: 20%; /* Ajusta el tamaño de la imagen según sea necesario */
-  }
-  
-  .circle-image-left {
-    left: calc(50% - 35%);
-  }
-
   /* Circulo indicadores de velocidad */
   .circle-download > div:first-child,
 .circle-upload > div:first-child {
@@ -236,7 +126,6 @@ body
 
   .circle-download,
   .circle-upload {
-    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -251,14 +140,7 @@ body
     z-index: 11;
     transform: translate(-50%, -50%);
   }
-  .circle-download{
-    margin-left: 8px;
-  }
-  .circle-upload{
-  
-    margin-right: 10px;
-  }
-  
+
   .circle-download .value,
   .circle-upload .value {
     font-weight: bold;
@@ -276,15 +158,7 @@ body
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-  .circle-download {
-    top: 25%; /* Posición más arriba */
-    left: 45%; /* Posición más centrada */
-  }
-  
-  .circle-upload {
-    top: 25%; /* Posición más arriba */
-    left: 55%; /* Posición más centrada */
-  }
+
   .circle-download.color-green {
     background-color: #25cb8e;
   }
@@ -295,73 +169,57 @@ body
   
 
 
-/*
-  **@Carrusel
-  */
-.carousel {
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-}
+  .arrow-red {
+    --arrow-color: #ba1f3b;
+  }
+  
+  .arrow-green {
+    --arrow-color: #25cb8e;
+  }
+  
+  .arrow-blue {
+    --arrow-color: #2196f3;
+  }
+  .arrow-hidden {
+    display: none;
+  }
+  
+  .arrow {
+  
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform-origin: 100% 50%;
+    transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg));
+    z-index: 10;  
+    box-shadow: 15px 5px 2px rgba(0, 0, 0, 0.153);
+  }
+  
+  .arrow-inner {
+    position: relative;
+    width: 10rem;
+    height: 0.9rem;
+    background: linear-gradient(to right, var(--arrow-color) 0%, var(--arrow-color) 70%, transparent 90%);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+  
+  }
+  
+  
+  .gigometer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 32rem;
+    height: 32rem;
 
-.carousel-content {
-  color: white;
-  text-align: center;
-}
+    z-index: 10;
+    transform: translate(-50%, -50%);
+  }
 
-.carousel-content h4 {
-  font-size: 1.15em;
-  margin-bottom: 2px;
-}
-.carousel-content p {
-  font-size: 0.9em;
-  margin-bottom: 10px;
-}
-.carousel-inner {
-  background-color: transparent;
-}
-
-
-.boton-carrusel {
-  position: absolute;
-  bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 50px;
-  width: 130px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.boton-carrusel:hover {
-  background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
-  border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
-  transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
-}
-
-
-  /* ************************************************************/
-  /* ************************************************************/
-  /* ************************************************************/
-  /* ************************************************************/
-  /* **************************OCULTAR ELEMENTOS ****************/
-  /* ************************************************************/
-  /* ************************************************************/
-  /* ************************************************************/
-  /* ************************************************************/
-
-    /* Ocultar los círculos en dispositivos móviles */
-    @media screen and (max-width: 1250px) {
-      .circle-container {
-        display: none;
-      }
-      .circle-image {
-        display: none;
-      }
-      .circle-image-left {
-        display: none;
-      }
-    }

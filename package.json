@@ -1,11 +1,13 @@
 {
+  "type": "module",
   "name": "speedtest",
   "version": "1.0.0",
   "description": "SpeedTest by OpenSpeedTest™ is a Free and Open-Source HTML5 Network Performance Estimation Tool Written in Vanilla Javascript and only uses built-in Web APIs like `XMLHttpRequest` `(XHR)`, `HTML`, `CSS`, `JS`, & `SVG`. No Third-Party frameworks or libraries are Required. All we need is a static web server like `NGINX`. I started this project in 2011 and moved to OpenSpeedTest.com dedicated Project/Domain Name in 2013.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "browser-sync start --server --files \"**/*\""
+    "dev": "browser-sync start --server --files \"**/*\"",
+    "server": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,9 @@
   "devDependencies": {
     "browser-sync": "^2.29.1",
     "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.1"
   }
 }

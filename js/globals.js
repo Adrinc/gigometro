@@ -86,3 +86,9 @@ function ostOnload() {
 }
 
 var openChannel = "dev";
+
+
+function abrirWeb(link) {
+    window.location.href = link;
+  }
+  

@@ -1,0 +1,667 @@
+@media screen and (max-width: 1280px) and (max-height: 800px) {
+    .title {
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 2rem;
+      font-weight: 1000;
+      letter-spacing: -1px; 
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-family: 'PlusJakartaSans', sans-serif;
+    }
+    
+  
+    .my-image {
+        position: absolute;
+        top: 49.3%;
+        left: 26.4%;
+        transform: translate(-50%, -50%);
+        width: 640px;
+        height: 640px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+      .my-image2 {
+        position: absolute;
+        top: 49.3%;
+        left: 22%;
+        transform: translate(-50%, -50%);
+        width: 25%;
+        height: 44%;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+    
+    
+      .boton {
+        fill: #25cb8e;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+        background-color: #25cb8e;
+        cursor: pointer;
+        pointer-events: visible;
+        height: 80px;
+        width: 120px;
+        border: 6px solid #7ce0bb; /* Agregar borde del color especificado */
+        border-radius: 25px; /* Para bordes redondeados */
+        color: white; /* Cambiar el color del texto a blanco */
+        font-weight: bold; /* Hacer el texto en negrita */
+        display: flex; /* Para centrar el contenido del botón */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: larger;
+      }
+      .boton:not([disabled]):hover {
+        background-color: #7ce0bb;
+        border-color: #7ce0bb;
+        transition: background-color 0.3s, border-color 0.3s;
+      }
+      .boton-secondary {
+        background-color: #d20030;
+        border-color: #e46683;
+        margin-left: 25px; /* Ajusta la separación entre los botones según prefieras */
+      
+      }
+      
+      .boton-secondary:not([disabled]):hover {
+        background-color: #e46683;
+        border-color: #e46683;
+        transition: background-color 0.3s, border-color 0.3s;
+      }
+    
+      .boton-container {
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        z-index: 100;
+      }
+    
+      .disabled {
+        background-color: grey;
+        border-color: grey;
+        cursor: default;
+      }
+      
+      
+    
+      .fondo-negro {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #2f559800;
+        z-index: 9999;
+      }
+    
+      /* Estilo para el mensaje de carga */
+      #mensaje-carga {
+        color: #fff;
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+    
+      .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #2f559800;
+        z-index: -10;
+       
+      }
+    
+     
+    
+      /* CIRCULOS */
+    
+    
+      .circle-container-left,
+      .circle-container-right {
+        position: relative;
+      }
+      .circle-container {
+        position: fixed;
+        top: 0%;
+        transform: translateY(-50%);
+        z-index: 8;
+      }
+      
+      .circle-container-left {
+        left: calc(50% - 25%);
+      }
+      
+      .circle-container-right {
+        left: calc(50% + 25%);
+      }
+      
+  
+    
+  
+    
+      /* Circulo indicadores de velocidad */
+      .circle-download > div:first-child,
+    .circle-upload > div:first-child {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    
+      .circle-download,
+      .circle-upload {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        width: 10rem;
+        height: 10rem;
+        border: 7px solid #2f5598;/* Borde más grueso */
+        border-radius: 50%;
+        color: white;
+        font-family: 'PlusJakartaSans', sans-serif;
+        font-size: 1rem;
+        z-index: 11;
+        transform: translate(-50%, -50%);
+      }
+  
+      .circle-download .value,
+      .circle-upload .value {
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+      
+      .circle-download .mbps,
+      .circle-upload .mbps {
+        font-size: 1rem;
+      }
+      .circle-download .value,
+    .circle-upload .value,
+    .circle-download .mbps,
+    .circle-upload .mbps {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    
+      .circle-download {
+        top: 10%; 
+        left: 45%; 
+        margin-left: -60px;
+      }
+      
+      .circle-upload {
+        top: 10%; 
+        left: 55%; 
+        margin-left: 60px;
+      }
+      .circle-download.color-green {
+        background-color: #25cb8e;
+      }
+      
+      .circle-upload.color-blue {
+        background-color: #2196f3;
+      }
+      
+
+    
+    /*
+      **@Carrusel
+      */
+    .carousel {
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+    }
+    
+    .carousel-content {
+      color: white;
+      text-align: center;
+    }
+    
+    .carousel-content h4 {
+      font-size: 1.15em;
+      margin-bottom: 2px;
+    }
+    .carousel-content p {
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+    .carousel-inner {
+      background-color: transparent;
+    }
+    
+    
+    .boton-carrusel {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      height:80;
+      width: 250px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .boton-carrusel:hover {
+      background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
+      border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
+      transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+    }
+    
+    
+  
+  
+    /*********************************************************/
+    /*********************************************************/
+    /*********************************************************/
+    /*********************************************************/
+    /*********************************************************/
+    /* 
+    @@ Gigometro 
+    */
+    /*********************************************************/
+    /*********************************************************/
+    /*********************************************************/
+    /*********************************************************/
+    /*********************************************************/
+    /*********************************************************/
+    /*********************************************************/
+    
+      .arrow-red {
+          --arrow-color: #ba1f3b;
+        }
+        
+        .arrow-green {
+          --arrow-color: #25cb8e;
+        }
+        
+        .arrow-blue {
+          --arrow-color: #2196f3;
+        }
+        .arrow-hidden {
+          display: none;
+        }
+        
+        .arrow {
+        
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform-origin: 100% 50%;
+          transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg));
+          z-index: 10;  
+          box-shadow: 15px 5px 2px rgba(0, 0, 0, 0.153);
+        }
+        
+        .arrow-inner {
+          position: relative;
+          width: 14rem;
+          height: 0.9rem;
+          background: linear-gradient(to right, var(--arrow-color) 0%, var(--arrow-color) 70%, transparent 90%);
+          clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+          border-top-right-radius: 1px;
+          border-bottom-right-radius: 1px;
+        
+        }
+        
+        
+        .gigometer {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          width: 42rem;
+          height: 42rem;
+          
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          z-index: 10;
+          transform: translate(-50%, -50%);
+        }
+        .carrito {
+          position: absolute;
+       
+          left: 50%;
+          transform: translate(-50%, 0) scale(0.17);
+          z-index: 15;
+        }
+    }
+  
+  
+  
+  
+    /* Horizontal */
+  
+    @media screen and (max-width: 1280px) and (max-height: 800px) {
+
+      
+      
+        .boton {
+          fill: #25cb8e;
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+          -webkit-tap-highlight-color: transparent;
+          background-color: #25cb8e;
+          cursor: pointer;
+          pointer-events: visible;
+          height: 50px;
+          width: 80px;
+          border: 6px solid #7ce0bb; /* Agregar borde del color especificado */
+          border-radius: 25px; /* Para bordes redondeados */
+          color: white; /* Cambiar el color del texto a blanco */
+          font-weight: bold; /* Hacer el texto en negrita */
+          display: flex; /* Para centrar el contenido del botón */
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-size: larger;
+        }
+        .boton:not([disabled]):hover {
+          background-color: #7ce0bb;
+          border-color: #7ce0bb;
+          transition: background-color 0.3s, border-color 0.3s;
+        }
+        .boton-secondary {
+          background-color: #d20030;
+          border-color: #e46683;
+          margin-left: 25px; /* Ajusta la separación entre los botones según prefieras */
+        
+        }
+        
+        .boton-secondary:not([disabled]):hover {
+          background-color: #e46683;
+          border-color: #e46683;
+          transition: background-color 0.3s, border-color 0.3s;
+        }
+      
+        .boton-container {
+          position: absolute;
+          top: 90%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          z-index: 100;
+        }
+      
+        .disabled {
+          background-color: grey;
+          border-color: grey;
+          cursor: default;
+        }
+        
+        
+      
+        .fondo-negro {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: #2f5598;
+          z-index: 9999;
+        }
+      
+        /* Estilo para el mensaje de carga */
+        #mensaje-carga {
+          color: #fff;
+          font-size: 2rem;
+          font-weight: bold;
+          text-align: center;
+        }
+      
+        .background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: #2f559800;
+          z-index: -10;
+
+        }
+      
+       
+      
+        /* CIRCULOS */
+      
+      
+        .circle-container-left,
+        .circle-container-right {
+          position: relative;
+        }
+        .circle-container {
+          position: fixed;
+          top: 0%;
+          transform: translateY(-50%);
+          z-index: 8;
+        }
+        
+        .circle-container-left {
+          left: calc(50% - 25%);
+        }
+        
+        .circle-container-right {
+          left: calc(50% + 25%);
+        }
+        
+    
+      
+    
+      
+        /* Circulo indicadores de velocidad */
+        .circle-download > div:first-child,
+      .circle-upload > div:first-child {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+      
+        .circle-download,
+        .circle-upload {
+          position: fixed;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      
+          width: 12rem;
+          height: 12rem;
+          border: 7px solid rgba(59, 111, 178, 0.952);/* Borde más grueso */
+          border-radius: 50%;
+          color: white;
+          font-family: 'PlusJakartaSans', sans-serif;
+          font-size: 1rem;
+          z-index: 11;
+          transform: translate(-50%, -50%);
+        }
+    
+        .circle-download .value,
+        .circle-upload .value {
+          font-weight: bold;
+          font-size: 1.7rem;
+        }
+        
+        .circle-download .mbps,
+        .circle-upload .mbps {
+          font-size: 0.9rem;
+        }
+        .circle-download .value,
+      .circle-upload .value,
+      .circle-download .mbps,
+      .circle-upload .mbps {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+      
+        .circle-download {
+          top: 50%; 
+          left: 25%; 
+          margin-left: -60px;
+        }
+        
+        .circle-upload {
+          top: 50%; 
+          left: 75%; 
+          margin-left: 60px;
+        }
+        .circle-download.color-green {
+          background-color: #25cb8e;
+        }
+        
+        .circle-upload.color-blue {
+          background-color: #2196f3;
+        }
+        
+      
+      
+      /*
+        **@Carrusel
+        */
+      .carousel {
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+      }
+      
+      .carousel-content {
+        color: white;
+        text-align: center;
+      }
+      
+      .carousel-content h4 {
+        font-size: 1.15em;
+        margin-bottom: 2px;
+      }
+      .carousel-content p {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+      }
+      .carousel-inner {
+        background-color: transparent;
+      }
+      
+      
+      .boton-carrusel {
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 50px;
+        width: 150px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      
+      .boton-carrusel:hover {
+        background-color: #7ce0bb; /* Color de fondo más oscuro cuando se pasa el cursor sobre el botón */
+        border-color: #7ce0bb; /* Color de borde más oscuro cuando se pasa el cursor sobre el botón */
+        transition: background-color 0.3s, border-color 0.3s; /* Transición suave de los colores */
+      }
+      
+      
+    
+    
+      /*********************************************************/
+      /*********************************************************/
+      /*********************************************************/
+      /*********************************************************/
+      /*********************************************************/
+      /* 
+      @@ Gigometro 
+      */
+      /*********************************************************/
+      /*********************************************************/
+      /*********************************************************/
+      /*********************************************************/
+      /*********************************************************/
+      /*********************************************************/
+      /*********************************************************/
+      
+        .arrow-red {
+            --arrow-color: #ba1f3b;
+          }
+          
+          .arrow-green {
+            --arrow-color: #25cb8e;
+          }
+          
+          .arrow-blue {
+            --arrow-color: #2196f3;
+          }
+          .arrow-hidden {
+            display: none;
+          }
+          
+          .arrow {
+          
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            transform-origin: 100% 50%;
+            transform: translate(-100%, -50%) rotate(var(--rotation, -44.5deg));
+            z-index: 10;  
+            box-shadow: 15px 5px 2px rgba(0, 0, 0, 0.153);
+          }
+          
+          .arrow-inner {
+            position: relative;
+            width: 7.5rem;
+            height: 0.9rem;
+            background: linear-gradient(to right, var(--arrow-color) 0%, var(--arrow-color) 70%, transparent 90%);
+            clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+            border-top-right-radius: 1px;
+            border-bottom-right-radius: 1px;
+          
+          }
+          
+          
+          .gigometer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            width: 28rem;
+            height: 28rem;
+            
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            z-index: 10;
+            transform: translate(-50%, -50%);
+          }
+          .carrito {
+            position: absolute;
+            top: -19%;
+            left: 50%;
+            transform: translate(-50%, 0) scale(0.13);
+            
+            z-index: 15;
+          }
+      }
