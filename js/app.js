@@ -841,7 +841,7 @@ function openSpeedtestEngine(){
           severAddress = getCommand.h;
         }
         if (isValidHttpUrl(severAddress)) {
-          openSpeedTestServerList = [{ServerName:"Home", Download:severAddress + "/downloading", Upload:severAddress + "/upload", ServerIcon:"DefaultIcon",},];
+          openSpeedTestServerList = [{ServerName:"Home", Download:severAddress + "./downloading", Upload:severAddress + "./upload", ServerIcon:"DefaultIcon",},];
         }
       }
     }

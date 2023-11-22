@@ -260,6 +260,7 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
   if (Display === "Ping") {
     if (ShowData >= 1 && ShowData < 10000) {
 /*       this.oDoLiveSpeed.el.textContent = Math.floor(ShowData); */
+document.getElementById("circle-ping-ms").innerHTML = ShowData;
     } else if (ShowData >= 0 && ShowData < 1) {
       if (ShowData == 0) {
         ShowData = 0;

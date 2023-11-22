@@ -67,7 +67,11 @@ function setVelocidad(speed) {
   
   
   function setPing(ping) {
- /*    document.getElementById("ping").innerHTML = ping.toFixed(1) + " ms (Ping)"; */
+    document.getElementById("circle-ping-value").innerHTML = ping/1000 + " S";
+    document.getElementById("circle-ping-ms").innerHTML = ping + " ms";
+    const pingCircle = document.querySelector(".circle-ping");
+    pingCircle.classList.add("color-purple");
+
   }
   
   function setJitter(jitter) {
@@ -210,7 +214,7 @@ function setVelocidad(speed) {
                 "button": buttonText
             };
             
-            fetch('https://cblsrvr1.rtatel.com/planbuilder/api', {//anteriormente https://cblsrvr1.rtatel.com/planbuilder/api (produccion) https://rtadev-ecom.cbluna-dev.com/planbuilder/api (desarrollo)
+            fetch('https://rtadev-ecom.cbluna-dev.com/planbuilder/api', {//anteriormente https://cblsrvr1.rtatel.com/planbuilder/api (produccion) https://rtadev-ecom.cbluna-dev.com/planbuilder/api (desarrollo)
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
