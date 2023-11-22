@@ -61,7 +61,6 @@
     <main>
 
           <div class="circulos-container">
-                 
                       <div class="circle-download">
                         <div>DOWNLOAD</div>
                         <div class="value" id="circle-download-value">0.000 G</div>
@@ -77,21 +76,26 @@
                       <div class="value" id="circle-upload-value">0.000 G</div>
                       <div class="mbps" id="circle-upload-mbps">0.0 MB</div>
                     </div>
-             
-              
           </div>
+
           <div class="gigometro-container">
-                  <canvas id="canvas" class="gigometer" ></canvas>
-                  <div class="arrow arrow-red"><div class="arrow-inner"></div></div>
-                  <div class="arrow arrow-green arrow-hidden"><div class="arrow-inner"></div></div>
-                  <div class="arrow arrow-blue arrow-hidden"><div class="arrow-inner"></div></div>
+            <div class="gigometro-contenido">
+              <canvas id="canvas" class="gigometer" ></canvas>
+              <div class="arrow arrow-red"><div class="arrow-inner"></div></div>
+              <div class="arrow arrow-green arrow-hidden"><div class="arrow-inner"></div></div>
+              <div class="arrow arrow-blue arrow-hidden"><div class="arrow-inner"></div></div>
+            </div>
           </div>
 
 
 
         <div class="boton-container">
-                <button id="startButtonDesk" class="boton" onClick="start();">Start</button>
-                <button id="secondButtonDesk" class="boton boton-secondary disabled" onClick="stopall()" disabled>Stop</button>
+
+          <div class="caja-botones">
+
+            <button id="startButtonDesk" class="boton" onClick="start();">Start</button>
+            <button id="secondButtonDesk" class="boton boton-secondary disabled" onClick="stopall()" disabled>Stop</button>
+          </div>
         </div>
 
  </main>
