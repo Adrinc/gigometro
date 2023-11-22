@@ -29,7 +29,6 @@ body
 
  section{
   display: flex;
-  flex-direction: row;
   align-items: center;
   overflow-wrap: auto;
   box-sizing: border-box;
@@ -38,14 +37,15 @@ body
   background-color: rgba(217, 255, 0, 0.531);
   height: 100vh;
  }
- .main{
+ main{
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  align-items: start;
+  justify-content: space-between;
 
 
-background-color: salmon;
+  background-color: salmon;
   height: 100%;
   width: 100%;
  }
@@ -55,12 +55,54 @@ background-color: salmon;
  .circulos-container{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  overflow-wrap: auto;
+  width: 100%;
+
   justify-content: space-evenly;
+  align-content: center;
+  flex-wrap: wrap;
   background-color: rgb(43, 255, 0);
 
+
  }
+ .circle-download,
+ .circle-upload {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: clamp(5rem, 20vw, 10rem);
+   height: clamp(5rem, 20vw, 10rem);
+   border: 10px solid rgba(59, 111, 178, 0.952);/* Borde más grueso */
+   border-radius: 50%;
+   color: white;
+   font-family: 'PlusJakartaSans', sans-serif;
+   font-size: 1rem;
+   z-index: 11;
+   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+   margin: 8px;
+
+ }
+
+  .value {
+   font-weight: bold;
+   font-size: 1.5rem;
+
+ }
+ 
+ .mbps {
+   font-size: 0.9rem;
+ }
+
+
+
+ .circle-download.color-green {
+   background-color: #25cb8e;
+ }
+ 
+ .circle-upload.color-blue {
+   background-color: #2196f3;
+ }
+ 
 
 
   .boton {
@@ -118,55 +160,6 @@ background-color: salmon;
   
 
  
-  /* Circulo indicadores de velocidad */
-  .circle-download > div:first-child,
-.circle-upload > div:first-child {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-  .circle-download,
-  .circle-upload {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 10rem;
-    height: 10rem;
-    border: 10px solid rgba(59, 111, 178, 0.952);/* Borde más grueso */
-    border-radius: 50%;
-    color: white;
-    font-family: 'PlusJakartaSans', sans-serif;
-    font-size: 1rem;
-    z-index: 11;
-    transform: translate(-50%, -50%);
-  }
-
-  .circle-download .value,
-  .circle-upload .value {
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  
-  .circle-download .mbps,
-  .circle-upload .mbps {
-    font-size: 0.9rem;
-  }
-  .circle-download .value,
-.circle-upload .value,
-.circle-download .mbps,
-.circle-upload .mbps {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-
-  .circle-download.color-green {
-    background-color: #25cb8e;
-  }
-  
-  .circle-upload.color-blue {
-    background-color: #2196f3;
-  }
-  
 
 
   .arrow-red {
@@ -218,8 +211,20 @@ background-color: salmon;
     left: 50%;
     width: 32rem;
     height: 32rem;
-
+    background-color: #d20030;
     z-index: 10;
     transform: translate(-50%, -50%);
   }
 
+  .columna-dummy{
+    width: 50%;  
+    background-color: aqua;  
+    height: 100%;
+  }
+
+  @media screen and (max-width: 1180px) {
+    .columna-dummy{
+      display: none;
+    }
+    
+  }
