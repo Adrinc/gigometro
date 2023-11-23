@@ -60,7 +60,7 @@ function setVelocidad(speed) {
       const downloadCircle = document.querySelector(".circle-download");
       downloadCircle.classList.add("color-green");
       download=download*1000;
-      //download=58;
+    
   setArrowRotation(greenArrow, download);
   
   }
@@ -106,7 +106,7 @@ function setVelocidad(speed) {
     arrow.style.setProperty("--rotation", `${rotationAngle}deg`);
   }
 
-
+  //Esta funcion se aplica al resetear
   function hideArrows() {
     // Ocultar la flecha verde
     const greenArrow = document.querySelector(".arrow-green");

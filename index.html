@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         
-        <link href="css/tabla.css" rel="stylesheet" type="text/css" />
+<!--         <link href="css/tabla.css" rel="stylesheet" type="text/css" /> -->
         
         <link href="css/index.css" rel="stylesheet" type="text/css" />
     <!--     <link href="css/index1368x766.css" rel="stylesheet" type="text/css" />
@@ -56,11 +56,17 @@
  
 
   <section>
-    <div class="columna-dummy" style="width: 50%; background-color: aqua; height: 100%"></div>
+
 
     <main>
 
+        
           <div class="circulos-container">
+                    <div class="circle-ping">
+                      <div>LATENCY</div>
+                      <div class="value" id="circle-ping-value">0.000 S</div>
+                      <div class="mbps" id="circle-ping-ms">0.0 ms</div>
+                    </div>
                       <div class="circle-download">
                         <div>DOWNLOAD</div>
                         <div class="value" id="circle-download-value">0.000 G</div>
@@ -70,11 +76,6 @@
                       <div>UPLOAD</div>
                       <div class="value" id="circle-upload-value">0.000 G</div>
                       <div class="mbps" id="circle-upload-mbps">0.0 MB</div>
-                    </div>
-                    <div class="circle-ping">
-                      <div>LATENCY</div>
-                      <div class="value" id="circle-ping-value">0.000 S</div>
-                      <div class="mbps" id="circle-ping-ms">0.0 ms</div>
                     </div>
           </div>
 
@@ -90,16 +91,14 @@
 
 
         <div class="boton-container">
-
-          <div class="caja-botones">
-
-            <button id="startButtonDesk" class="boton" onClick="start();">Start</button>
-            <button id="secondButtonDesk" class="boton boton-secondary disabled" onClick="stopall()" disabled>Stop</button>
-          </div>
+            <div class="caja-botones">
+                <button id="startButtonDesk" class="boton" onClick="start();">Start</button>
+                <button id="secondButtonDesk" class="boton boton-secondary disabled" onClick="stopall()" disabled>Stop</button>
+            </div>
         </div>
 
  </main>
- <div class="columna-dummy" style="width: 50%;  background-color: aqua;  height: 100%"></div>
+
 </section>
 
 
