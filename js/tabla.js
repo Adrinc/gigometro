@@ -67,7 +67,7 @@ function setVelocidad(speed) {
   
   
   function setPing(ping) {
-    document.getElementById("circle-ping-value").innerHTML = ping/1000 + " S";
+    document.getElementById("circle-ping-value").innerHTML = (ping/1000).toFixed(3) + " S";
     document.getElementById("circle-ping-ms").innerHTML = ping + " ms";
     const pingCircle = document.querySelector(".circle-ping");
     pingCircle.classList.add("color-purple");

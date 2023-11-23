@@ -49,6 +49,7 @@ body
   height: 100%;
   width: 100%;
 
+
  }
  .columna-dummy{
   width: 50%;  
@@ -64,8 +65,10 @@ body
 
   justify-content: space-evenly;
   align-content: center;
+  align-self: center;
   flex-wrap: wrap;
   background-color: rgb(43, 255, 0);
+  margin: 0.5rem;
 
 
  }
@@ -82,7 +85,7 @@ body
    border-radius: 50%;
    color: white;
    font-family: 'PlusJakartaSans', sans-serif;
-   font-size: clamp(0.2rem, 3vw, 1rem);
+   font-size: clamp(0.7rem, 3vw, 1rem);
    z-index: 11;
    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
    padding: 4px;
@@ -91,12 +94,12 @@ body
 
   .value {
    font-weight: bold;
-   font-size: clamp(0.5rem, 4vw, 1.5rem);
+   font-size: clamp(0.6rem, 4.5vw, 1.5rem);
 
  }
  
  .mbps {
-   font-size: clamp(0.4rem, 4vw, 1rem);
+   font-size: clamp(0.5rem, 4vw, 1.2rem);
  }
 
 
@@ -132,6 +135,7 @@ body
     justify-content: center;
     text-align: center;
     font-size: larger;
+    
   }
   .boton:not([disabled]):hover {
     background-color: #7ce0bb;
@@ -158,6 +162,8 @@ body
     justify-content: center;
     z-index: 100;
     background-color: chocolate;
+    margin: 0.5rem;
+    align-self: center;
   }
   .caja-botones{
     display: flex;
