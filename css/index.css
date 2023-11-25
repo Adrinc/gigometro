@@ -32,8 +32,8 @@ body {
 
 section {
   display: flex;
-  align-items: flex-start;
-  overflow-wrap: auto;
+
+
   box-sizing: border-box;
   align-items: center;
   justify-content: space-evenly;
@@ -276,9 +276,7 @@ main {
 .arrow-inner {
   position: relative;
   width: clamp(8rem, 35vw, 12rem);
-  /* 8rem */
   height: clamp(0.9rem, 2vw, 1rem);
-  /* 0.9rem */
   background: linear-gradient(to right, var(--arrow-color) 0%, var(--arrow-color) 70%, transparent 90%);
   clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
   border-top-right-radius: 1px;
@@ -286,15 +284,10 @@ main {
 }
 
 .gigometer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   top: 50%;
   left: 50%;
   width: clamp(1rem, 100vw, 550px);
   height: clamp(1rem, 100vw, 550px);
-
   z-index: 10;
 }
 
@@ -308,7 +301,6 @@ main {
 
 .gigometro-contenido {
   position: absolute;
-
   width: 100%;
   height: 100%;
   background-color: rgb(81, 81, 81);
@@ -326,13 +318,7 @@ main {
 
 @media screen and (height< 780px) {
 
-.rower{
-  display:flex;
-  flex-grow: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
+
 .circle-ping,
 .circle-download,
 .circle-upload {
@@ -354,26 +340,49 @@ main {
 }
 
 
-@media screen and (height< 500px) {
+@media screen and (height< 600px) and (width > 720px) 
+{
+  main {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+  }
 
 .circle-ping,
 .circle-download,
 .circle-upload {
-  width: clamp(2rem, 20vw, 5rem);
-  height: clamp(2rem, 20vw, 5rem);
+  width: clamp(2rem, 20vw, 6rem);
+  height: clamp(2rem, 20vw, 6rem);
   font-size: clamp(0.7rem, 3vw, 1rem);
 }
 .value {font-size: clamp(0.6rem, 4.5vw, 1rem);}
 .mbps {font-size: clamp(0.5rem, 4vw, 1rem);}
 
 .gigometer {
-  width: clamp(1rem, 50vw, 280px);
-  height: clamp(1rem, 50vw, 280px);
+  width: clamp(1rem, 50vw, 300px);
+  height: clamp(1rem, 50vw, 300px);
 }
 .arrow-inner {
   width: clamp(5rem, 35vw, 7rem);
   height: clamp(0.9rem, 2vw, 1rem);
 }
+
+
+.circulos-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+
+}
+
 
 
 
