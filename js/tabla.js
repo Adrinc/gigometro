@@ -199,7 +199,7 @@ function setVelocidad(speed) {
 
 
   function initTest() {
-    fetch(' https://api.ipify.org/?format=json') //anteriormente https://api.ipify.org/?format=json https://gigometer43.rtatel.com/ipfy
+    fetch(' https://gigometer43.rtatel.com/ipfy') //anteriormente https://api.ipify.org/?format=json https://gigometer43.rtatel.com/ipfy
         .then(response => response.json())
         .then(data => {
             const buttonText = document.getElementById("startButtonDesk").innerHTML;
